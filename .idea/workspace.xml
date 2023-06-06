@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e07e5e7a-ec8f-4674-828c-abf5ab4cbeaa" name="Changes" comment="Initial Commit">
-      <change beforePath="$PROJECT_DIR$/Application/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dineth's UI/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Dineth's UI/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dineth's UI/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dineth's UI/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dineth's UI/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dineth's UI/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dineth's UI/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dineth's UI/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dineth's UI/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dineth's UI/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dineth's UI/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dineth's UI/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dineth's UI/app/src/main/res/font/.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dineth's UI/app/src/main/res/font/.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dineth's UI/app/src/main/res/font/aldrich.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dineth's UI/app/src/main/res/font/aldrich.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dineth's UI/app/src/main/res/values/font_certs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dineth's UI/app/src/main/res/values/font_certs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dineth's UI/app/src/main/res/values/preloaded_fonts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dineth's UI/app/src/main/res/values/preloaded_fonts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dineth's UI/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Dineth's UI/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dineth's UI/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/Dineth's UI/gradlew.bat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +41,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true"
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "C:/Users/Dineth Pramuditha/Desktop/Academics/CO225/project/e19-co225-baby-tracking-system-mobileapp",
+    "settings.editor.selected.configurable": "experimental"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

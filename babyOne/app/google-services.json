@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "596633506864",
+    "project_id": "babyone-95045",
+    "storage_bucket": "babyone-95045.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596633506864:android:ab7c57bf2942ff65c509f5",
+        "android_client_info": {
+          "package_name": "com.example.babyone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596633506864-fgrpikttlootobjeofpbcl0e33v3uhpn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.babyone",
+            "certificate_hash": "433df99d42d61a1d605caa4bdab6b6c891884c32"
+          }
+        },
+        {
+          "client_id": "596633506864-vq352e92ukbn9htj8rq53bu07tc9b7ur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6qzOJ4aOg7FcQn0dAkVOwvZdL8lTwDow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596633506864-8b7jr2c9mkc81ms6lkaepei6gurt3blb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
