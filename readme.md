@@ -14,4 +14,4 @@ Growth Monitoring: The application provides standard weight and height ranges ba
 
 Medication and Recommendations: PHMs and doctors can provide additional recommendations, including extra medicines, vitamins, and specific instructions for a baby. These recommendations can be recorded in the application and associated with the relevant baby. Users can search for a baby by name or ID and access their history, including past recommendations and medications.
 
-User Notifications: The system sends timely notifications to users, informing them about upcoming vaccinations, growth concerns, and any new recommendations provided by PHMs or doctors. This helps parents and guardians stay informed and take appropriate actions for their baby's well-being.
+User Notifications: The system sends timely notifications to users, informing them about upcoming vaccinations, growth concerns, and any new recommendations provided by PHMs or doctors. This helps parents and guardians stay informed and take appropriate actions for their baby's well-being. .
