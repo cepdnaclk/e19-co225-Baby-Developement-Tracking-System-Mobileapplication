@@ -30,9 +30,9 @@ public class StoreActivity extends AppCompatActivity {
 
         // Create a new user with a first and last name
         Map<String, Object> user = new HashMap<>();
-        user.put("first", "Ada");
-        user.put("last", "Lovelace");
-        user.put("born", 1815);
+        user.put("first", "sahan");
+        user.put("last", "jhjd");
+        user.put("born", 181);
 
 // Add a new document with a generated ID
         db.collection("users")
