@@ -8,8 +8,8 @@ import java.util.Map;
 
 public class BabyDevelopmentTrackingSystem2 {
 
-    private static final String DATABASE_URL = "YOUR_DATABASE_URL";
-    private static final String SERVICE_ACCOUNT_FILE = "YOUR_SERVICE_ACCOUNT_JSON_FILE_PATH";
+    private static final String DATABASE_URL = "Our_database_URL";
+    private static final String SERVICE_ACCOUNT_FILE = "OUR_SERVICE_ACCOUNT_JSON_FILE_PATH";
 
     private DatabaseReference database;
     private FirebaseAuth auth;
