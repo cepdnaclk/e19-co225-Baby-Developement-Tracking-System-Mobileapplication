@@ -1,0 +1,51 @@
+{
+    "team": [
+        {
+            "name": "Chamath Colombage",
+            "email": "e19057@eng.pdn.ac.lk",
+            "eNumber": "E/19/057"
+        },
+        {
+            "name": "Dasun Theekshana",
+            "email": "e19443@eng.pdn.ac.lk",
+            "eNumber": "E/19/443"
+        },
+        {
+            "name": "Harith Abeysinghe",
+            "email": "e19003@eng.pdn.ac.lk",
+            "eNumber": "E/19/003"
+        },
+        {
+            "name": "Amanda W.S.",
+            "email": "e19017@eng.pdn.ac.lk",
+            "eNumber": "E/19/017"
+        },
+        {
+            "name": "Sahan Nimantha",
+            "email": "e19205@eng.pdn.ac.lk",
+            "eNumber": "E/19/205"
+        },
+        {
+            "name": "Ravindu Abeysinghe",
+            "email": "e19004@eng.pdn.ac.lk",
+            "eNumber": "E/19/004"
+        },
+        {
+            "name": "Dineth Udugamsooriya",
+            "email": "e19409@eng.pdn.ac.lk",
+            "eNumber": "E/19/409"
+        },
+        {
+            "name": "Yashan W. V.",
+            "email": "e19455@eng.pdn.ac.lk",
+            "eNumber": "E/19/455"
+        }
+    ],
+    "supervisors": [
+        {
+            "name": "Mrs. Nadeesha Adikari",
+            "email": "nadeeshaa@eng.pdn.ac.lk"
+        }
+    ],
+    "tags": ["co225", "mobile"]
+}

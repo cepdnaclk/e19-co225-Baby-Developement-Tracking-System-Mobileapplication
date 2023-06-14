@@ -1,8 +1,16 @@
-Baby Development Tracking System
+# Baby Development Tracking System
 
-The Baby Development Tracking System is a mobile application designed to assist parents, guardians, public health midwives (PHMs), and doctors in tracking and managing the development of babies from 0 to 5 years old. The system aims to provide a comprehensive solution for monitoring vaccinations, weight, height, and other important information related to a baby's development.
+## Introduction
 
-Key Features:
+The aim is to build a system to track and help manage the development of babies (0 to 5 Years).
+
+Users (parents or guardians or public health midwives or doctors) register babies in the application with babies' details (Name, birth date, Gender, current weight, current height). Users should enter the already received vaccinations of their babies. With time, users enter their babies' vaccinations, weight, and height details.
+
+The system should be fed with a standard vaccine schedule (government and private). The system includes standard weight and height ranges according to age. When users enter the details, the application compares that information with this standard information. Based on that comparison, users will get notifications such as when the next vaccination date is nearby when weight or height is not within the standard rate.
+
+There should be the ability to note all the extra medicines, vitamins, and other recommendations by public health midwives and doctors through this application. They should be able to search the relevant baby by name or baby Id and check the baby's history.
+
+## Key Features
 
 User Registration: Users, including parents, guardians, PHMs, and doctors, can register in the application by providing basic details such as name, email, and password.
 
