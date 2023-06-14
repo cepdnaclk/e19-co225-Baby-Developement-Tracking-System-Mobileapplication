@@ -24,33 +24,52 @@ This is a sample image, to show how to add images to your page. To learn more op
 -  E/19/443, Dasun Theekshana, [email](mailto:e19443@eng.pdn.ac.lk)
 -  E/19/003, Harith Abeysinghe, [email](mailto:e19003@eng.pdn.ac.lk)
 -  E/19/205, Sahan Nimantha, [email](mailto:e19205@eng.pdn.ac.lk)
+-  E/19/409, Dineth Udugamsooriya, [email](mailto:e19409@eng.pdn.ac.lk)
 
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Our solution](#our-solution)
+2. [Key Features](#key-features)
 3. [Links](#links)
 
 ---
 
 ## Introduction
 
-The aim is to build a system to track and help manage the development of babies (0 to 5 Years).
+The goal of this project is to develop a system that can track and manage the development of babies from 0 to 5 years old. The system will be designed for use by parents, guardians, public health midwives, and doctors.
 
-Users (parents or guardians or public health midwives or doctors) register babies in the application with babies' details (Name, birth date, Gender, current weight, current height). Users should enter the already received vaccinations of their babies. With time, users enter their babies' vaccinations, weight, and height details.
+Users will be able to register babies in the application by providing the baby's name, birth date, gender, current weight, and current height. Additionally, users will be able to enter the vaccinations that their babies have already received, and over time, they can update the baby's vaccination, weight, and height details.
 
-The system should be fed with a standard vaccine schedule (government and private). The system includes standard weight and height ranges according to age. When users enter the details, the application compares that information with this standard information. Based on that comparison, users will get notifications such as when the next vaccination date is nearby when weight or height is not within the standard rate.
+The system will include a standard vaccine schedule from both government and private sources, as well as standard weight and height ranges based on the baby's age. When users enter their baby's details, the application will compare the information with the standard information. Based on that comparison, users will receive notifications, such as alerts for when the next vaccination date is approaching or when the baby's weight or height falls outside the standard range.
 
-There should be the ability to note all the extra medicines, vitamins, and other recommendations by public health midwives and doctors through this application. They should be able to search the relevant baby by name or baby Id and check the baby's history.
+The application will also allow users to note any extra medicines, vitamins, or other recommendations given by public health midwives and doctors. Doctors and PHMs will be able to search for a particular baby by name or ID and review the baby's history.
 
-## Our Solution
+Overall, this project aims to develop a user-friendly and efficient system to help parents, guardians, and healthcare professionals ensure that babies receive the care and attention necessary for healthy development.
 
-In order to empower parents to make knowledgeable decisions regarding their child's healthcare and to make communication with healthcare professionals easier, we want to provide a seamless and user-friendly platform.
+## Key Features
+
+### User Registration
+> Users, including parents, guardians, PHMs, and doctors, can register in the application by providing basic details such as name, email, and password.
+
+### Baby Registration
+> Users can register babies by entering their details, including name, birth date, gender, current weight, and current height. This information forms the basis for tracking the baby's development.
+
+### Vaccination Tracking
+> The system is equipped with a standard vaccine schedule, which includes both government and private vaccines. Users can record the vaccinations their babies have already received and receive notifications for upcoming vaccinations based on the schedule. This helps ensure that babies receive timely and appropriate immunizations.
+
+### Growth Monitoring
+> The application provides standard weight and height ranges based on the baby's age. Users can enter the baby's weight and height regularly, and the system compares these values with the standard ranges. If the weight or height falls outside the standard range, users receive notifications, alerting them to possible growth concerns.
+
+### Medication and Recommendations
+> PHMs and doctors can provide additional recommendations, including extra medicines, vitamins, and specific instructions for a baby. These recommendations can be recorded in the application and associated with the relevant baby. Users can search for a baby by name or ID and access their history, including past recommendations and medications.
+
+### User Notifications
+> The system sends timely notifications to users, informing them about upcoming vaccinations, growth concerns, and any new recommendations provided by PHMs or doctors. This helps parents and guardians stay informed and take appropriate actions for their baby's well-being.
 
 ## Links
 
 - [Project Repository](https://github.com/cepdnaclk/e19-co225-Baby-Developement-Tracking-System-Mobileapplication)
-<!--- [Project Page](https://cepdnaclk.github.io/{{ page.repository-name}}){:target="_blank"} -->
+- [Project Page](https://cepdnaclk.github.io/e19-co225-Baby-Developement-Tracking-System-Mobileapplication/)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
