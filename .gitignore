@@ -20,6 +20,9 @@ bin/
 gen/
 out/
 
+# VSCode config
+.code
+
 # Gradle files
 .gradle
 .gradle/
