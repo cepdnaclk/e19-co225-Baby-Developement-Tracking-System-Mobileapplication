@@ -5,8 +5,6 @@
     android:gravity="center"
     android:orientation="vertical">
 
-
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,6 +12,20 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:paddingTop="16dp" />
+
+    <EditText
+        android:id="@+id/edit_text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your name"
+        android:padding="16dp" />
+
+    <EditText
+        android:id="@+id/edit_text_birth_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your birth date"
+        android:padding="16dp" />
 
     <Button
         android:layout_width="wrap_content"

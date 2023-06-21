@@ -13,28 +13,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="445dp"
+        android:layout_marginTop="408dp"
         android:layout_marginEnd="13dp"
         android:layout_marginBottom="16dp" />
-
-    <Button
-        android:id="@+id/bt_sign_up"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="343dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Sign Up"
-        android:textColor="@color/black"
-        app:icon="@drawable/common_google_signin_btn_icon_dark_normal"
-        app:iconTint="@color/white"
-        app:rippleColor="@color/white"
-        tools:visibility="visible"
-        android:background="@color/white"/>
 
 
 </RelativeLayout>
