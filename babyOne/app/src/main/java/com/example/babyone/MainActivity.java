@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                                     if (isNewUser) {
                                         // User signed in for the first time
                                         // Perform any necessary operations
-                                        startActivity(new Intent(MainActivity.this, WelcomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                        startActivity(new Intent(MainActivity.this, FirstTimeGuardian.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                     } else {
                                         // User has previously signed in
                                         // Perform any necessary operations

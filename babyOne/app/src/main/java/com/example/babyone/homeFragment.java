@@ -68,6 +68,7 @@ public class homeFragment extends Fragment {
     }
 }*/
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -145,6 +146,7 @@ public class homeFragment extends Fragment {
                         Toast.makeText(requireContext(), "Logout successful", Toast.LENGTH_SHORT).show();
                         // Finish activity
                         requireActivity().finish();
+                        startActivity(new Intent(getActivity(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                     }
                 }
             });
