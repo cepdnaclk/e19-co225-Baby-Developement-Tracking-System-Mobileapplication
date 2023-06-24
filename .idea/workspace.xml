@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cd66ecb-3902-41b8-8ca1-6e975881c019" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/babyOne/app/src/main/res/layout/activity_details.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/DetailsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/DetailsActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,20 +24,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/OneDrive/Desktop/Java Project/e19-co225-baby-developement-tracking-system-mobileapplication/babyOne&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;experimental&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "C:/Users/USER/OneDrive/Documents/GitHub/e19-co225-baby-tracking-system-mobileapp/babyOne",
+    "settings.editor.selected.configurable": "experimental"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e07e5e7a-ec8f-4674-828c-abf5ab4cbeaa" name="Changes" comment="" />
+      <changelist id="0cd66ecb-3902-41b8-8ca1-6e975881c019" name="Changes" comment="Initial Commit" />
       <created>1685900996698</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
