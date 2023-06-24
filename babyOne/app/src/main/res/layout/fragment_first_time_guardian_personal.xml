@@ -95,6 +95,7 @@
             app:layout_constraintTop_toBottomOf="@+id/edtPhoneNumber" />
 
         <RadioGroup
+            android:id = "@+id/radioGroupRelation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
