@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -83,6 +84,7 @@ public class FirstTimeGuardian extends AppCompatActivity {
     private void submitForm() {
         // Validate and submit the registration form
         Toast.makeText(this, "First time registered!!", Toast.LENGTH_SHORT).show();
-        // ...
+        startActivity(new Intent(FirstTimeGuardian.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
     }
 }
