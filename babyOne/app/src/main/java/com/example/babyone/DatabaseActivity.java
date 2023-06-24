@@ -15,38 +15,37 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StoreActivity extends AppCompatActivity {
+public class DatabaseActivity extends AppCompatActivity {
 
-    private static final String TAG = "StoreActivity";
+    private static final String TAG = "DatabaseActivity";
     private FirebaseFirestore db;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_store);
+        setContentView(R.layout.activity_database);
 
         // Get the instance of FirebaseFirestore
         db = FirebaseFirestore.getInstance();
 
-        // Create a new user with a first and last name
-        Map<String, Object> user = new HashMap<>();
-        user.put("Baby Name", "Baby 1");
-        user.put("Birth Date", "2023-06-24");
-        user.put("Sex", "Male");
+        // Create a new vaccination with name and weeks from birth
+        Map<String, Object> vaccination = new HashMap<>();
+        vaccination.put("name", "Vaccination A");
+        vaccination.put("weeksFromBirth", 1);
 
-// Add a new document with a generated ID
-        db.collection("users")
-                .add(user)
+        // Add the vaccination document to the "vaccinations" collection
+        db.collection("vaccinations")
+                .add(vaccination)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d(TAG, "Vaccination details added with ID: " + documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
+                        Log.w(TAG, "Error adding vaccination details", e);
                     }
                 });
     }

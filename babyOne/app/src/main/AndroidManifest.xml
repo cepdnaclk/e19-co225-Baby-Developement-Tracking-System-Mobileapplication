@@ -22,6 +22,8 @@
 
         <activity android:name=".StoreActivity"
             android:exported="true" />
+        <activity android:name=".DatabaseActivity"
+            android:exported="true" />
 
 
         <activity
