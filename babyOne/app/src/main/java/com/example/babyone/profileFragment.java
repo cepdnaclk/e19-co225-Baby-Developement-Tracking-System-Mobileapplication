@@ -39,6 +39,7 @@ public class profileFragment extends Fragment {
     private String mParam2;
 
     private static final String TAG = "DatabaseActivity";
+    private TextView textViewUserData;
     private FirebaseFirestore db;
 
     public profileFragment() {
