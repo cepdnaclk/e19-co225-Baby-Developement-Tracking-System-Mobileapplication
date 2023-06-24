@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edit_text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your name"
+        android:padding="16dp" />
+
+    <EditText
+        android:id="@+id/edit_text_birth_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your birth date"
+        android:padding="16dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_get_started"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Button" />
+        android:text="Get Started"
+        android:paddingTop="16dp" />
+
 </LinearLayout>
