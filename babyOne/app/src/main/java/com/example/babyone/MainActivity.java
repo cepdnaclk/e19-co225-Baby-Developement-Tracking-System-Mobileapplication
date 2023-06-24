@@ -64,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
         }
+        else {
+            //startActivity(new Intent(MainActivity.this, WelcomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        }
     }
 
 
@@ -93,12 +96,28 @@ public class MainActivity extends AppCompatActivity {
                         firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                // Check condition
+                                // Check  condition
                                 if (task.isSuccessful()) {
-                                    // When task is successful redirect to profile activity display Toast
+                                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                                    boolean isNewUser = task.getResult().getAdditionalUserInfo().isNewUser();
+
+                                    if (isNewUser) {
+                                        // User signed in for the first time
+                                        // Perform any necessary operations
+                                        startActivity(new Intent(MainActivity.this, WelcomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                    } else {
+                                        // User has previously signed in
+                                        // Perform any necessary operations
+                                        // Redirect to profile activity and display Toast
+                                        startActivity(new Intent(MainActivity.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                        displayToast("Firebase authentication successful");
+                                    }
+
+
+                                    /*// When task is successful redirect to profile activity display Toast
                                     startActivity(new Intent(MainActivity.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
-                                    displayToast("Firebase authentication successful");
+                                    displayToast("Firebase authentication successful");*/
                                 } else {
                                     // When task is unsuccessful display Toast
                                     displayToast("Authentication Failed :" + task.getException().getMessage());

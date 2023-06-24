@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -30,9 +31,9 @@ public class StoreActivity extends AppCompatActivity {
 
         // Create a new user with a first and last name
         Map<String, Object> user = new HashMap<>();
-        user.put("first", "sahan");
-        user.put("last", "jhjd");
-        user.put("born", 181);
+        user.put("Baby Name", "Baby 1");
+        user.put("Birth Date", "2023-06-24");
+        user.put("Sex", "Male");
 
 // Add a new document with a generated ID
         db.collection("users")
@@ -47,6 +48,31 @@ public class StoreActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG, "Error adding document", e);
+                    }
+                });
+    }
+
+    private void getBabyDetailsFromFirestore(DocumentReference documentReference) {
+        documentReference.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            String babyName = documentSnapshot.getString("Baby Name");
+                            String birthDate = documentSnapshot.getString("Birth Date");
+
+                            // Print the retrieved baby details
+                            Log.d(TAG, "Baby Name: " + babyName);
+                            Log.d(TAG, "Birth Date: " + birthDate);
+                        } else {
+                            Log.d(TAG, "Document not found");
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error getting document", e);
                     }
                 });
     }
