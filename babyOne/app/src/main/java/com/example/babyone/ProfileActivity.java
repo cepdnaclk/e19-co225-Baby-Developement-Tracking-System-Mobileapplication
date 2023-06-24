@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileActivity extends AppCompatActivity {
-    // Initialize variable
+    ///// Initialize variable
     ImageView ivImage;
     TextView tvName;
     Button btLogout;
@@ -112,7 +112,7 @@ public class ProfileActivity extends AppCompatActivity {
 */
 
 
-/*///////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////*/
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
