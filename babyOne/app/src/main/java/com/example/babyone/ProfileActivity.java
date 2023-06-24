@@ -1,3 +1,4 @@
+package com.example.babyone;/*
 package com.example.babyone;
 
 import android.os.Bundle;
@@ -7,7 +8,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.bumptech.glide.Glide;
+import com.example.babyone.databinding.ActivityMainBinding;
+import com.example.babyone.databinding.ActivityProfileBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -24,10 +31,35 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     GoogleSignInClient googleSignInClient;
 
+    ActivityProfileBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        binding = ActivityProfileBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        replaceFragment(new homeFragment());
+
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+           switch (item.getItemId()){
+               case R.id.home:
+                   replaceFragment(new homeFragment());
+                   break;
+
+               case R.id.profile:
+                   replaceFragment(new profileFragment());
+                   break;
+
+               case R.id.settings:
+                   replaceFragment(new settingsFragment());
+                   break;
+           }
+
+           return  true;
+        });
+
+
 
         // Assign variable
         ivImage = findViewById(R.id.iv_image);
@@ -69,4 +101,58 @@ public class ProfileActivity extends AppCompatActivity {
             });
         });
     }
+
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout,fragment);
+        fragmentTransaction.commit();
+    }
 }
+*/
+
+import android.os.Bundle;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.example.babyone.databinding.ActivityProfileBinding;
+
+public class ProfileActivity extends AppCompatActivity {
+    private ActivityProfileBinding binding;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivityProfileBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        replaceFragment(new homeFragment());
+
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.home:
+                    replaceFragment(new homeFragment());
+                    break;
+
+                case R.id.profile:
+                    replaceFragment(new profileFragment());
+                    break;
+
+                case R.id.settings:
+                    replaceFragment(new settingsFragment());
+                    break;
+            }
+
+            return  true;
+        });
+    }
+
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout,fragment);
+        fragmentTransaction.commit();
+    }
+}
+
