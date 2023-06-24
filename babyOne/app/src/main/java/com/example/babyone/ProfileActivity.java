@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileActivity extends AppCompatActivity {
-    // Initialize variable
+    ///// Initialize variable
     ImageView ivImage;
     TextView tvName;
     Button btLogout;
@@ -111,6 +111,9 @@ public class ProfileActivity extends AppCompatActivity {
 }
 */
 
+
+/*////////////////////////////////////////////////////////////////////////////////*/
+
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -118,6 +121,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.babyone.databinding.ActivityProfileBinding;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class ProfileActivity extends AppCompatActivity {
     private ActivityProfileBinding binding;

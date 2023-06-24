@@ -14,20 +14,17 @@
         android:theme="@style/Theme.BabyOne"
         tools:targetApi="31">
         <activity
+            android:name=".FirstTimeGuardian"
+            android:exported="true" />
+        <activity
             android:name=".WelcomeActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StoreActivity"
             android:exported="true" />
-
-        <activity android:name=".StoreActivity"
-            android:exported="true" />
-        <activity android:name=".DatabaseActivity"
-            android:exported="true" />
-        <activity android:name=".DetailsActivity"
-            android:exported="true" />
-
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
