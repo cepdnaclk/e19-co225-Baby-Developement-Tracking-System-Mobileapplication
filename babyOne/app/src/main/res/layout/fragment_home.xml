@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +10,7 @@
 
 
 
-    <!-- TODO: Update blank fragment layout -->
+    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,8 +18,8 @@
         android:textSize="26dp"
         android:text="Home Page" />
 
-</FrameLayout>
-<!--
+</FrameLayout>-->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -52,7 +52,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_image"
-        app:layout_constraintVertical_bias="0.125"
+        app:layout_constraintVertical_bias="0.281"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -66,4 +66,4 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_name"
         app:layout_constraintVertical_bias="0.158" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>-->
+</androidx.constraintlayout.widget.ConstraintLayout>
