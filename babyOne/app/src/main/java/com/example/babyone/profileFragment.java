@@ -77,14 +77,15 @@ public class profileFragment extends Fragment {
         cardView_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(requireContext(), "Medicine and Vitamins clicked", Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(requireContext(), "Medicine and Vitamins clicked", Toast.LENGTH_SHORT).show();*/
+                startActivity(new Intent(getActivity(), Medicine.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
 
         cardView_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(requireContext(), "BMI Clicked", Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(requireContext(), "BMI Clicked", Toast.LENGTH_SHORT).show();*/
                 startActivity(new Intent(getActivity(), BmiToGraph.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
@@ -92,8 +93,8 @@ public class profileFragment extends Fragment {
         cardView_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(requireContext(), "Went to Vaccine updated", Toast.LENGTH_SHORT).show();
-
+                /*Toast.makeText(requireContext(), "Went to Vaccine updated", Toast.LENGTH_SHORT).show();*/
+                startActivity(new Intent(getActivity(), VaccineUpdate.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
 
