@@ -24,4 +24,6 @@
     <string name="strvalBTNBack">Back</string>
     <string name="strvalBTNNext">Next</string>
     <string name="strvalEBBTNSubmit">Submit</string>
+    <string name="strvalPlaceholder">placeholder</string>
+    <string name="strFASyringe"></string>
 </resources>
