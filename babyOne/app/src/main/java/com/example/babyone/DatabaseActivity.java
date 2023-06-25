@@ -31,7 +31,7 @@ public class DatabaseActivity extends AppCompatActivity {
         // Create a new vaccination with name and weeks from birth
         Map<String, Object> vaccination = new HashMap<>();
         vaccination.put("name", "Vaccination C");
-        vaccination.put("weeksFromBirth", 8);
+        vaccination.put("weeksFromBirth", 1);
 
         // Add the vaccination document to the "vaccinations" collection
         db.collection("vaccinations")

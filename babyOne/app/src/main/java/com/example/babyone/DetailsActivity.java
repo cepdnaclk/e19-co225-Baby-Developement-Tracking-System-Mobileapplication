@@ -12,11 +12,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 //THIS IS USED FOR BABY - VACCINE CONNECTING
 public class DetailsActivity extends AppCompatActivity {
@@ -40,6 +45,8 @@ public class DetailsActivity extends AppCompatActivity {
 
         // Read data from "vaccinations" collection
         readVaccinationsCollection();
+
+
     }
 
     private void readUsersCollection() {
@@ -89,12 +96,38 @@ public class DetailsActivity extends AppCompatActivity {
                             String name = documentSnapshot.getString("name");
                             long weeksFromBirth = documentSnapshot.getLong("weeksFromBirth");
 
+                            // Calculate the next vaccination date
+                            String birthDate = "2023-06-25"; // Replace with the actual birth date
+                            String nextVaccineDate = calculateNextVaccineDate(birthDate, weeksFromBirth);
+
                             // Create a TextView to display vaccination data
                             TextView textViewVaccination = new TextView(DetailsActivity.this);
                             textViewVaccination.setText("Vaccination Name: " + name + "\nWeeks from Birth: " + weeksFromBirth);
 
                             // Add the TextView to the LinearLayout
                             linearLayoutData.addView(textViewVaccination);
+
+                            // Store the details in the Firestore "vaccinations" collection
+                            Map<String, Object> updatedVaccination = new HashMap<>();
+                            updatedVaccination.put("name", name);
+                            updatedVaccination.put("weeksFromBirth", weeksFromBirth);
+                            updatedVaccination.put("nextVaccineDate", nextVaccineDate);
+
+                            String documentId = documentSnapshot.getId();
+                            DocumentReference vaccinationRef = vaccinationsCollectionRef.document(documentId);
+                            vaccinationRef.update(updatedVaccination)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d(TAG, "Vaccination details updated for document ID: " + documentId);
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w(TAG, "Error updating vaccination details for document ID: " + documentId, e);
+                                        }
+                                    });
                         }
                     }
                 })
@@ -105,4 +138,25 @@ public class DetailsActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    private String calculateNextVaccineDate(String birthDate, long weeksFromBirth) {
+        // Perform the calculation to get the next vaccination date
+        // You need to provide the appropriate implementation based on your specific requirements and date format
+
+        // For example, assuming birthDate is in "yyyy-MM-dd" format
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        Calendar calendar = Calendar.getInstance();
+        try {
+            calendar.setTime(dateFormat.parse(birthDate));
+            calendar.add(Calendar.DAY_OF_YEAR, (int) (weeksFromBirth * 7));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        // Format the calculated date as desired
+        String nextVaccineDate = dateFormat.format(calendar.getTime());
+
+        return nextVaccineDate;
+    }
+
 }
