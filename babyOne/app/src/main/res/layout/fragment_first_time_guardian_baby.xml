@@ -70,39 +70,39 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtEBFullName" />
 
-        <RadioGroup
-            android:id = "@+id/radioGroupEBGender"
+    <RadioGroup
+        android:id="@+id/radgroupEBGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:checkedButton="@id/radbtnEBMale"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvEBGender">
+
+        <RadioButton
+            android:id="@+id/radbtnEBMale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:checkedButton="@id/radbtnEBMale"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtvEBGender">
+            android:text="Male" />
 
-            <RadioButton
-                android:id="@+id/radbtnEBMale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Male" />
+        <RadioButton
+            android:id="@+id/radbtnEBFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Female" />
 
-            <RadioButton
-                android:id="@+id/radbtnEBFemale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Female" />
+        <RadioButton
+            android:id="@+id/radbtnEBGn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
 
-            <RadioButton
-                android:id="@+id/radbtnEBGn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+            android:text="Rather not say" />
 
-                android:text="Rather not say" />
-
-        </RadioGroup>
+    </RadioGroup>
 
 
 
