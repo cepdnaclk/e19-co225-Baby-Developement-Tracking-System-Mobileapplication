@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Enter your personal info"
+            android:text="@string/strvalEPInfoBanner"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
             android:layout_marginEnd="16dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-            android:text="Please enter you personal info. Don't worry this information will only be used if we want to contact you for something important."
+            android:text="@string/strvalEPInfoDetails"
             android:textSize="16sp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Full Name"
+            android:text="@string/strvalTVFullName"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,9 +51,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="Enter you full name"
+            android:hint="@string/strvalEPFullName"
             android:inputType="text"
             android:minHeight="48dp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtvFullName" />
 
@@ -63,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Phone Number"
+            android:text="@string/strvalTVPhoneNumber"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,9 +77,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="Enter you phone number"
+            android:hint="@string/strvalEPPhoneNumber"
             android:inputType="phone"
             android:minHeight="48dp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtvPhoneNumber" />
 
@@ -88,7 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Relationship to the baby"
+            android:text="@string/strvalTVRelation"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +111,7 @@
             android:id="@+id/radbtnEPMother"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mother" />
+            android:text="@string/strvalEPMother" />
 
         <RadioButton
             android:id="@+id/radbtnEPFather"
@@ -117,7 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
 
-            android:text="Father" />
+            android:text="@string/strvalEPFather" />
 
         <RadioButton
             android:id="@+id/radbtnEPOther"
@@ -125,7 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
 
-            android:text="Other" />
+            android:text="@string/strvalEPOther" />
 
     </RadioGroup>
 
