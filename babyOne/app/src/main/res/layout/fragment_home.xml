@@ -34,7 +34,7 @@
             android:layout_width="350dp"
             android:layout_height="140dp"
             android:layout_marginTop="92dp"
-            android:elevation="0dp"
+            android:elevation="30dp"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.491"
