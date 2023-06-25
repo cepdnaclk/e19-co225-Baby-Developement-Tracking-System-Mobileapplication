@@ -18,7 +18,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
-
+//THIS IS USED FOR BABY - VACCINE CONNECTING
 public class DetailsActivity extends AppCompatActivity {
 
     private static final String TAG = "DetailsActivity";
