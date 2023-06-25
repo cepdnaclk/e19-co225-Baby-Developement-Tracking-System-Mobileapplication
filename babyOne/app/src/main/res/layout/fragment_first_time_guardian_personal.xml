@@ -94,39 +94,40 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtEPPhoneNumber" />
 
-        <RadioGroup
+    <RadioGroup
+        android:id="@+id/radgroupEPRelation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:checkedButton="@id/radbtnEPMother"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvRealtion">
+
+        <RadioButton
+            android:id="@+id/radbtnEPMother"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:checkedButton="@id/radbtnEPMother"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtvRealtion">
+            android:text="Mother" />
 
-            <RadioButton
-                android:id="@+id/radbtnEPMother"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mother" />
+        <RadioButton
+            android:id="@+id/radbtnEPFather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
 
-            <RadioButton
-                android:id="@+id/radbtnEPFather"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+            android:text="Father" />
 
-                android:text="Father" />
+        <RadioButton
+            android:id="@+id/radbtnEPOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
 
-            <RadioButton
-                android:id="@+id/radbtnEPOther"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+            android:text="Other" />
 
-                android:text="Other" />
-
-        </RadioGroup>
+    </RadioGroup>
 
 
 
