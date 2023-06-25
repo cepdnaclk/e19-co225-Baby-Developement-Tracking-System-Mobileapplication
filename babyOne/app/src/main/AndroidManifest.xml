@@ -14,7 +14,7 @@
         android:theme="@style/Theme.BabyOne"
         tools:targetApi="31">
         <activity
-            android:name=".VaccineActivity"
+            android:name=".BmiToGraph"
             android:exported="false" />
         <activity
             android:name=".MainLanding"
