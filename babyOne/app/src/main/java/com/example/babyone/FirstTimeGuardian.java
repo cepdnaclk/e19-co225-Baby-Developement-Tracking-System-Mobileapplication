@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +28,7 @@ public class FirstTimeGuardian extends AppCompatActivity {
     private Button btnNext;
 
     HashMap<String, String> personalInfo = new HashMap<>();
-
+    HashMap<String, String> babyInfo = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,8 +96,29 @@ public class FirstTimeGuardian extends AppCompatActivity {
     private void submitForm() {
         // Validate and submit the registration form
         personalInfo = ((first_time_guardian_personal) fragPersonal).getInfoHashMap();
-        Toast.makeText(this, "First time registered!! \n "+personalInfo.toString(), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(FirstTimeGuardian.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-        
+        babyInfo = ((first_time_guardian_baby) fragBaby).getInfoHashMap();
+
+        // Combine personalInfo and babyInfo into a single hashmap
+        HashMap<String, String> registrationInfo = new HashMap<>();
+        registrationInfo.putAll(personalInfo);
+        registrationInfo.putAll(babyInfo);
+        // Get the Firestore instance
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        // Specify the collection name in Firestore where you want to store the data
+        CollectionReference guardiansCollection = db.collection("guardians");
+        //Toast.makeText(this, "First time registered!! \n "+personalInfo.toString(), Toast.LENGTH_SHORT).show();
+        //startActivity(new Intent(FirstTimeGuardian.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        // Add the personalInfo HashMap as a document to the collection
+        guardiansCollection.add(registrationInfo)
+                .addOnSuccessListener(documentReference -> {
+                    // Document was successfully added
+                    Toast.makeText(this, "First time registered!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(FirstTimeGuardian.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                })
+                .addOnFailureListener(e -> {
+                    // Error occurred while adding the document
+                    Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 }
