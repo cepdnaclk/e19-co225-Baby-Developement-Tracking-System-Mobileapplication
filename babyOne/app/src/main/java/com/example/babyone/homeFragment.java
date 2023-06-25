@@ -92,8 +92,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class homeFragment extends Fragment {
     // Initialize variables
-    private ImageView ivImage;
-    private TextView tvName;
+    /*private ImageView ivImage;
+    private TextView tvName;*/
     private Button btLogout;
     private FirebaseAuth firebaseAuth;
     private GoogleSignInClient googleSignInClient;
@@ -112,8 +112,8 @@ public class homeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Assign views from the layout
-        ivImage = view.findViewById(R.id.iv_image);
-        tvName = view.findViewById(R.id.tv_name);
+        /*ivImage = view.findViewById(R.id.iv_image);
+        tvName = view.findViewById(R.id.tv_name);*/
         btLogout = view.findViewById(R.id.bt_logout);
 
         // Initialize firebase auth
@@ -125,9 +125,9 @@ public class homeFragment extends Fragment {
         // Check condition
         if (firebaseUser != null) {
             // When firebase user is not equal to null, set image on image view
-            Glide.with(requireContext()).load(firebaseUser.getPhotoUrl()).into(ivImage);
+            //Glide.with(requireContext()).load(firebaseUser.getPhotoUrl()).into(ivImage);
             // Set name on text view
-            tvName.setText(firebaseUser.getDisplayName());
+            //tvName.setText(firebaseUser.getDisplayName());
         }
 
         // Initialize sign-in client
