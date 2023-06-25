@@ -31,6 +31,8 @@
         <activity
             android:name=".StoreActivity"
             android:exported="true" />
+        <activity android:name=".VaccineActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
