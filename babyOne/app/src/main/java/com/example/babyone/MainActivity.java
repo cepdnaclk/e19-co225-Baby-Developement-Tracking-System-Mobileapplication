@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         // Check condition
         if (firebaseUser != null) {
             // When user already sign in redirect to profile activity
-            startActivity(new Intent(MainActivity.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            startActivity(new Intent(MainActivity.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
         }
         else {
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                                         // User has previously signed in
                                         // Perform any necessary operations
                                         // Redirect to profile activity and display Toast
-                                        startActivity(new Intent(MainActivity.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                        startActivity(new Intent(MainActivity.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                         displayToast("Firebase authentication successful");
                                     }
 

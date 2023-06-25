@@ -93,7 +93,7 @@ public class FirstTimeGuardian extends AppCompatActivity {
         // Validate and submit the registration form
         personalInfo = ((first_time_guardian_personal) fragPersonal).getInfoHashMap();
         Toast.makeText(this, "First time registered!! \n "+personalInfo.toString(), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(FirstTimeGuardian.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        startActivity(new Intent(FirstTimeGuardian.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
     }
 }

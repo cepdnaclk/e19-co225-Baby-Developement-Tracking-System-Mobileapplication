@@ -21,7 +21,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Redirect the user to the profile activity
-                startActivity(new Intent(WelcomeActivity.this, ProfileActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, MainLanding.class));
                 finish(); // Optional: Finish the WelcomeActivity to prevent the user from going back
             }
         });
