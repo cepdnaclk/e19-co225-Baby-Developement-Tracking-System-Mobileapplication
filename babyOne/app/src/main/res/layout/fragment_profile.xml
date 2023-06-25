@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".homeFragment">
+    tools:context=".homeFragment"
+    android:id="@+id/profileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -42,7 +43,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="20dp"
-                    android:text="UPDATE BABY DETAILS"
+                    android:text="MEDICINE AND VITAMINS"
                     android:textSize="24dp"
                     android:textStyle="bold" /> <!--display details retrived from the database-->
 
@@ -83,9 +84,22 @@
             app:layout_constraintTop_toBottomOf="@+id/materialCardViewp2"
             app:layout_constraintVertical_bias="0.422">
 
+            <TextView
+                android:layout_width="314dp"
+                android:layout_height="53dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:text="VACCINATION UPDATE !"
+                android:textSize="24dp"
+                android:textStyle="bold" /> <!--display details retrived from the database-->
+
         </com.google.android.material.card.MaterialCardView>
 
-        <View
+        <!--<View
             android:id="@+id/horizontalRectangle"
             android:layout_width="match_parent"
             android:layout_height="4dp"
@@ -94,8 +108,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView3"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/materialCardViewp3"
+            app:layout_constraintVertical_bias="1.0" />-->
 
 
     <TextView

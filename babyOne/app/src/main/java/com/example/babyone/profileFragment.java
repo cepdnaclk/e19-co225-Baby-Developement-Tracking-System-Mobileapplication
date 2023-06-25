@@ -1,5 +1,6 @@
 package com.example.babyone;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -21,6 +22,9 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import android.widget.Toast;
+
+import com.google.android.material.card.MaterialCardView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +32,11 @@ import com.google.firebase.firestore.QuerySnapshot;
  * create an instance of this fragment.
  */
 public class profileFragment extends Fragment {
+
+    private MaterialCardView cardView_1;
+    private MaterialCardView cardView_2;
+    private MaterialCardView cardView_3;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,6 +50,7 @@ public class profileFragment extends Fragment {
     private static final String TAG = "DatabaseActivity";
     private TextView textViewUserData;
     private FirebaseFirestore db;
+
 
     public profileFragment() {
         // Required empty public constructor
@@ -76,8 +86,39 @@ public class profileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        cardView_1 = view.findViewById(R.id.materialCardViewp1);
+        cardView_2 = view.findViewById(R.id.materialCardViewp2);
+        cardView_3 = view.findViewById(R.id.materialCardViewp3);
+
+        cardView_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(requireContext(), "Medicine and Vitamins clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        cardView_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(requireContext(), "BMI Clicked", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), BmiToGraph.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            }
+        });
+
+        cardView_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(requireContext(), "Went to Vaccine updated", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return view;
+
+
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
