@@ -66,8 +66,18 @@
             app:layout_constraintHorizontal_bias="0.531"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialCardViewp1"
-            app:layout_constraintVertical_bias="0.123">
+            app:layout_constraintVertical_bias="0.123"
+            xmlns:ap="http://schemas.android.com/apk/res-auto">
 
+            <com.androidplot.xy.XYPlot
+                android:id="@+id/plot"
+                style="@style/APDefacto.Light"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                ap:domainTitle="domain"
+                ap:rangeTitle="range"
+                ap:title="simple XY Plot"
+                />
 
         </com.google.android.material.card.MaterialCardView>
 
