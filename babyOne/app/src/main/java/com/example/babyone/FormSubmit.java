@@ -34,7 +34,7 @@ public class FormSubmit {
         radbtnMother = view.findViewById(R.id.radbtnMother);
         radbtnFather = view.findViewById(R.id.radbtnFather);
         radbtnOther = view.findViewById(R.id.radbtnOther);
-        submitButton = view.findViewById(R.id.btnNext);;
+        submitButton = view.findViewById(R.id.btnNext);
         firestore = FirebaseFirestore.getInstance();
         setupSubmitButton();
     }
