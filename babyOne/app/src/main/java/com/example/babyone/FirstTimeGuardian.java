@@ -62,7 +62,7 @@ public class FirstTimeGuardian extends AppCompatActivity {
                     fragmentTransaction.replace(R.id.fragcontFTGuardian, fragPersonal);
                     fragmentTransaction.commit();
                     currentFragment = fragPersonal;
-                    btnNext.setText("Next");
+                    btnNext.setText(R.string.strvalBTNNext);
                     btnBack.setEnabled(false);
                 }
             }
@@ -79,7 +79,7 @@ public class FirstTimeGuardian extends AppCompatActivity {
                     fragmentTransaction.replace(R.id.fragcontFTGuardian, fragBaby);
                     fragmentTransaction.commit();
                     currentFragment = fragBaby;
-                    btnNext.setText("Submit");
+                    btnNext.setText(R.string.strvalEBBTNSubmit);
                     btnBack.setEnabled(true);
                 } else {
                     // Submit the registration form

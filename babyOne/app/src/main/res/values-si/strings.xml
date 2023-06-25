@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="strvalEBInfoBanner">ඔබේ දරුවාගේ විස්තර ඇතුලත් කරන්න</string>
+    <string name="strvalEBInfoDetails">කරුණාකර ඔබේ දරුවාගේ තොරතුරු ඇතුළත් කරන්න. ඔබට සහ බලයලත් පුද්ගලයින්ට පමණක් මෙම තොරතුරු දැක ගත හැකිය.</string>
+    <string name="strvalEBFullName">සම්පුර්ණ නම</string>
+    <string name="strvalEBFullNameBox">දරුවාගේ සම්පුර්ණ නම ඇතුලත් කරන්න</string>
+    <string name="strvalEBGender">දරුවාගේ ස්ත්රී පුරුෂ භාවය</string>
+    <string name="strvalEBMale">පිරිමි</string>
+    <string name="strvalEBFemale">ගැහැණු</string>
+    <string name="strvalEBGn">පැවසීමට අකමැතියි</string>
+    <string name="strvalEPInfoBanner">ඔබගේ පුද්ගලික තොරතුරු ඇතුලත් කරන්න</string>
+    <string name="strvalEPInfoDetails">කරුණාකර ඔබගේ පුද්ගලික තොරතුරු ඇතුලත් කරන්න. කණගාටු නොවන්න, මෙම තොරතුරු අපට වැදගත් දෙයක් සඳහා ඔබව සම්බන්ධ කර ගැනීමට අවශ්‍ය නම් පමණක් භාවිත කෙරේ.</string>
+    <string name="strvalTVFullName">සම්පුර්ණ නම</string>
+    <string name="strvalEPFullName">ඔබගේ සම්පුර්ණ නම ඇතුලත් කරන්න</string>
+    <string name="strvalTVPhoneNumber">දුරකථන අංකය</string>
+    <string name="strvalEPPhoneNumber">ඔබගේ දුරකථන අංකය ඇතුලත් කරන්න</string>
+    <string name="strvalTVRelation">දරුවා සමඟ ඇති සම්බන්ධතාවය</string>
+    <string name="strvalEPMother">මව</string>
+    <string name="strvalEPFather">පියා</string>
+    <string name="strvalEPOther">වෙනත්</string>
+    <string name="strvalBTNBack">ආපසු</string>
+    <string name="strvalBTNNext">ඉදිරියට</string>
+    <string name="strvalEBBTNSubmit">තහවුරු කරන්න</string>
+</resources>
