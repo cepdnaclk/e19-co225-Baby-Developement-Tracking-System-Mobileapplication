@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 public class FirstTimeGuardian extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
@@ -20,6 +22,9 @@ public class FirstTimeGuardian extends AppCompatActivity {
     private Fragment fragBaby;
     private Button btnBack;
     private Button btnNext;
+
+    HashMap<String, String> personalInfo = new HashMap<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,9 @@ public class FirstTimeGuardian extends AppCompatActivity {
         // Initialize the navigation buttons
         btnBack = findViewById(R.id.btnBack);
         btnNext = findViewById(R.id.btnNext);
+
+        // Initialize data fields
+
 
         // Set up the click listener for the Prev button
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +91,8 @@ public class FirstTimeGuardian extends AppCompatActivity {
 
     private void submitForm() {
         // Validate and submit the registration form
-        Toast.makeText(this, "First time registered!!", Toast.LENGTH_SHORT).show();
+        personalInfo = ((first_time_guardian_personal) fragPersonal).getInfoHashMap();
+        Toast.makeText(this, "First time registered!! \n "+personalInfo.toString(), Toast.LENGTH_SHORT).show();
         startActivity(new Intent(FirstTimeGuardian.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
     }

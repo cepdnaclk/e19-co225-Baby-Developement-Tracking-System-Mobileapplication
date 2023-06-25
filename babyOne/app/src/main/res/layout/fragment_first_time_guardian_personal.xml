@@ -45,7 +45,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtvEPInfoDetails" />
 
         <EditText
-            android:id="@+id/edtFullName"
+            android:id="@+id/edtEPFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -67,10 +67,10 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtFullName" />
+            app:layout_constraintTop_toBottomOf="@+id/edtEPFullName" />
 
         <EditText
-            android:id="@+id/edtPhoneNumber"
+            android:id="@+id/edtEPPhoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -92,26 +92,26 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtPhoneNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/edtEPPhoneNumber" />
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:checkedButton="@id/radbtnMother"
+            android:checkedButton="@id/radbtnEPMother"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtvRealtion">
 
             <RadioButton
-                android:id="@+id/radbtnMother"
+                android:id="@+id/radbtnEPMother"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mother" />
 
             <RadioButton
-                android:id="@+id/radbtnFather"
+                android:id="@+id/radbtnEPFather"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -119,7 +119,7 @@
                 android:text="Father" />
 
             <RadioButton
-                android:id="@+id/radbtnOther"
+                android:id="@+id/radbtnEPOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
