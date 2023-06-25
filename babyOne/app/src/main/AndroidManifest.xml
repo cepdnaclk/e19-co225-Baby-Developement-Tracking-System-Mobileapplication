@@ -26,6 +26,12 @@
             android:name=".StoreActivity"
             android:exported="true" />
         <activity
+            android:name=".DetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DatabaseActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
