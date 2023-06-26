@@ -5,11 +5,25 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.Fragment;
+
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import android.widget.Toast;
 
 import com.androidplot.xy.LineAndPointFormatter;
@@ -44,6 +58,10 @@ public class profileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private static final String TAG = "DatabaseActivity";
+    private TextView textViewUserData;
+    private FirebaseFirestore db;
 
 
     public profileFragment() {
@@ -157,4 +175,43 @@ public class profileFragment extends Fragment {
 
 
     }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        textViewUserData = view.findViewById(R.id.text_view_user_data);
+        db = FirebaseFirestore.getInstance();
+
+        // Read data from "users" collection
+        readUsersCollection();
+    }
+
+    private void readUsersCollection() {
+        CollectionReference usersCollectionRef = db.collection("users");
+
+        usersCollectionRef.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot querySnapshot) {
+                        StringBuilder userData = new StringBuilder();
+
+                        for (DocumentSnapshot documentSnapshot : querySnapshot) {
+                            String babyName = documentSnapshot.getString("Baby Name");
+                            String birthDate = documentSnapshot.getString("Birth Date");
+
+                            userData.append("Baby Name: ").append(babyName).append("\n")
+                                    .append("Birth Date: ").append(birthDate).append("\n\n");
+                        }
+
+                        textViewUserData.setText(userData.toString());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle error
+                    }
+                });
+    }
+
 }
