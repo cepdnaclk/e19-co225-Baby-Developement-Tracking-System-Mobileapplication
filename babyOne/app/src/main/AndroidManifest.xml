@@ -14,6 +14,15 @@
         android:theme="@style/Theme.BabyOne"
         tools:targetApi="31">
         <activity
+            android:name=".Medicine"
+            android:exported="false" />
+        <activity
+            android:name=".VaccineUpdate"
+            android:exported="false" />
+        <activity
+            android:name=".TestGraph"
+            android:exported="true" />
+        <activity
             android:name=".BmiToGraph"
             android:exported="false" />
         <activity
@@ -27,9 +36,11 @@
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".StoreActivity"
+            android:exported="true" />
+        <activity android:name=".VaccineActivity"
             android:exported="true" />
         <activity
             android:name=".DatabaseActivity"

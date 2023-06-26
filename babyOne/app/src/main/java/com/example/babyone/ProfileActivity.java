@@ -157,6 +157,8 @@ public class ProfileActivity extends AppCompatActivity {
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        // Add a fade-in animation
+        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, 0, 0, 0);
         fragmentTransaction.replace(R.id.frame_layout,fragment);
         fragmentTransaction.commit();
     }
