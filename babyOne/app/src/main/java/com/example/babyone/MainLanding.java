@@ -1,10 +1,12 @@
 package com.example.babyone;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -27,6 +29,8 @@ public class MainLanding extends AppCompatActivity {
 
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(this, fragments);
         viewPager.setAdapter(adapter);
+        viewPager.setUserInputEnabled(false);
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationViewML);
         bottomNavigationView.setOnItemSelectedListener(item -> {
