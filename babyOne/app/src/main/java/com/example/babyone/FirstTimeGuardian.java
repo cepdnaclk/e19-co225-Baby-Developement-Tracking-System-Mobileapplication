@@ -102,6 +102,7 @@ public class FirstTimeGuardian extends AppCompatActivity {
         HashMap<String, String> registrationInfo = new HashMap<>();
         registrationInfo.putAll(personalInfo);
         registrationInfo.putAll(babyInfo);
+        /*
         // Get the Firestore instance
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -120,5 +121,12 @@ public class FirstTimeGuardian extends AppCompatActivity {
                     // Error occurred while adding the document
                     Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
+
+         */
+
+
+        String collectionName = "guardians";
+        FirestoreHelper.addToFirestore(collectionName, registrationInfo, this, FirstTimeGuardian.this);
+
     }
 }
