@@ -23,6 +23,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
     // Initialize variables
@@ -113,6 +114,24 @@ public class MainActivity extends AppCompatActivity {
                                         displayToast("Firebase authentication successful");
                                     }
 
+                                    // Notification Handle
+                                    FirebaseMessaging.getInstance().getToken()
+                                            .addOnCompleteListener(new OnCompleteListener<String>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<String> task) {
+                                                    if (!task.isSuccessful()) {
+                                                        Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                                                        return;
+                                                    }
+
+                                                    // Get new FCM registration token
+                                                    String token = task.getResult();
+
+                                                    // Log and toast
+                                                    Log.d(TAG, "Token: "+token);
+                                                    Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
 
                                     /*// When task is successful redirect to profile activity display Toast
                                     startActivity(new Intent(MainActivity.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
