@@ -41,14 +41,16 @@ public class DetailsActivity extends AppCompatActivity {
         linearLayoutData = findViewById(R.id.linear_layout_data);
 
         // Read data from "users" collection
-        readUsersCollection();
+        //readUsersCollection();
 
         // Read data from "vaccinations" collection
         readVaccinationsCollection();
 
-
+        String collectionName = "users";
+        //method for reading is used
+        FirestoreHelper.readFromCollection(db, collectionName,linearLayoutData);
     }
-
+    /*
     private void readUsersCollection() {
         // Reference to the "users" collection
         CollectionReference usersCollectionRef = db.collection("users");
@@ -80,6 +82,8 @@ public class DetailsActivity extends AppCompatActivity {
                     }
                 });
     }
+    */
+
 
     private void readVaccinationsCollection() {
         // Reference to the "vaccinations" collection

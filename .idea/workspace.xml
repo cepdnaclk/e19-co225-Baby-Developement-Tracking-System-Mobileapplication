@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0cd66ecb-3902-41b8-8ca1-6e975881c019" name="Changes" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/DatabaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/DatabaseActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/DetailsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/DetailsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/FirestoreHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/FirestoreHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +32,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/OneDrive/Desktop/Java Project/e19-co225-Baby-Developement-Tracking-System-Mobileapplication/babyOne&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CO225 Project/e19-co225-Baby-Developement-Tracking-System-Mobileapplication/babyOne&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;experimental&quot;
   }
 }</component>
