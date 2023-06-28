@@ -8,19 +8,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class VaccineUpdate extends AppCompatActivity {
+public class BmiGraph extends AppCompatActivity {
 
-    Button btnback_2;
+    Button btnBack_1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vaccine_update);
+        setContentView(R.layout.activity_bmi_graph);
 
-        btnback_2 = findViewById(R.id.btnBack_vaccine);
+        btnBack_1 = findViewById(R.id.btnBack_medicine);
 
         /*ACTION WHICH OCCURS WHEN THE BACK BUTTON IS CLICKED*/
-        btnback_2.setOnClickListener(new View.OnClickListener() {
+        btnBack_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

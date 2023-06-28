@@ -78,7 +78,7 @@
         </com.google.android.material.card.MaterialCardView>
 
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardView1"
             android:layout_width="160dp"
             android:layout_height="100dp"
@@ -102,10 +102,10 @@
                 android:maxLines="2"
                 android:text="BMI\nVALUE" />
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardView2"
             android:layout_width="160dp"
             android:layout_height="100dp"
@@ -129,18 +129,18 @@
                 android:gravity="center"
                 android:lines="2"
                 android:maxLines="2"
-                android:text="BMI\nVALUE" />
+                android:text="AGE\nVALUE" />
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardView3"
             android:layout_width="160dp"
             android:layout_height="100dp"
             android:elevation="30dp"
             android:paddingEnd="10dp"
-            app:cardBackgroundColor="#FFAC1C"
+            app:cardBackgroundColor="#673AB7"
             app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -158,11 +158,11 @@
                 android:gravity="center"
                 android:lines="2"
                 android:maxLines="2"
-                android:text="BMI\nVALUE" />
+                android:text="WEIGHT\nVALUE" />
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardView4"
             android:layout_width="160dp"
             android:layout_height="100dp"
@@ -184,9 +184,9 @@
                 android:gravity="center"
                 android:lines="2"
                 android:maxLines="2"
-                android:text="BMI\nVALUE" />
+                android:text="HEIGHT\nVALUE" />
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView5"
@@ -213,7 +213,7 @@
                 android:gravity="center"
                 android:lines="2"
                 android:maxLines="2"
-                android:text="BMI\nVALUE" />
+                android:text="VACCINE\nDETAILS" />
 
         </androidx.cardview.widget.CardView>
 
