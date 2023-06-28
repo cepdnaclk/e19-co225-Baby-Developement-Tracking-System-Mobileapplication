@@ -94,6 +94,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+
 public class homeFragment extends Fragment {
     // Initialize variables
     /*private ImageView ivImage;
@@ -133,28 +135,31 @@ public class homeFragment extends Fragment {
         if (firebaseUser != null) {
             // Get parent name
             FirebaseFirestore db = FirebaseFirestore.getInstance();
-            DocumentReference parentDocRef = db.collection("guardians").document(firebaseUser.getUid());
+            HashMap<String,Object> userdata = FirestoreHelper.readFromCollection(db,"guardians");
+            System.out.println(userdata);
+//            DocumentReference parentDocRef = db.collection("guardians").document(firebaseUser.getUid());
+//
+//            // Retrieve the parent's name from the document
+//            parentDocRef.get().addOnSuccessListener(documentSnapshot -> {
+//                if (documentSnapshot.exists()) {
+//                    String parentName = documentSnapshot.getString("parentname");
+//                    if (parentName != null) {
+//                        // Parent's name is available
+//                        // You can use the retrieved parentName here
+//                        txtParentname.setText("Name: " + parentName);
+//                    } else {
+//                        // Parent's name is not available
+//                        txtParentname.setText("Name: Null");
+//                    }
+//                } else {
+//                    // Parent document does not exist
+//                    txtParentname.setText("Name: Not Found");
+//                }
+//            }).addOnFailureListener(e -> {
+//                // Error occurred while retrieving the document
+//                txtParentname.setText("Name: Error occurred");
+//            });
 
-            // Retrieve the parent's name from the document
-            parentDocRef.get().addOnSuccessListener(documentSnapshot -> {
-                if (documentSnapshot.exists()) {
-                    String parentName = documentSnapshot.getString("parentname");
-                    if (parentName != null) {
-                        // Parent's name is available
-                        // You can use the retrieved parentName here
-                        txtParentname.setText("Name: " + parentName);
-                    } else {
-                        // Parent's name is not available
-                        txtParentname.setText("Name: Null");
-                    }
-                } else {
-                    // Parent document does not exist
-                    txtParentname.setText("Name: Not Found");
-                }
-            }).addOnFailureListener(e -> {
-                // Error occurred while retrieving the document
-                txtParentname.setText("Name: Error occurred");
-            });
         }
         // Initialize sign-in client
         googleSignInClient = GoogleSignIn.getClient(requireContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);

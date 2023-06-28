@@ -71,4 +71,40 @@ public class FirestoreHelper {
                 });
     }
 
+    public static HashMap<String, Object> readFromCollection(FirebaseFirestore db, String collectionName) {
+        // Reference to the specified collection
+        CollectionReference collectionRef = db.collection(collectionName);
+        HashMap<String,Object> returndata = new HashMap<>();
+
+        // Read the documents in the collection
+        collectionRef.get()
+                .addOnSuccessListener(querySnapshot -> {
+                    // Iterate over the documents in the QuerySnapshot
+                    for (DocumentSnapshot documentSnapshot : querySnapshot) {
+                        // Retrieve the data as a map of field names and values
+                        Map<String, Object> data = documentSnapshot.getData();
+                        if (data != null) {
+
+                            // Iterate over the fields and values
+                            for (Map.Entry<String, Object> entry : data.entrySet()) {
+                                String fieldName = entry.getKey();
+                                Object fieldValue = entry.getValue();
+
+                                returndata.put(fieldName,fieldValue);
+                            }
+                        }
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.w("FirestoreHelper", "Error getting documents from collection: " + collectionName, e);
+                });
+        Set<String> keys = returndata.keySet();
+        System.out.println("Data");
+        // Iterate over the keys
+        for (String key : keys) {
+            System.out.println("Key: " + key);
+        }
+        return returndata;
+    }
+
 }
