@@ -115,7 +115,7 @@ public class FirstTimeGuardian extends AppCompatActivity {
                 .addOnSuccessListener(documentReference -> {
                     // Document was successfully added
                     Toast.makeText(this, "First time registered!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(FirstTimeGuardian.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                    startActivity(new Intent(FirstTimeGuardian.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 })
                 .addOnFailureListener(e -> {
                     // Error occurred while adding the document

@@ -3,11 +3,15 @@ package com.example.babyone;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.babyone.databinding.ActivityMainLandingBinding;
+import com.example.babyone.databinding.ActivityProfileBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -15,38 +19,45 @@ import java.util.List;
 
 public class MainLanding extends AppCompatActivity {
 
+    private ActivityMainLandingBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_landing);
+        binding = ActivityMainLandingBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        ViewPager2 viewPager = findViewById(R.id.viewPagerML);
+        Fragment homeView = new homeFragment();
+        Fragment profileView = new profileFragment();
+        Fragment settingsView = new settingsFragment();
 
-        List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new homeFragment());
-        fragments.add(new profileFragment());
-        fragments.add(new settingsFragment());
+        replaceFragment(homeView);
 
-        FragmentPagerAdapter adapter = new FragmentPagerAdapter(this, fragments);
-        viewPager.setAdapter(adapter);
-        viewPager.setUserInputEnabled(false);
+        binding.bottomNavigationViewML.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.home:
+                    replaceFragment(homeView);
+                    break;
 
+                case R.id.profile:
+                    replaceFragment(profileView);
+                    break;
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationViewML);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-                switch (item.getItemId()) {
-                    case R.id.home:
-                        viewPager.setCurrentItem(0);
-                        return true;
-                    case R.id.profile:
-                        viewPager.setCurrentItem(1);
-                        return true;
-                    case R.id.settings:
-                        viewPager.setCurrentItem(2);
-                        return true;
-                    default:
-                        return false;
-                }
+                case R.id.settings:
+                    replaceFragment(settingsView);
+                    break;
+            }
+
+            return true;
         });
+    }
+
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        // Add a fade-in animation
+        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, 0, 0, 0);
+        fragmentTransaction.replace(binding.frameLayoutML.getId(),fragment);
+        fragmentTransaction.commit();
     }
 }

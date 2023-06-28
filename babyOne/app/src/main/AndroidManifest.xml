@@ -35,9 +35,6 @@
             android:name=".WelcomeActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
-            android:exported="true" />
-        <activity
             android:name=".StoreActivity"
             android:exported="true" />
         <activity android:name=".VaccineActivity"

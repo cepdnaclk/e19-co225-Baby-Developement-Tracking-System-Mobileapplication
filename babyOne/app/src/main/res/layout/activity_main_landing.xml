@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainLanding">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPagerML"
+    <FrameLayout
+        android:id="@+id/frameLayoutML"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
