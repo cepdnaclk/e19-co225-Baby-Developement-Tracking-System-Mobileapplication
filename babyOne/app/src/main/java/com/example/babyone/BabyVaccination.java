@@ -37,10 +37,14 @@ public class BabyVaccination {
                                         // Calculate the vaccination date based on the birthdate and time
                                         Date vaccinationDate = calculateVaccinationDate(birthdate, vaccinationTime);
 
+                                        // Format the date as "April 2, 2023"
+                                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                                        String formattedDate = dateFormat.format(vaccinationDate);
+
                                         // Create a map to store the vaccine information
                                         Map<String, Object> vaccineInfo = new HashMap<>();
                                         vaccineInfo.put("name", vaccinationName);
-                                        vaccineInfo.put("date", vaccinationDate);
+                                        vaccineInfo.put("date", formattedDate);
                                         vaccineInfo.put("status", 0); // Initial status is 0
                                         vaccineInfo.put("icon", "");
 
@@ -84,8 +88,16 @@ public class BabyVaccination {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(birthDate);
         calendar.add(Calendar.DAY_OF_YEAR, time);
+
+        // Set the time portion to 00:00:00
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
         return calendar.getTime();
     }
+
 
 
 }
