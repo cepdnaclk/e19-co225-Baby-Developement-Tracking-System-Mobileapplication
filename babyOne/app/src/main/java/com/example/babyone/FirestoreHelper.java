@@ -33,6 +33,49 @@ public class FirestoreHelper {
                 });
     }
 
+    public static HashMap<String, Map<String, Object>> readFromCollection(FirebaseFirestore db, String collectionName) {
+        HashMap<String, Map<String, Object>> dataMap = new HashMap<>();
+
+        // Reference to the specified collection
+        CollectionReference collectionRef = db.collection(collectionName);
+
+        // Read the documents in the collection
+        collectionRef.get()
+                .addOnSuccessListener(querySnapshot -> {
+                    // Iterate over the documents in the QuerySnapshot
+                    for (DocumentSnapshot documentSnapshot : querySnapshot) {
+                        // Retrieve the data as a map of field names and values
+                        Map<String, Object> data = documentSnapshot.getData();
+                        if (data != null) {
+                            // Get the document ID as the key in the HashMap
+                            String documentId = documentSnapshot.getId();
+                            // Add the data map to the HashMap with the document ID as the key
+                            dataMap.put(documentId, data);
+                        }
+                    }
+
+                    // Print the results
+                    for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
+                        String documentId = entry.getKey();
+                        Map<String, Object> data = entry.getValue();
+                        System.out.println("Document ID: " + documentId);
+                        for (Map.Entry<String, Object> fieldEntry : data.entrySet()) {
+                            String fieldName = fieldEntry.getKey();
+                            Object fieldValue = fieldEntry.getValue();
+                            System.out.println(fieldName + ": " + fieldValue);
+                        }
+                        System.out.println();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.w("FirestoreHelper", "Error getting documents from collection: " + collectionName, e);
+                });
+
+        return dataMap;
+    }
+
+
+    /*
     public static void readFromCollection(FirebaseFirestore db, String collectionName, ViewGroup viewGroup) {
         // Reference to the specified collection
         CollectionReference collectionRef = db.collection(collectionName);
@@ -71,40 +114,6 @@ public class FirestoreHelper {
                 });
     }
 
-    public static HashMap<String, Object> readFromCollection(FirebaseFirestore db, String collectionName) {
-        // Reference to the specified collection
-        CollectionReference collectionRef = db.collection(collectionName);
-        HashMap<String,Object> returndata = new HashMap<>();
-
-        // Read the documents in the collection
-        collectionRef.get()
-                .addOnSuccessListener(querySnapshot -> {
-                    // Iterate over the documents in the QuerySnapshot
-                    for (DocumentSnapshot documentSnapshot : querySnapshot) {
-                        // Retrieve the data as a map of field names and values
-                        Map<String, Object> data = documentSnapshot.getData();
-                        if (data != null) {
-
-                            // Iterate over the fields and values
-                            for (Map.Entry<String, Object> entry : data.entrySet()) {
-                                String fieldName = entry.getKey();
-                                Object fieldValue = entry.getValue();
-
-                                returndata.put(fieldName,fieldValue);
-                            }
-                        }
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    Log.w("FirestoreHelper", "Error getting documents from collection: " + collectionName, e);
-                });
-        Set<String> keys = returndata.keySet();
-        System.out.println("Data");
-        // Iterate over the keys
-        for (String key : keys) {
-            System.out.println("Key: " + key);
-        }
-        return returndata;
-    }
+     */
 
 }

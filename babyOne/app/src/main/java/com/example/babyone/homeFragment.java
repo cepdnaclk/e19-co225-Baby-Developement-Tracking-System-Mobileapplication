@@ -135,8 +135,8 @@ public class homeFragment extends Fragment {
         if (firebaseUser != null) {
             // Get parent name
             FirebaseFirestore db = FirebaseFirestore.getInstance();
-            HashMap<String,Object> userdata = FirestoreHelper.readFromCollection(db,"guardians");
-            System.out.println(userdata);
+            //HashMap<String,Object> userdata = FirestoreHelper.readFromCollection(db,"guardians");
+            //System.out.println(userdata);
 //            DocumentReference parentDocRef = db.collection("guardians").document(firebaseUser.getUid());
 //
 //            // Retrieve the parent's name from the document

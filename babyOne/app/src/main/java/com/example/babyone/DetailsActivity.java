@@ -1,5 +1,7 @@
 package com.example.babyone;
 
+import static com.example.babyone.FirestoreHelper.readFromCollection;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.LinearLayout;
@@ -46,9 +48,27 @@ public class DetailsActivity extends AppCompatActivity {
         // Read data from "vaccinations" collection
         readVaccinationsCollection();
 
-        String collectionName = "users";
+        String collectionName = "guardians";
         //method for reading is used
-        FirestoreHelper.readFromCollection(db, collectionName,linearLayoutData);
+        // Call the modified method to retrieve the data and obtain the HashMap
+        HashMap<String, Map<String, Object>> dataMap = readFromCollection(db, collectionName);
+        System.out.println("Name: ");
+        for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
+            String documentId = entry.getKey();
+            Map<String, Object> data = entry.getValue();
+
+            // Print the document ID
+            System.out.println("Document ID: " + documentId);
+
+            // Print the values of the data map
+            for (Map.Entry<String, Object> fieldEntry : data.entrySet()) {
+                String fieldName = fieldEntry.getKey();
+                Object fieldValue = fieldEntry.getValue();
+                System.out.println(fieldName + ": " + fieldValue);
+            }
+
+            System.out.println();
+        }
     }
     /*
     private void readUsersCollection() {
