@@ -100,7 +100,7 @@ public class homeFragment extends Fragment {
     // Initialize variables
     /*private ImageView ivImage;
     private TextView tvName;*/
-    private Button btLogout;
+    /*private Button btLogout;*/
     private FirebaseAuth firebaseAuth;
     private GoogleSignInClient googleSignInClient;
     private FragmentHomeBinding binding;
@@ -123,8 +123,8 @@ public class homeFragment extends Fragment {
         // Assign views from the layout
         /*ivImage = view.findViewById(R.id.iv_image);
         tvName = view.findViewById(R.id.tv_name);*/
-        btLogout = view.findViewById(R.id.bt_logout);
-        txtParentname = view.findViewById(R.id.txtParentname);
+        /*btLogout = view.findViewById(R.id.bt_logout);*/
+        /*txtParentname = view.findViewById(R.id.txtParentname);*/
 
         // Initialize firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
@@ -164,7 +164,7 @@ public class homeFragment extends Fragment {
         // Initialize sign-in client
         googleSignInClient = GoogleSignIn.getClient(requireContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
 
-        btLogout.setOnClickListener(v -> {
+        /*btLogout.setOnClickListener(v -> {
             // Sign out from Google
             googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -181,7 +181,7 @@ public class homeFragment extends Fragment {
                     }
                 }
             });
-        });
+        });*/
     }
 
     @Override

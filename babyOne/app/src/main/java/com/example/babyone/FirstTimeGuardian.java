@@ -127,7 +127,7 @@ public class FirstTimeGuardian extends AppCompatActivity {
 
         String collectionName = "guardians";
         FirestoreHelper.addToFirestore(collectionName, registrationInfo, this, FirstTimeGuardian.this);
-        startActivity(new Intent(FirstTimeGuardian.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        startActivity(new Intent(FirstTimeGuardian.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
     }
 }
