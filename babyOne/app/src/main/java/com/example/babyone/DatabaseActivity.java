@@ -27,7 +27,7 @@ public class DatabaseActivity extends AppCompatActivity {
 
         // Get the instance of FirebaseFirestore
         db = FirebaseFirestore.getInstance();
-
+    /*
         // Create a new vaccination with name and weeks from birth
         Map<String, Object> vaccination = new HashMap<>();
         vaccination.put("name", "Vaccination C");
@@ -48,5 +48,13 @@ public class DatabaseActivity extends AppCompatActivity {
                         Log.w(TAG, "Error adding vaccination details", e);
                     }
                 });
+
+     */
+
+        String guardiansCollection = "guardians";
+        String vaccinationsCollection = "standardvaccinations";
+
+        BabyVaccination.calculateAndStoreVaccineData(db, guardiansCollection, vaccinationsCollection);
+
     }
 }
