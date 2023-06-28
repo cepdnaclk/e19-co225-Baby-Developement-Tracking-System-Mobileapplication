@@ -50,7 +50,7 @@ public class NotificationService extends FirebaseMessagingService {
         String messageTitle = data.get("title");
 
         String messageBody = remoteMessage.getNotification().getBody();
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_IMMUTABLE);

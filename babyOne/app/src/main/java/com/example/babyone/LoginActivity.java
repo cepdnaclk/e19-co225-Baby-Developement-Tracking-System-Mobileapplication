@@ -1,15 +1,21 @@
 package com.example.babyone;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -23,21 +29,43 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.messaging.FirebaseMessaging;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Objects;
+
+public class LoginActivity extends AppCompatActivity {
     // Initialize variables
     SignInButton btSignIn;
+    ImageView imageViewLAB;
+    int currentImageIndex =0 ,oldImageIndex = 0;
     GoogleSignInClient googleSignInClient;
     FirebaseAuth firebaseAuth;
+
+    int[] imgArr = new int[]{
+            R.drawable.login_bg1,
+            R.drawable.login_bg2,
+            R.drawable.login_bg3,
+            R.drawable.login_bg4
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
+
+        // transparent status bar
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        window.setStatusBarColor(Color.TRANSPARENT);
 
         // Assign variable
         btSignIn = findViewById(R.id.bt_sign_in);
+        imageViewLAB = findViewById(R.id.imageViewLAB);
+
+        // Start the image loop
+        startImageLoop();
 
         // Initialize sign in options the client-id is copied form google-services.json file
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -46,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         // Initialize sign in client
-        googleSignInClient = GoogleSignIn.getClient(MainActivity.this, googleSignInOptions);
+        googleSignInClient = GoogleSignIn.getClient(LoginActivity.this, googleSignInOptions);
 
         btSignIn.setOnClickListener((View.OnClickListener) view -> {
             // Initialize sign in intent
@@ -62,15 +90,34 @@ public class MainActivity extends AppCompatActivity {
         // Check condition
         if (firebaseUser != null) {
             // When user already sign in redirect to profile activity
-            startActivity(new Intent(MainActivity.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            startActivity(new Intent(LoginActivity.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
         }
-        else {
-            //startActivity(new Intent(MainActivity.this, WelcomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-        }
+
     }
 
+    private void startImageLoop() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Create a TransitionDrawable to fade between the current and next image
+                TransitionDrawable transitionDrawable = new TransitionDrawable(new Drawable[] {
+                        ContextCompat.getDrawable(LoginActivity.this, imgArr[oldImageIndex]),
+                        ContextCompat.getDrawable(LoginActivity.this, imgArr[currentImageIndex])
+                });
+                imageViewLAB.setImageDrawable(transitionDrawable);
+                transitionDrawable.startTransition(500);
 
+                // Increment the image index and wrap around if necessary
+                oldImageIndex = currentImageIndex;
+                currentImageIndex = (currentImageIndex + 1) % imgArr.length;
+
+                // Schedule the next image loop iteration
+                handler.postDelayed(this, 5000);
+            }
+        }, 0);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -100,17 +147,17 @@ public class MainActivity extends AppCompatActivity {
                                 // Check  condition
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
-                                    boolean isNewUser = task.getResult().getAdditionalUserInfo().isNewUser();
+                                    boolean isNewUser = Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser();
 
                                     if (isNewUser) {
                                         // User signed in for the first time
                                         // Perform any necessary operations
-                                        startActivity(new Intent(MainActivity.this, FirstTimeGuardian.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                        startActivity(new Intent(LoginActivity.this, FirstTimeGuardian.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                     } else {
                                         // User has previously signed in
                                         // Perform any necessary operations
                                         // Redirect to profile activity and display Toast
-                                        startActivity(new Intent(MainActivity.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                        startActivity(new Intent(LoginActivity.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                         displayToast("Firebase authentication successful");
                                     }
 
@@ -145,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                         });
                     }
                 } catch (ApiException e) {
-                    Toast.makeText(MainActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Successful", Toast.LENGTH_SHORT).show();
 
                     e.printStackTrace();
                 }
