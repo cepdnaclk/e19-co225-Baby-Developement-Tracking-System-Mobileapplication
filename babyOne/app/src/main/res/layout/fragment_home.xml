@@ -54,6 +54,7 @@
                     android:src="@drawable/cat" />
 
                 <TextView
+                    android:id="@+id/txtParentname"
                     android:layout_width="188dp"
                     android:layout_height="109dp"
                     android:layout_alignParentEnd="true"
@@ -61,8 +62,7 @@
                     android:layout_marginStart="9dp"
                     android:layout_marginEnd="13dp"
                     android:layout_marginBottom="17dp"
-                    android:layout_toEndOf="@+id/profileImage"
-                    android:text="Name : vjivv v" /> <!--display details retrived from the database-->
+                    android:layout_toEndOf="@+id/profileImage" /> <!--display details retrived from the database-->
 
             </RelativeLayout>
 

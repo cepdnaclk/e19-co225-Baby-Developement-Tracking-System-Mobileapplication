@@ -89,6 +89,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class homeFragment extends Fragment {
     // Initialize variables
@@ -99,6 +103,8 @@ public class homeFragment extends Fragment {
     private GoogleSignInClient googleSignInClient;
     private FragmentHomeBinding binding;
 
+    private TextView txtParentname;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -106,6 +112,7 @@ public class homeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -115,6 +122,7 @@ public class homeFragment extends Fragment {
         /*ivImage = view.findViewById(R.id.iv_image);
         tvName = view.findViewById(R.id.tv_name);*/
         btLogout = view.findViewById(R.id.bt_logout);
+        txtParentname = view.findViewById(R.id.txtParentname);
 
         // Initialize firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
@@ -122,14 +130,32 @@ public class homeFragment extends Fragment {
         // Initialize firebase user
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        // Check condition
         if (firebaseUser != null) {
-            // When firebase user is not equal to null, set image on image view
-            //Glide.with(requireContext()).load(firebaseUser.getPhotoUrl()).into(ivImage);
-            // Set name on text view
-            //tvName.setText(firebaseUser.getDisplayName());
-        }
+            // Get parent name
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            DocumentReference parentDocRef = db.collection("guardians").document(firebaseUser.getUid());
 
+            // Retrieve the parent's name from the document
+            parentDocRef.get().addOnSuccessListener(documentSnapshot -> {
+                if (documentSnapshot.exists()) {
+                    String parentName = documentSnapshot.getString("parentname");
+                    if (parentName != null) {
+                        // Parent's name is available
+                        // You can use the retrieved parentName here
+                        txtParentname.setText("Name: " + parentName);
+                    } else {
+                        // Parent's name is not available
+                        txtParentname.setText("Name: Null");
+                    }
+                } else {
+                    // Parent document does not exist
+                    txtParentname.setText("Name: Not Found");
+                }
+            }).addOnFailureListener(e -> {
+                // Error occurred while retrieving the document
+                txtParentname.setText("Name: Error occurred");
+            });
+        }
         // Initialize sign-in client
         googleSignInClient = GoogleSignIn.getClient(requireContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
 
