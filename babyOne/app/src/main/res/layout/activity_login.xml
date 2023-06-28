@@ -109,12 +109,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-<com.google.android.gms.common.SignInButton
-    android:id="@+id/check_id_btn"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <!--<com.google.android.gms.common.SignInButton
+        android:id="@+id/check_id_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewLAB"
+        app:layout_constraintTop_toTopOf="@+id/imageViewLAB">
 
-</com.google.android.gms.common.SignInButton>
+    </com.google.android.gms.common.SignInButton>-->
 
 
 

@@ -20,7 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
+/*import com.google.android.gms.common.SignInButton;*/
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,7 +35,8 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
     // Initialize variables
-    SignInButton btSignIn;
+    /*SignInButton btSignIn;*/
+    MaterialCardView btSignIn;
     ImageView imageViewLAB;
     int currentImageIndex =0 ,oldImageIndex = 0;
     GoogleSignInClient googleSignInClient;
@@ -62,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         window.setStatusBarColor(Color.TRANSPARENT);
 
         // Assign variable
-        btSignIn = findViewById(R.id.check_id_btn);
+        btSignIn = findViewById(R.id.bt_sign_in);
         imageViewLAB = findViewById(R.id.imageViewLAB);
 
         // Start the image loop
@@ -77,12 +78,20 @@ public class LoginActivity extends AppCompatActivity {
         // Initialize sign in client
         googleSignInClient = GoogleSignIn.getClient(LoginActivity.this, googleSignInOptions);
 
-        btSignIn.setOnClickListener((View.OnClickListener) view -> {
+        /*btSignIn.setOnClickListener((View.OnClickListener) view -> {
+            // Initialize sign in intent
+            Intent intent = googleSignInClient.getSignInIntent();
+            // Start activity for result
+            startActivityForResult(intent, 100);
+        });*/
+
+        btSignIn.setOnClickListener(view -> {
             // Initialize sign in intent
             Intent intent = googleSignInClient.getSignInIntent();
             // Start activity for result
             startActivityForResult(intent, 100);
         });
+
 
         // Initialize firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
