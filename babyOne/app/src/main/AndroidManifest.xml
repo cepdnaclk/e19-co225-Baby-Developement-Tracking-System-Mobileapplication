@@ -15,39 +15,51 @@
         tools:targetApi="31">
         <activity
             android:name=".Medicine"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".VaccineUpdate"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".TestGraph"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".BmiToGraph"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".MainLanding"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".FirstTimeGuardian"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".WelcomeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".StoreActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
         <activity android:name=".VaccineActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".DatabaseActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".DetailsActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

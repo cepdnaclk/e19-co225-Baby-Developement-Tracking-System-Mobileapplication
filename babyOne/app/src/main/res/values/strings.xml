@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">babyOne</string>
+    <string name="app_name" translatable="false">GrowingUp</string>
     <string name="sign_up" translatable="false">Sign Up</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
