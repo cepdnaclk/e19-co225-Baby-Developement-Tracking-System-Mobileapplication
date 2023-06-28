@@ -40,7 +40,7 @@ public class NotificationService extends FirebaseMessagingService {
         if (remoteMessage.getNotification() != null) {
             System.out.println("Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
-
+        //TODO: add this to inside if conditions
         sendNotification(remoteMessage);
     }
 
