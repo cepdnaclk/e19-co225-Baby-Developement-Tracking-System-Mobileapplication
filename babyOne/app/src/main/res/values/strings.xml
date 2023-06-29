@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">GrowingUp</string>
-    <string name="sign_up" translatable="false">Sign Up</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="strvalEBInfoBanner">Enter your baby\'s info</string>
     <string name="strvalEBInfoDetails">Please enter you baby\'s info. Only you and authorized personnel will be able to see this information.</string>
     <string name="strvalEBFullName">Full Name</string>
