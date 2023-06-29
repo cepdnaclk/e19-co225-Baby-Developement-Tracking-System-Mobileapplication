@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -123,7 +121,7 @@ public class NannyActivity extends AppCompatActivity {
 
                 }else{
                     assert response.body() != null;
-                    addResponse("Failed to load response: \n"+response.body().toString());
+                    addResponse("Failed to load response: \n"+ response.body());
                 }
             }
         });
