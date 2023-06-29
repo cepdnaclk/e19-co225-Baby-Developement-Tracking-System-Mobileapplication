@@ -24,4 +24,5 @@
     <string name="strvalEBBTNSubmit">Submit</string>
     <string name="strvalPlaceholder" translatable="false">placeholder</string>
     <string name="strFASyringe" translatable="false"></string>
+    <string name="openai_api_key">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</string>
 </resources>
