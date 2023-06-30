@@ -198,6 +198,12 @@ public class NannyActivity extends AppCompatActivity {
                 }else{
                     assert response.body() != null;
                     addResponse("onResponse Failed to load response: \n"+ response.body());
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.body().string());
+                        Log.d("Rec Error",jsonObject.toString());
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         });
