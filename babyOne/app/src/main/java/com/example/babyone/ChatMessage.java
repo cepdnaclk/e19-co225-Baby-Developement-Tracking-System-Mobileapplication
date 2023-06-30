@@ -1,8 +1,8 @@
 package com.example.babyone;
 
 public class ChatMessage {
-    public static String SENT_BY_ME = "me";
-    public static String SENT_BY_BOT = "bot";
+    public static String SENT_BY_ME = "user";
+    public static String SENT_BY_BOT = "assistant";
 
     String message;
     String sentBy;
