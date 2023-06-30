@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -60,7 +61,11 @@ public class NannyActivity extends AppCompatActivity {
             String question = edtNannyMsg.getText().toString().trim();
             addToChat(question,ChatMessage.SENT_BY_ME);
             edtNannyMsg.setText("");
-            callAPI(question);
+            try {
+                chatCompletionAPI();
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
         }));
 
     }
@@ -78,6 +83,8 @@ public class NannyActivity extends AppCompatActivity {
         });
     }
 
+    // depricated in favor of chatCompletionAPI()
+    @SuppressWarnings("unused")
     void callAPI(String question){
 
         //typing anim
@@ -122,6 +129,75 @@ public class NannyActivity extends AppCompatActivity {
                 }else{
                     assert response.body() != null;
                     addResponse("Failed to load response: \n"+ response.body());
+                }
+            }
+        });
+    }
+
+    void chatCompletionAPI() throws JSONException {
+        
+        //converting message list into JSONArray
+        JSONObject messageIterate = new JSONObject();
+        JSONArray messagesArray = new JSONArray();
+
+        JSONObject messageSysCall = new JSONObject();
+        messageSysCall.put("role","system");
+        messageSysCall.put("content",getString(R.string.openai_system_call));
+
+        messagesArray.put(messageSysCall);
+
+        for (ChatMessage message: messageList) {
+            messageIterate.put("role",message.getSentBy());
+            messageIterate.put("content",message.getMessage());
+            messagesArray.put(messageIterate);
+        }
+
+        //typing anim
+        messageList.add(new ChatMessage("typing-anim...",ChatMessage.SENT_BY_BOT));
+
+        JSONObject jsonBody = new JSONObject();
+        try {
+            jsonBody.put("model", "gpt-3.5-turbo");
+            jsonBody.put("messages", messagesArray);
+            jsonBody.put("max_tokens", 200);
+            jsonBody.put("temperature", 0);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+        Log.d("Sent:",jsonBody.toString());
+
+        RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
+        Request request = new Request.Builder()
+                .url("https://api.openai.com/v1/chat/completions")
+                .header("Authorization","Bearer " + getString(R.string.openai_api_key))
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                addResponse("onFailure Failed to load response: \n"+e.getMessage());
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+                if(response.isSuccessful()){
+                    try {
+                        assert response.body() != null;
+                        JSONObject jsonObject = new JSONObject(response.body().string());
+                        Log.d("received:",jsonObject.toString());
+                        JSONArray jsonArray= jsonObject.getJSONArray("choices");
+                        String result = jsonArray.getJSONObject(0).getJSONObject("message").getString("content");
+                        addResponse(result.trim());
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                }else{
+                    assert response.body() != null;
+                    addResponse("onResponse Failed to load response: \n"+ response.body());
                 }
             }
         });
