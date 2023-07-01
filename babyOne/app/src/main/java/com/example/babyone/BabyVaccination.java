@@ -1,95 +1,104 @@
 package com.example.babyone;
-import java.text.*;
 
+import android.util.Log;
 
-import android.util.*;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
-import com.google.firebase.firestore.*;
-
-import java.util.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class BabyVaccination {
     public static void calculateAndStoreVaccineData(FirebaseFirestore db, String guardiansCollection, String vaccinationsCollection) {
-        // Reference to the guardians collection
         CollectionReference guardiansCollectionRef = db.collection(guardiansCollection);
 
-        // Retrieve data from the guardians collection
         guardiansCollectionRef.get()
-                .addOnSuccessListener(guardiansQuerySnapshot -> {
-                    // Iterate over the documents in the guardians collection
-                    for (DocumentSnapshot guardianDocumentSnapshot : guardiansQuerySnapshot) {
-                        // Retrieve the birthdate from the guardian document
-                        String birthdate = guardianDocumentSnapshot.getString("birthdate");
+                .continueWithTask(task -> {
+                    List<Task<Void>> tasks = new ArrayList<>();
 
-                        // Reference to the sub-collection for storing vaccine information in the guardian document
+                    for (DocumentSnapshot guardianDocumentSnapshot : task.getResult()) {
+                        String birthdate = guardianDocumentSnapshot.getString("birthdate");
                         CollectionReference vaccineSubcollectionRef = guardianDocumentSnapshot.getReference().collection("vaccines");
 
-                        // Retrieve data from the standardvaccinations collection
                         CollectionReference vaccinationsCollectionRef = db.collection(vaccinationsCollection);
-                        vaccinationsCollectionRef.get()
-                                .addOnSuccessListener(vaccinationsQuerySnapshot -> {
-                                    // Iterate over the documents in the standardvaccinations collection
-                                    for (DocumentSnapshot vaccinationDocumentSnapshot : vaccinationsQuerySnapshot) {
-                                        // Retrieve the vaccination details
-                                        String vaccinationName = vaccinationDocumentSnapshot.getString("name");
-                                        int vaccinationTime = vaccinationDocumentSnapshot.getLong("time").intValue();
+                        Task<QuerySnapshot> vaccinationsQueryTask = vaccinationsCollectionRef.get();
 
-                                        // Calculate the vaccination date based on the birthdate and time
-                                        Date vaccinationDate = calculateVaccinationDate(birthdate, vaccinationTime);
+                        Task<Void> vaccineInfoTask = vaccinationsQueryTask.continueWithTask(vaccinationsQueryTaskResult -> {
+                            List<Task<DocumentReference>> vaccineInfoTasks = new ArrayList<>();
 
-                                        // Format the date as "April 2, 2023"
-                                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                                        String formattedDate = dateFormat.format(vaccinationDate);
+                            for (DocumentSnapshot vaccinationDocumentSnapshot : vaccinationsQueryTaskResult.getResult()) {
+                                String vaccinationName = vaccinationDocumentSnapshot.getString("name");
+                                int vaccinationTime = vaccinationDocumentSnapshot.getLong("time").intValue();
 
-                                        // Create a map to store the vaccine information
-                                        Map<String, Object> vaccineInfo = new HashMap<>();
-                                        vaccineInfo.put("name", vaccinationName);
-                                        vaccineInfo.put("date", formattedDate);
-                                        vaccineInfo.put("status", 0); // Initial status is 0
-                                        vaccineInfo.put("icon", "");
+                                Date vaccinationDate = calculateVaccinationDate(birthdate, vaccinationTime);
 
-                                        // Store the vaccine information in the guardian's document as a sub-collection
-                                        vaccineSubcollectionRef.add(vaccineInfo)
-                                                .addOnSuccessListener(documentReference -> {
-                                                    // Vaccine information stored successfully
-                                                    System.out.println("Vaccine information stored for guardian: " + guardianDocumentSnapshot.getId());
-                                                })
-                                                .addOnFailureListener(e -> {
-                                                    // Error occurred while storing the vaccine information
-                                                    Log.e("FirestoreHelper", "Error storing vaccine information", e);
-                                                });
-                                    }
-                                })
-                                .addOnFailureListener(e -> {
-                                    // Error occurred while retrieving data from the standardvaccinations collection
-                                    Log.e("FirestoreHelper", "Error retrieving data from standardvaccinations collection", e);
-                                });
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                                String formattedDate = dateFormat.format(vaccinationDate);
+
+                                Map<String, Object> vaccineInfo = new HashMap<>();
+                                vaccineInfo.put("name", vaccinationName);
+                                vaccineInfo.put("date", formattedDate);
+                                vaccineInfo.put("status", 0);
+                                vaccineInfo.put("icon", "");
+
+                                Task<DocumentReference> storeVaccineInfoTask = vaccineSubcollectionRef.add(vaccineInfo)
+                                        .addOnSuccessListener(documentReference -> {
+                                            Log.d("BabyVaccination", "Vaccine information stored for guardian: " + guardianDocumentSnapshot.getId());
+                                        })
+                                        .addOnFailureListener(e -> {
+                                            Log.e("BabyVaccination", "Error storing vaccine information", e);
+                                        });
+
+                                vaccineInfoTasks.add(storeVaccineInfoTask);
+                            }
+
+                            // Return a combined task for all the vaccine information tasks
+                            return Tasks.whenAll(vaccineInfoTasks);
+                        });
+
+                        tasks.add(vaccineInfoTask);
                     }
+
+                    // Return a combined task for all the tasks related to guardians
+                    return Tasks.whenAll(tasks);
+                })
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("BabyVaccination", "All vaccine information stored successfully for all guardians");
+                    // Perform any actions needed after successfully storing all vaccine information.
+                    // For example, you can update the UI or display a success message.
                 })
                 .addOnFailureListener(e -> {
-                    // Error occurred while retrieving data from the guardians collection
-                    Log.e("FirestoreHelper", "Error retrieving data from guardians collection", e);
+                    Log.e("BabyVaccination", "Error calculating and storing vaccine information", e);
+                    // Handle the error gracefully. You can display an error message or retry the operation.
                 });
     }
 
     private static Date calculateVaccinationDate(String birthdate, int time) {
-        // Parse the birthdate
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date birthDate;
         try {
+            System.out.println(birthdate);
             birthDate = dateFormat.parse(birthdate);
         } catch (ParseException e) {
-            // Error occurred while parsing the birthdate
             e.printStackTrace();
             return null;
         }
 
-        // Calculate the vaccination date based on the birthdate and time
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(birthDate);
         calendar.add(Calendar.DAY_OF_YEAR, time);
 
-        // Set the time portion to 00:00:00
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
@@ -97,7 +106,4 @@ public class BabyVaccination {
 
         return calendar.getTime();
     }
-
-
-
 }

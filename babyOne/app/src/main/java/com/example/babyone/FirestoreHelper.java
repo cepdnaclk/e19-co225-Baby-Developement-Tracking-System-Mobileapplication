@@ -85,6 +85,48 @@ public class FirestoreHelper {
 
         return dataMap;
     }
+    public static HashMap<String, Map<String, Object>> readFromSubcollection(FirebaseFirestore db, String collectionName, String email, String subcollectionName) {
+        HashMap<String, Map<String, Object>> dataMap = new HashMap<>();
+
+        // Reference to the specified collection
+        CollectionReference collectionRef = db.collection(collectionName);
+
+        // Read the documents in the collection
+        collectionRef.get()
+                .addOnSuccessListener(querySnapshot -> {
+                    // Iterate over the documents in the QuerySnapshot
+                    for (DocumentSnapshot documentSnapshot : querySnapshot) {
+                        // Retrieve the subcollection reference using the subcollection name
+                        CollectionReference subcollectionRef = documentSnapshot.getReference().collection(subcollectionName);
+
+                        // Read the documents in the subcollection
+                        subcollectionRef.get()
+                                .addOnSuccessListener(subcollectionSnapshot -> {
+                                    // Iterate over the documents in the subcollection Snapshot
+                                    for (DocumentSnapshot subdocumentSnapshot : subcollectionSnapshot) {
+                                        // Retrieve the data as a map of field names and values
+                                        Map<String, Object> data = subdocumentSnapshot.getData();
+                                        if (data != null) {
+                                            // Get the subdocument ID as the key in the HashMap
+                                            String subdocumentId = subdocumentSnapshot.getId();
+                                            // Add the data map to the HashMap with the subdocument ID as the key
+                                            dataMap.put(subdocumentId, data);
+                                        }
+                                    }
+                                })
+                                .addOnFailureListener(e -> {
+                                    Log.e("FirestoreHelper", "Error getting documents from subcollection: " + subcollectionName, e);
+                                });
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreHelper", "Error getting documents from collection: " + collectionName, e);
+                });
+
+        return dataMap;
+    }
+
+
 
 
     /*
