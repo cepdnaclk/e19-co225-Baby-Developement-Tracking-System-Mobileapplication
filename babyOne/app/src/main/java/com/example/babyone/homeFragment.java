@@ -91,6 +91,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class homeFragment extends Fragment {
     // Initialize variables
@@ -157,7 +158,9 @@ public class homeFragment extends Fragment {
 //                // Error occurred while retrieving the document
 //                txtParentname.setText("Name: Error occurred");
 //            });
-            FirestoreHelper.readFromCollection(db,collectionName,uid);
+//            HashMap<String, Map<String, Object>> data = FirestoreHelper.readFromCollection(db,collectionName,uid);
+//            System.out.println("User");
+//            System.out.println(data);
 
         }
         // Initialize sign-in client
