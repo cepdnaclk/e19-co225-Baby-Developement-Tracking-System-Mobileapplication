@@ -77,13 +77,6 @@
             </intent-filter>
         </activity>
 
-<<<<<<< HEAD
-        <activity
-            android:name=".IndividualBabyVaccines"
-            android:exported="true"/>
-
-=======
->>>>>>> master
         <service
             android:name=".NotificationService"
             android:exported="false">
