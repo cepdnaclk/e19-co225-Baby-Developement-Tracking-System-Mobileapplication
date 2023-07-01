@@ -90,7 +90,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.Map;
 
 public class homeFragment extends Fragment {
     // Initialize variables
@@ -101,7 +103,9 @@ public class homeFragment extends Fragment {
     private GoogleSignInClient googleSignInClient;
     private FragmentHomeBinding binding;
 
-    private TextView txtParentname;
+    private TextView txtvHeight;
+    private TextView txtvWeight;
+    private TextView txtvBMI;
 
     @Nullable
     @Override
@@ -127,6 +131,11 @@ public class homeFragment extends Fragment {
 
         // Initialize firebase user
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        //Binding Elements
+        txtvHeight = binding.txtvHeight;
+        txtvWeight = binding.txtvWeight;
+        txtvBMI = binding.txtvBMI;
 
         if (firebaseUser != null) {
             // Get parent name
@@ -157,7 +166,45 @@ public class homeFragment extends Fragment {
 //                // Error occurred while retrieving the document
 //                txtParentname.setText("Name: Error occurred");
 //            });
-            FirestoreHelper.readFromCollection(db,collectionName,uid);
+//            HashMap<String, Map<String, Object>> data = FirestoreHelper.readFromCollection(db,collectionName,uid);
+//            System.out.println("User");
+//            System.out.println(data);
+
+            FirestoreHelper.readFromCollection(db, collectionName, uid, new FirestoreHelper.FirestoreDataCallback() {
+                @Override
+                public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
+                    int weight = 0;
+                    int height = 0;
+
+                    // Handle the retrieved data here
+                    for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
+                        Map<String, Object> data = entry.getValue();
+                        for (Map.Entry<String, Object> fieldEntry : data.entrySet()) {
+                            String fieldName = fieldEntry.getKey();
+                            Object fieldValue = fieldEntry.getValue();
+                            if (fieldName.equals("baby_height")) {
+                                txtvHeight.setText(fieldValue.toString() + "cm");
+                                height = Integer.parseInt(fieldValue.toString());
+                            }
+                            if (fieldName.equals("baby_weight")) {
+                                txtvWeight.setText(fieldValue.toString() + "kg");
+                                weight = Integer.parseInt(fieldValue.toString());
+                            }
+                        }
+                    }
+
+                    // Calculate BMI
+                    double heightInMeter = height / 100.0; // Convert height to meters
+                    double bmi = weight / Math.pow(heightInMeter, 2);
+                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+                    String formattedBMI = decimalFormat.format(bmi);
+
+                    // Set BMI value to TextView
+                    txtvBMI.setText(formattedBMI);
+                }
+            });
+
+
 
         }
         // Initialize sign-in client

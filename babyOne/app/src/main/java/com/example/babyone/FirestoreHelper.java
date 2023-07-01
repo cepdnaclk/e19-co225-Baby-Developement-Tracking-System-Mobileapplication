@@ -14,6 +14,10 @@ import java.util.*;
 
 public class FirestoreHelper {
 
+    public interface FirestoreDataCallback {
+        void onDataLoaded(HashMap<String, Map<String, Object>> dataMap);
+    }
+
     public static void addToFirestore(String collectionName, HashMap<String, String> data, Context context, Activity activity) {
         // Get the Firestore instance
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -23,7 +27,7 @@ public class FirestoreHelper {
 
         // Specify the collection name in Firestore where you want to store the data
         CollectionReference collection = db.collection(collectionName);
-        data.put("email",email);
+        data.put("email", email);
         // Add the data HashMap as a document to the collection
         collection.add(data)
                 .addOnSuccessListener(documentReference -> {
@@ -38,7 +42,7 @@ public class FirestoreHelper {
                 });
     }
 
-    public static HashMap<String, Map<String, Object>> readFromCollection(FirebaseFirestore db, String collectionName,String uid) {
+    public static void readFromCollection(FirebaseFirestore db, String collectionName, String uid, FirestoreDataCallback callback) {
         HashMap<String, Map<String, Object>> dataMap = new HashMap<>();
 
         // Reference to the specified collection
@@ -46,7 +50,6 @@ public class FirestoreHelper {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         String email = firebaseUser.getEmail();
-        System.out.println(email);
 
         Query query = collectionRef.whereEqualTo("email", email);
 
@@ -64,28 +67,16 @@ public class FirestoreHelper {
                             dataMap.put(documentId, data);
                         }
                     }
-                    System.out.println("Result");
-                    // Print the results
-                    for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
-                        String documentId = entry.getKey();
-                        Map<String, Object> data = entry.getValue();
-                        System.out.println("Document ID: " + documentId);
-                        System.out.println("email : " + email);
-                        for (Map.Entry<String, Object> fieldEntry : data.entrySet()) {
-                            String fieldName = fieldEntry.getKey();
-                            Object fieldValue = fieldEntry.getValue();
-                            System.out.println(fieldName + ": " + fieldValue);
-                        }
-                        System.out.println();
-                    }
+
+                    // Invoke the callback with the retrieved data
+                    callback.onDataLoaded(dataMap);
                 })
                 .addOnFailureListener(e -> {
                     Log.w("FirestoreHelper", "Error getting documents from collection: " + collectionName, e);
                 });
-
-        return dataMap;
     }
-    public static HashMap<String, Map<String, Object>> readFromSubcollection(FirebaseFirestore db, String collectionName, String email, String subcollectionName) {
+
+    public static void readFromSubcollection(FirebaseFirestore db, String collectionName, String email, String subcollectionName, FirestoreDataCallback callback) {
         HashMap<String, Map<String, Object>> dataMap = new HashMap<>();
 
         // Reference to the specified collection
@@ -113,6 +104,8 @@ public class FirestoreHelper {
                                             dataMap.put(subdocumentId, data);
                                         }
                                     }
+                                    // Invoke the callback with the retrieved data
+                                    callback.onDataLoaded(dataMap);
                                 })
                                 .addOnFailureListener(e -> {
                                     Log.e("FirestoreHelper", "Error getting documents from subcollection: " + subcollectionName, e);
@@ -122,52 +115,5 @@ public class FirestoreHelper {
                 .addOnFailureListener(e -> {
                     Log.e("FirestoreHelper", "Error getting documents from collection: " + collectionName, e);
                 });
-
-        return dataMap;
     }
-
-
-
-
-    /*
-    public static void readFromCollection(FirebaseFirestore db, String collectionName, ViewGroup viewGroup) {
-        // Reference to the specified collection
-        CollectionReference collectionRef = db.collection(collectionName);
-
-        // Read the documents in the collection
-        collectionRef.get()
-                .addOnSuccessListener(querySnapshot -> {
-                    // Iterate over the documents in the QuerySnapshot
-                    for (DocumentSnapshot documentSnapshot : querySnapshot) {
-                        // Retrieve the data as a map of field names and values
-                        Map<String, Object> data = documentSnapshot.getData();
-                        if (data != null) {
-                            // Create a StringBuilder to store the user data
-                            StringBuilder userData = new StringBuilder();
-
-                            // Iterate over the fields and values
-                            for (Map.Entry<String, Object> entry : data.entrySet()) {
-                                String fieldName = entry.getKey();
-                                Object fieldValue = entry.getValue();
-
-                                // Append the field name and value to the StringBuilder
-                                userData.append(fieldName).append(": ").append(fieldValue).append("\n");
-                            }
-
-                            // Create a TextView to display user data
-                            TextView textViewUser = new TextView(viewGroup.getContext());
-                            textViewUser.setText(userData.toString());
-
-                            // Add the TextView to the ViewGroup
-                            viewGroup.addView(textViewUser);
-                        }
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    Log.w("FirestoreHelper", "Error getting documents from collection: " + collectionName, e);
-                });
-    }
-
-     */
-
 }
