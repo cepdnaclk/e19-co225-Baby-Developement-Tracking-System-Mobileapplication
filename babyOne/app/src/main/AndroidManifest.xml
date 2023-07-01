@@ -17,6 +17,9 @@
             android:name=".LangChangeActivity"
             android:exported="true" />
         <activity
+            android:name=".HeightBarChart"
+            android:exported="false" />
+        <activity
             android:name=".NannyActivity"
             android:exported="true" />
         <activity
