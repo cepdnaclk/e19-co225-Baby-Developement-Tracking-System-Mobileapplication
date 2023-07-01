@@ -3,16 +3,16 @@ package com.example.babyone;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.card.MaterialCardView;
+import com.airbnb.lottie.LottieAnimationView;
 
 import java.util.List;
 
-import pl.droidsonroids.gif.GifImageView;
 
 public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.NannyViewHolder> {
 
@@ -54,10 +54,10 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
     }
 
     public class NannyViewHolder extends RecyclerView.ViewHolder{
-        MaterialCardView chatViewLeft,chatViewRight;
+        RelativeLayout chatViewLeft,chatViewRight;
         TextView chatViewLeftText,chatViewRightText;
 
-        GifImageView chatViewLeftLAnim;
+        LottieAnimationView chatViewLeftLAnim;
 
         public NannyViewHolder(@NonNull View itemView) {
             super(itemView);

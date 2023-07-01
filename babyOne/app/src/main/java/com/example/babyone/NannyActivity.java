@@ -83,7 +83,7 @@ public class NannyActivity extends AppCompatActivity {
         });
     }
 
-    // depricated in favor of chatCompletionAPI()
+    // deprecated in favor of chatCompletionAPI()
     @SuppressWarnings("unused")
     void callAPI(String question){
 
@@ -177,7 +177,7 @@ public class NannyActivity extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                addResponse("onFailure Failed to load response: \n"+e.getMessage());
+                addResponse("Sorry, seems like Nanny isn't available right now.\n"+"onFailure Failed to load response: \n"+e.getMessage());
             }
 
             @Override
@@ -197,7 +197,7 @@ public class NannyActivity extends AppCompatActivity {
 
                 }else{
                     assert response.body() != null;
-                    addResponse("onResponse Failed to load response: \n"+ response.body());
+                    addResponse("Sorry, seems like Nanny isn't available right now.\n"+"onResponse Failed to load response: \n"+ response.body());
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
                         Log.d("Rec Error",jsonObject.toString());
