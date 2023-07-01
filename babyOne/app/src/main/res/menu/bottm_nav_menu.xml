@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Home"
-        android:icon="@drawable/baseline_home_24"
+        android:icon="@drawable/icon_house"
         android:id="@+id/home"/>
     <item android:title="Profile"
-        android:icon="@drawable/baseline_person_24"
+        android:icon="@drawable/icon_user"
         android:id="@+id/profile"/>
-    <item android:title="Settings"
-        android:icon="@drawable/baseline_settings_24"
-        android:id="@+id/settings"/>
+    <item android:title="Extras"
+        android:icon="@drawable/icon_star"
+        android:id="@+id/extras"/>
 </menu>

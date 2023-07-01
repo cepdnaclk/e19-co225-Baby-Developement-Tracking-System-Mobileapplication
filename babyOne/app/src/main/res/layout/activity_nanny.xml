@@ -4,13 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NannyActivity"
+    android:background="@color/CadburyPurple"
     android:padding="5dp">
+
+    <RelativeLayout
+        android:id="@+id/titleCardNanny"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+        <TextView
+            android:id="@+id/titleNanny"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/NannyName"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/Lilac"/>
+        <TextView
+            android:id="@+id/introNanny"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleNanny"
+            android:textColor="@color/Heliotrope"
+            android:textSize="12sp"
+            android:text="@string/Nanny_greeting"/>
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recViewNanny"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/titleCardNanny"
+        android:layout_marginTop="5dp"
         android:layout_above="@id/relativeLayoutNanny"/>
 
     <RelativeLayout
@@ -27,6 +52,8 @@
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/btnNannySend"
             android:hint="Type your question here"
+            android:textColor="@color/Lavendar"
+            android:textColorHint="@color/Amethyst"
             android:inputType="text" />
 
         <com.example.babyone.FontAwesome
@@ -38,7 +65,7 @@
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             android:text="\uf1d8"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/Heliotrope"
             android:textSize="30sp"
             android:layout_centerVertical="true"/>
 

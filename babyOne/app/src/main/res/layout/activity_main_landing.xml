@@ -1,38 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/CadburyPurple"
     tools:context=".MainLanding">
 
-    <FrameLayout
-        android:id="@+id/frameLayoutML"
+    <RelativeLayout
+        android:id="@+id/relativeLayoutProfile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/relLayoutProfilePic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="100dp">
+
+            <ImageView
+                android:id="@+id/imgvProfilePic"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/cat" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/relLayoutProfilePic">
+
+            <TextView
+                android:id="@+id/txtvProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dineth Udugamsooriya"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtvProfileDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtvProfileName"
+                android:text="Female, 2 year olds"
+                android:textColor="#82B1FF" />
+        </RelativeLayout>
+
+        <com.example.babyone.FontAwesome
+            android:id="@+id/btnLogOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:padding="10dp"
+            android:text="\uf2f5"
+            android:textColor="@color/Lilac"
+            android:textSize="30sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relativeLayoutProfile">
+
+        <FrameLayout
+            android:id="@+id/frameLayoutML"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"/>
+
+    </RelativeLayout>
+
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         app:cardCornerRadius="50dp"
-        app:cardElevation="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:cardElevation="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationViewML"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#E3D1FA"
-            app:itemRippleColor="@color/purple_200"
+            app:itemRippleColor="@color/Lilac"
+            app:itemIconTint="@drawable/bottom_navigation_selector"
             app:labelVisibilityMode="unlabeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,4 +110,4 @@
     </com.google.android.material.card.MaterialCardView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
