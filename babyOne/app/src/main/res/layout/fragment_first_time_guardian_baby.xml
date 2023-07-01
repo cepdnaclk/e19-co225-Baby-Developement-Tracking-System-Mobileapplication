@@ -109,17 +109,17 @@
 
         </RadioGroup>
 
-        <EditText
+        <TextView
             android:id="@+id/edtEBDOB"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="Baby's date of birth"
-            android:inputType="date"
-            android:minHeight="48dp"
-            android:textSize="14sp"
+            android:paddingStart="5dp"
+            android:hint="Click here to select a date"
+            android:textStyle="italic"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtvEBDOB" />
 
@@ -129,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:hint="Birth height of baby"
+            android:hint="Baby's birth height in "
             android:inputType="number"
             android:minHeight="48dp"
             android:textSize="14sp"
@@ -142,7 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:hint="Birth weight of baby"
+            android:hint="Baby's birth weight in"
             android:inputType="number"
             android:minHeight="48dp"
             android:textSize="14sp"
@@ -184,6 +184,26 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editEBHeight" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:text="cm"
+            app:layout_constraintBottom_toBottomOf="@+id/editEBHeight"
+            app:layout_constraintStart_toEndOf="@+id/editEBHeight"
+            app:layout_constraintTop_toTopOf="@+id/editEBHeight" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:text="kg"
+            app:layout_constraintBottom_toBottomOf="@+id/edtEBWeight"
+            app:layout_constraintStart_toEndOf="@+id/edtEBWeight"
+            app:layout_constraintTop_toTopOf="@+id/edtEBWeight" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
