@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NannyActivity"
+    android:padding="5dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recViewNanny"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/relativeLayoutNanny"/>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutNanny"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:id="@+id/edtNannyMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/btnNannySend"
+            android:hint="Type your question here"
+            android:inputType="text" />
+
+        <com.example.babyone.FontAwesome
+            android:clickable="true"
+            android:id="@+id/btnNannySend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:text="\uf1d8"
+            android:textColor="@color/purple_500"
+            android:textSize="30sp"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

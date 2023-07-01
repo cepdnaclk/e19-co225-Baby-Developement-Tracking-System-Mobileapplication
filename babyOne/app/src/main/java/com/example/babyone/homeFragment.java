@@ -74,13 +74,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.bumptech.glide.Glide;
+
 import com.example.babyone.databinding.FragmentHomeBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -89,9 +88,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -100,7 +96,7 @@ public class homeFragment extends Fragment {
     // Initialize variables
     /*private ImageView ivImage;
     private TextView tvName;*/
-    private Button btLogout;
+    /*private Button btLogout;*/
     private FirebaseAuth firebaseAuth;
     private GoogleSignInClient googleSignInClient;
     private FragmentHomeBinding binding;
@@ -123,8 +119,8 @@ public class homeFragment extends Fragment {
         // Assign views from the layout
         /*ivImage = view.findViewById(R.id.iv_image);
         tvName = view.findViewById(R.id.tv_name);*/
-        btLogout = view.findViewById(R.id.bt_logout);
-        txtParentname = view.findViewById(R.id.txtParentname);
+        /*btLogout = view.findViewById(R.id.bt_logout);*/
+        /*txtParentname = view.findViewById(R.id.txtParentname);*/
 
         // Initialize firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
@@ -164,7 +160,7 @@ public class homeFragment extends Fragment {
         // Initialize sign-in client
         googleSignInClient = GoogleSignIn.getClient(requireContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
 
-        btLogout.setOnClickListener(v -> {
+        /*btLogout.setOnClickListener(v -> {
             // Sign out from Google
             googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -177,11 +173,11 @@ public class homeFragment extends Fragment {
                         Toast.makeText(requireContext(), "Logout successful", Toast.LENGTH_SHORT).show();
                         // Finish activity
                         requireActivity().finish();
-                        startActivity(new Intent(getActivity(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                        startActivity(new Intent(getActivity(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                     }
                 }
             });
-        });
+        });*/
     }
 
     @Override

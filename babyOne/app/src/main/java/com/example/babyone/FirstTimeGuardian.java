@@ -5,15 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -102,32 +98,10 @@ public class FirstTimeGuardian extends AppCompatActivity {
         HashMap<String, String> registrationInfo = new HashMap<>();
         registrationInfo.putAll(personalInfo);
         registrationInfo.putAll(babyInfo);
-        /*
-        // Get the Firestore instance
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        // Specify the collection name in Firestore where you want to store the data
-        CollectionReference guardiansCollection = db.collection("guardians");
-        //Toast.makeText(this, "First time registered!! \n "+personalInfo.toString(), Toast.LENGTH_SHORT).show();
-        //startActivity(new Intent(FirstTimeGuardian.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-        // Add the personalInfo HashMap as a document to the collection
-        guardiansCollection.add(registrationInfo)
-                .addOnSuccessListener(documentReference -> {
-                    // Document was successfully added
-                    Toast.makeText(this, "First time registered!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(FirstTimeGuardian.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                })
-                .addOnFailureListener(e -> {
-                    // Error occurred while adding the document
-                    Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                });
-
-         */
-
 
         String collectionName = "guardians";
         FirestoreHelper.addToFirestore(collectionName, registrationInfo, this, FirstTimeGuardian.this);
-        startActivity(new Intent(FirstTimeGuardian.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        startActivity(new Intent(FirstTimeGuardian.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
     }
 }
