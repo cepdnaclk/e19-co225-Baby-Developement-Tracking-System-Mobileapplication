@@ -2,12 +2,15 @@ package com.example.babyone;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
@@ -76,5 +79,58 @@ public class IndividualBabyVaccines extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     Log.e("IndividualBabyVaccines", "Error getting documents from collection: " + collectionName, e);
                 });
+
+        //UPDATING VACCINE STATUS
+        IndividualBabyVaccines.changeVaccineStatus("harithabeysinghe@gmail.com", "Corona", 0);
+
     }
+
+
+    public static void changeVaccineStatus(String email, String vaccineName, int newStatus) {
+        // Initialize Firebase
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        // Specify the collection and subcollection names
+        String collectionName = "guardians";
+        String subcollectionName = "vaccines";
+
+        // Query the collection based on the email field
+        CollectionReference collectionRef = db.collection(collectionName);
+        Query query = collectionRef.whereEqualTo("email", email);
+
+        query.get().addOnSuccessListener(querySnapshot -> {
+            for (DocumentSnapshot documentSnapshot : querySnapshot.getDocuments()) {
+                CollectionReference subcollectionRef = documentSnapshot.getReference().collection(subcollectionName);
+
+                // Query the subcollection based on the vaccine name
+                Query subcollectionQuery = subcollectionRef.whereEqualTo("name", vaccineName);
+                subcollectionQuery.get().addOnSuccessListener(subcollectionSnapshot -> {
+                    for (DocumentSnapshot subdocumentSnapshot : subcollectionSnapshot.getDocuments()) {
+                        String subdocumentId = subdocumentSnapshot.getId();
+                        subcollectionRef.document(subdocumentId)
+                                .update("status", newStatus)
+                                .addOnSuccessListener(aVoid -> {
+                                    // Status updated successfully
+                                    System.out.println("Status updated for subdocument ID: " + subdocumentId);
+                                })
+                                .addOnFailureListener(e -> {
+                                    // Error updating status
+                                    System.out.println("Error updating status for subdocument ID: " + subdocumentId);
+                                    e.printStackTrace();
+                                });
+                    }
+                }).addOnFailureListener(e -> {
+                    // Error accessing subcollection or finding vaccine by name
+                    System.out.println("Error accessing subcollection: " + subcollectionName);
+                    e.printStackTrace();
+                });
+            }
+        }).addOnFailureListener(e -> {
+            // Error querying the collection
+            System.out.println("Error querying collection: " + collectionName);
+            e.printStackTrace();
+        });
+    }
+
+
 }
