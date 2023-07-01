@@ -135,6 +135,8 @@ public class homeFragment extends Fragment {
         if (firebaseUser != null) {
             // Get parent name
             FirebaseFirestore db = FirebaseFirestore.getInstance();
+            String collectionName = "guardians/";
+            String uid = firebaseUser.getUid();
             //HashMap<String,Object> userdata = FirestoreHelper.readFromCollection(db,"guardians");
             //System.out.println(userdata);
 //            DocumentReference parentDocRef = db.collection("guardians").document(firebaseUser.getUid());
@@ -159,6 +161,7 @@ public class homeFragment extends Fragment {
 //                // Error occurred while retrieving the document
 //                txtParentname.setText("Name: Error occurred");
 //            });
+            FirestoreHelper.readFromCollection(db,collectionName,uid);
 
         }
         // Initialize sign-in client

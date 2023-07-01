@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.*;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.*;
 
 import java.util.*;
@@ -15,10 +17,13 @@ public class FirestoreHelper {
     public static void addToFirestore(String collectionName, HashMap<String, String> data, Context context, Activity activity) {
         // Get the Firestore instance
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        String email = firebaseUser.getEmail();
 
         // Specify the collection name in Firestore where you want to store the data
         CollectionReference collection = db.collection(collectionName);
-
+        data.put("email",email);
         // Add the data HashMap as a document to the collection
         collection.add(data)
                 .addOnSuccessListener(documentReference -> {
@@ -33,14 +38,20 @@ public class FirestoreHelper {
                 });
     }
 
-    public static HashMap<String, Map<String, Object>> readFromCollection(FirebaseFirestore db, String collectionName) {
+    public static HashMap<String, Map<String, Object>> readFromCollection(FirebaseFirestore db, String collectionName,String uid) {
         HashMap<String, Map<String, Object>> dataMap = new HashMap<>();
 
         // Reference to the specified collection
         CollectionReference collectionRef = db.collection(collectionName);
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        String email = firebaseUser.getEmail();
+        System.out.println(email);
 
-        // Read the documents in the collection
-        collectionRef.get()
+        Query query = collectionRef.whereEqualTo("email", email);
+
+        // Read the documents matching the query
+        query.get()
                 .addOnSuccessListener(querySnapshot -> {
                     // Iterate over the documents in the QuerySnapshot
                     for (DocumentSnapshot documentSnapshot : querySnapshot) {
@@ -53,12 +64,13 @@ public class FirestoreHelper {
                             dataMap.put(documentId, data);
                         }
                     }
-
+                    System.out.println("Result");
                     // Print the results
                     for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
                         String documentId = entry.getKey();
                         Map<String, Object> data = entry.getValue();
                         System.out.println("Document ID: " + documentId);
+                        System.out.println("email : " + email);
                         for (Map.Entry<String, Object> fieldEntry : data.entrySet()) {
                             String fieldName = fieldEntry.getKey();
                             Object fieldValue = fieldEntry.getValue();

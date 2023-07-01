@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -31,6 +33,7 @@ public class DetailsActivity extends AppCompatActivity {
     private static final String TAG = "DetailsActivity";
     private FirebaseFirestore db;
     private LinearLayout linearLayoutData;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class DetailsActivity extends AppCompatActivity {
 
         // Get the instance of FirebaseFirestore
         db = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         linearLayoutData = findViewById(R.id.linear_layout_data);
 
@@ -49,9 +54,10 @@ public class DetailsActivity extends AppCompatActivity {
         readVaccinationsCollection();
 
         String collectionName = "guardians";
+        String uid = firebaseUser.getUid();
         //method for reading is used
         // Call the modified method to retrieve the data and obtain the HashMap
-        HashMap<String, Map<String, Object>> dataMap = readFromCollection(db, collectionName);
+        HashMap<String, Map<String, Object>> dataMap = readFromCollection(db, collectionName,uid);
         System.out.println("Name: ");
         for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
             String documentId = entry.getKey();
