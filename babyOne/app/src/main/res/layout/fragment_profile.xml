@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/CadburyPurple"
     tools:context=".homeFragment"
     android:id="@+id/profileFragment">
 
@@ -17,112 +17,76 @@
         android:minHeight="730dp">
 
 
+        <!--A BLACK LINE BELOW THE SCREEN-->
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardViewp1"
-            android:layout_width="350dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
             android:elevation="30dp"
-            app:cardBackgroundColor="#9DCBE1"
+            android:layout_margin="20dp"
+            app:cardBackgroundColor="@color/Lavendar"
             app:cardCornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            app:layout_constraintTop_toTopOf="parent">
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/textView1"
                 android:layout_width="match_parent"
-                android:layout_height="79dp">
-
-                <TextView
-                    android:layout_width="314dp"
-                    android:layout_height="53dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="20dp"
-                    android:text="MEDICINE AND VITAMINS"
-                    android:textSize="24dp"
-                    android:textStyle="bold" /> <!--display details retrived from the database-->
-
-            </RelativeLayout>
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:lines="2"
+                android:maxLines="2"
+                android:text="BMI\nGRAPH" />
 
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!--A BLACK LINE BELOW THE SCREEN-->
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardViewp2"
-            android:layout_width="347dp"
-            android:layout_height="331dp"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_margin="20dp"
             android:elevation="30dp"
-            app:cardBackgroundColor="#9DCBE1"
+            app:cardBackgroundColor="@color/Lavendar"
             app:cardCornerRadius="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.531"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardViewp1"
-            app:layout_constraintVertical_bias="0.123"
-            xmlns:ap="http://schemas.android.com/apk/res-auto">
+            app:layout_constraintTop_toBottomOf="@+id/materialCardViewp1" >
 
-            <com.androidplot.xy.XYPlot
-                android:id="@+id/plot"
-                style="@style/APDefacto.Light"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                ap:domainTitle="domain"
-                ap:rangeTitle="range"
-                ap:title="simple XY Plot"
-                />
-
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:lines="2"
+                android:maxLines="2"
+                android:text="HEIGHT\nGRAPH" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardViewp3"
-            android:layout_width="343dp"
-            android:layout_height="109dp"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_margin="20dp"
             android:elevation="30dp"
-            app:cardBackgroundColor="#9DCBE1"
+            app:cardBackgroundColor="@color/Lavendar"
             app:cardCornerRadius="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardViewp2"
-            app:layout_constraintVertical_bias="0.422">
+            app:layout_constraintTop_toBottomOf="@+id/materialCardViewp2">
 
             <TextView
-                android:layout_width="314dp"
-                android:layout_height="53dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="20dp"
-                android:text="VACCINATION UPDATE !"
-                android:textSize="24dp"
-                android:textStyle="bold" /> <!--display details retrived from the database-->
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:lines="2"
+                android:maxLines="2"
+                android:text="WEIGHT\nGRAPH" />
 
         </com.google.android.material.card.MaterialCardView>
-
-        <!--<View
-            android:id="@+id/horizontalRectangle"
-            android:layout_width="match_parent"
-            android:layout_height="4dp"
-            android:background="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardViewp3"
-            app:layout_constraintVertical_bias="1.0" />-->
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

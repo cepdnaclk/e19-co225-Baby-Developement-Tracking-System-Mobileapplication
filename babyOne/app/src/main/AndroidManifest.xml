@@ -18,10 +18,14 @@
             android:exported="false" />
         <activity
             android:name=".Medicine"
+            android:name=".NannyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BmiGraph"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".VaccineUpdate"
+            android:name=".WeightGraph"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
@@ -29,7 +33,7 @@
             android:exported="true"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".BmiToGraph"
+            android:name=".HeightGraph"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
@@ -48,7 +52,8 @@
             android:name=".StoreActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait" />
-        <activity android:name=".VaccineActivity"
+        <activity
+            android:name=".VaccineActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait" />
         <activity
@@ -60,15 +65,16 @@
             android:exported="true"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true"
-            android:screenOrientation="sensorPortrait" >
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".NotificationService"
             android:exported="false">
