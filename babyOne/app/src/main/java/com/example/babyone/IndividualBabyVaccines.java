@@ -81,7 +81,7 @@ public class IndividualBabyVaccines extends AppCompatActivity {
                 });
 
         //UPDATING VACCINE STATUS
-        IndividualBabyVaccines.changeVaccineStatus("harithabeysinghe@gmail.com", "Corona", 0);
+        IndividualBabyVaccines.changeVaccineStatus(email, "Corona", 0);
 
     }
 
