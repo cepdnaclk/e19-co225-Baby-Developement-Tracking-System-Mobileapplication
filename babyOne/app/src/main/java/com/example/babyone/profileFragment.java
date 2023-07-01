@@ -1,8 +1,6 @@
 package com.example.babyone;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,19 +8,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.androidplot.xy.LineAndPointFormatter;
-import com.androidplot.xy.SimpleXYSeries;
-import com.androidplot.xy.XYGraphWidget;
 import com.androidplot.xy.XYPlot;
-import com.androidplot.xy.XYSeries;
 import com.google.android.material.card.MaterialCardView;
-
-import java.text.FieldPosition;
-import java.text.Format;
-import java.text.ParsePosition;
-import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -91,11 +79,11 @@ public class profileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 /*Toast.makeText(requireContext(), "Medicine and Vitamins clicked", Toast.LENGTH_SHORT).show();*/
-                startActivity(new Intent(getActivity(), Medicine.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                startActivity(new Intent(getActivity(), BmiGraph.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
 
-        plot = view.findViewById(R.id.plot);
+        /*plot = view.findViewById(R.id.plot);
 
         plot.setDomainTitle(null);
         plot.setRangeTitle(null);
@@ -134,13 +122,13 @@ public class profileFragment extends Fragment {
         plot.getGraph().getRangeGridLinePaint().setColor(Color.TRANSPARENT);
         plot.getGraph().getDomainOriginLinePaint().setColor(Color.TRANSPARENT);
         plot.getGraph().getRangeOriginLinePaint().setColor(Color.TRANSPARENT);
-
+*/
 
         cardView_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /*Toast.makeText(requireContext(), "BMI Clicked", Toast.LENGTH_SHORT).show();*/
-                startActivity(new Intent(getActivity(), BmiToGraph.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                startActivity(new Intent(getActivity(), HeightGraph.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
 
@@ -148,7 +136,7 @@ public class profileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 /*Toast.makeText(requireContext(), "Went to Vaccine updated", Toast.LENGTH_SHORT).show();*/
-                startActivity(new Intent(getActivity(), VaccineUpdate.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                startActivity(new Intent(getActivity(), WeightGraph.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
 

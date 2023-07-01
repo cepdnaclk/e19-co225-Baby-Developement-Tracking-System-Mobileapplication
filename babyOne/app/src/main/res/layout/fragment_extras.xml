@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/CadburyPurple"
+    android:padding="20dp"
+    tools:context=".extrasFragment">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnGotoNanny"
+            android:clickable="true"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:cardElevation="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/Heliotrope"
+            app:cardCornerRadius="100dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    tools:ignore="UselessParent">
+                    <com.example.babyone.FontAwesome
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="\uf82f"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="70sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/NannyName"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="25sp"
+                        android:textStyle="bold"/>
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+
+
+</FrameLayout>
