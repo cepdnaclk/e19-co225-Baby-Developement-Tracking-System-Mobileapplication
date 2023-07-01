@@ -45,7 +45,8 @@
         <activity
             android:name=".FirstTimeGuardian"
             android:exported="true"
-            android:screenOrientation="sensorPortrait" />
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".WelcomeActivity"
             android:exported="false"
