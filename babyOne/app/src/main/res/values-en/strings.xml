@@ -21,4 +21,6 @@
     <string name="strvalBTNBack">Back</string>
     <string name="strvalBTNNext">Next</string>
     <string name="strvalEBBTNSubmit">Submit</string>
+    <string name="go" />
+    <string name="greets">Hello this is English Language</string>
 </resources>

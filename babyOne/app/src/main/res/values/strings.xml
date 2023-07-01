@@ -26,4 +26,6 @@
     <string name="strvalEBBTNSubmit">Submit</string>
     <string name="strvalPlaceholder" translatable="false">placeholder</string>
     <string name="strFASyringe" translatable="false"></string>
+    <string name="go" />
+    <string name="greets">Hello this is English Language</string>
 </resources>
