@@ -68,6 +68,16 @@
             android:exported="true"
             android:screenOrientation="sensorPortrait" />
         <activity
+            android:name=".DoctorView"
+            android:screenOrientation="sensorPortrait"
+            android:exported="true" />
+        <activity
+            android:name=".BabyDetailsActivity"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
+
+
+        <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait">

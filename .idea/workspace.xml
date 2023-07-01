@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0cd66ecb-3902-41b8-8ca1-6e975881c019" name="Changes" comment="Initial Commit" />
+    <list default="true" id="0cd66ecb-3902-41b8-8ca1-6e975881c019" name="Changes" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/DoctorView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/babyOne/app/src/main/res/layout/activity_doctorview.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babyOne/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/AndroidManifest.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +34,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/DELL/OneDrive/Desktop/Java Project/e19-co225-Baby-Developement-Tracking-System-Mobileapplication/babyOne",
+    "last_opened_file_path": "D:/CO225 Project/e19-co225-Baby-Developement-Tracking-System-Mobileapplication/babyOne",
     "settings.editor.selected.configurable": "experimental"
   }
 }]]></component>
