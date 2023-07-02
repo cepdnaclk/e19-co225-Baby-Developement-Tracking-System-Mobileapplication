@@ -1,20 +1,16 @@
 package com.example.babyone;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FieldValue;
 
 public class MidWife extends AppCompatActivity {
 
@@ -33,13 +29,32 @@ public class MidWife extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                String height = "80"; // Replace with the actual value of the height entered
+                String weight = "44"; // Replace with the actual value of the weight entered
+
+                // Create an array to store height and weight
+                String[] babyData = {height, weight};
+
+                // Get Firestore instance
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                // Get the reference to the "guardians" collection
+                CollectionReference guardiansRef = db.collection("guardians");
+
+                // Assuming you have the email as the document ID for the guardian's data
+                String guardianEmail = "dasun.theekshana.git@gmail.com"; // Replace with the actual email
+
+                // Update the array field in the document
+                guardiansRef.document(guardianEmail)
+                        .update("babyData", FieldValue.arrayUnion(babyData))
+                        .addOnSuccessListener(aVoid -> Toast.makeText(MidWife.this, "Data stored successfully", Toast.LENGTH_SHORT).show())
+                        .addOnFailureListener(e -> Toast.makeText(MidWife.this, "Failed to store data", Toast.LENGTH_SHORT).show());
 
                 card2.setVisibility(View.VISIBLE);
                 Toast.makeText(MidWife.this, "searching", Toast.LENGTH_SHORT).show();
-                //retrieve data from the database and display relevent data in the card view
+                // Retrieve data from the database and display relevant data in the card view
                 return false;
             }
-
 
             @Override
             public boolean onQueryTextChange(String newText) {
@@ -52,54 +67,10 @@ public class MidWife extends AppCompatActivity {
             public void onClick(View v) {
                 // Start the MainLanding activity
                 // Assuming you have a button or click event to navigate to MainLanding
-                Intent intent = new Intent(MidWife.this, MainLanding.class);
+                /*Intent intent = new Intent(MidWife.this, MainLanding.class);
                 intent.putExtra("sourceFragment", "midwife");
-                startActivity(intent);
-
+                startActivity(intent);*/
             }
         });
     }
-
-
-
-// ...
-
-    // Inside the onQueryTextSubmit() method:
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        String height = "80"; // Replace with the actual value of the height entered
-        String weight = "44"; // Replace with the actual value of the weight entered
-
-        // Create an array to store height and weight
-        String[] babyData = {height, weight};
-
-        // Get Firestore instance
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        // Get the reference to the "guardians" collection
-        CollectionReference guardiansRef = db.collection("guardians");
-
-        // Assuming you have the email as the document ID for the guardian's data
-        String guardianEmail = "dasun.theekshana.git@gmail.com"; // Replace with the actual email
-
-        // Update the array field in the document
-        guardiansRef.document(guardianEmail)
-                .update("babyData", FieldValue.arrayUnion(babyData))
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(MidWife.this, "Data stored successfully", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MidWife.this, "Failed to store data", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-        return false;
-    }
-
 }
-
