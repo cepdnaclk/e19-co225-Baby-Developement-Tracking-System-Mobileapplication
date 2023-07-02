@@ -1,0 +1,153 @@
+{
+  "project_info": {
+    "project_number": "596633506864",
+    "project_id": "babyone-95045",
+    "storage_bucket": "babyone-95045.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596633506864:android:ab7c57bf2942ff65c509f5",
+        "android_client_info": {
+          "package_name": "com.example.babyone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596633506864-2svq4pojas80hsibr72em9k6sq82t5o3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.babyone",
+            "certificate_hash": "ed4c60e3c36cde771913e10a9132b5746d062820"
+          }
+        },
+        {
+          "client_id": "596633506864-48ss4o8f5k66uk1tmvdlu39tn31bio0l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.babyone",
+            "certificate_hash": "5d7ced2f9cfb12971f04b1f79aa640204a978a28"
+          }
+        },
+        {
+          "client_id": "596633506864-8c1d9mlqnetqq74stunlp5a1fu5jr1aa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.babyone",
+            "certificate_hash": "513399ccf1609cb10414d3086dc3aeb04b05915e"
+          }
+        },
+        {
+          "client_id": "596633506864-eonsi3v5mt9hj15kbpudilsh4hpenrng.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.babyone",
+            "certificate_hash": "f66e1b84c9fbc891a61810c4d78c936d126ab64e"
+          }
+        },
+        {
+          "client_id": "596633506864-fgrpikttlootobjeofpbcl0e33v3uhpn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.babyone",
+            "certificate_hash": "433df99d42d61a1d605caa4bdab6b6c891884c32"
+          }
+        },
+        {
+          "client_id": "596633506864-mjl3uf9pdaki23q7bia4a002726uk5re.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.babyone",
+            "certificate_hash": "176d263639f98b86bb522ec4f569ef352126b45f"
+          }
+        },
+        {
+          "client_id": "596633506864-pm5l8seh5djh6n90eoh31anou7pfghvn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.babyone",
+            "certificate_hash": "3a025171c2f4f3a746102355f5fa4a076f320364"
+          }
+        },
+        {
+          "client_id": "596633506864-vq352e92ukbn9htj8rq53bu07tc9b7ur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6qzOJ4aOg7FcQn0dAkVOwvZdL8lTwDow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596633506864-8b7jr2c9mkc81ms6lkaepei6gurt3blb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596633506864:android:c87fef7fc339efa7c509f5",
+        "android_client_info": {
+          "package_name": "com.example.doctorlogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596633506864-vq352e92ukbn9htj8rq53bu07tc9b7ur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6qzOJ4aOg7FcQn0dAkVOwvZdL8lTwDow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596633506864-8b7jr2c9mkc81ms6lkaepei6gurt3blb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596633506864:android:2a3af7f2d424314fc509f5",
+        "android_client_info": {
+          "package_name": "com.example.midwifelogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596633506864-vq352e92ukbn9htj8rq53bu07tc9b7ur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6qzOJ4aOg7FcQn0dAkVOwvZdL8lTwDow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596633506864-8b7jr2c9mkc81ms6lkaepei6gurt3blb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
