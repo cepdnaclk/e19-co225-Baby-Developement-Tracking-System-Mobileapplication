@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.babyone.databinding.ActivityMainLandingBinding;
@@ -19,22 +18,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class MainLanding extends AppCompatActivity {
 
     private ActivityMainLandingBinding binding;
-    private TextView txtvProfileName;
-    private TextView txtvProfileDesc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         // transparent status bar
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -46,46 +36,23 @@ public class MainLanding extends AppCompatActivity {
         binding = ActivityMainLandingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Bundle extras = getIntent().getExtras();
+        String sourceFragment = extras != null ? extras.getString("sourceFragment") : "";
+
+
         Fragment homeView = new homeFragment();
         Fragment profileView = new profileFragment();
-        Fragment settingsView = new extrasFragment();
+        Fragment extrasView;
+
+        if (sourceFragment.equals("doctor")) {
+            extrasView = new MedicineFragment();
+        } else if (sourceFragment.equals("midwife")) {
+            extrasView = new VaccineFragment();
+        } else {
+            extrasView = new extrasFragment(); // Default fragment
+        }
         GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(binding.getRoot().getContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
-        FirebaseAuth firebaseAuth;
-
-        // Initialize firebase auth
-        firebaseAuth = FirebaseAuth.getInstance();
-        // Initialize firebase user
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        txtvProfileName = binding.txtvProfileName;
-        txtvProfileDesc = binding.txtvProfileDesc;
-//
-//
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String collectionName = "guardians/";
-        String uid = firebaseUser.getUid();
-
-//        txtvProfileName.setText(bname);
-//        txtvProfileDesc.setText(gender + ", 2 year old");
-        FirestoreHelper.readFromCollection(db, collectionName, uid, new FirestoreHelper.FirestoreDataCallback() {
-            @Override
-            public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
-                // Handle the retrieved data here
-                for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
-                    Map<String, Object> data = entry.getValue();
-                    for (Map.Entry<String, Object> fieldEntry : data.entrySet()) {
-                        String fieldName = fieldEntry.getKey();
-                        Object fieldValue = fieldEntry.getValue();
-                        if (fieldName.equals("babyname")){
-                            txtvProfileName.setText(fieldValue.toString());
-                        }
-                        if (fieldName.equals("baby_gender")){
-                            txtvProfileDesc.setText(fieldValue.toString()+ ", 2 year old");
-                        }
-                    }
-                }
-            }
-        });
-
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
         replaceFragment(homeView);
 
@@ -100,21 +67,12 @@ public class MainLanding extends AppCompatActivity {
                     break;
 
                 case R.id.extras:
-                    replaceFragment(settingsView);
+                    replaceFragment(extrasView);
                     break;
             }
 
             return true;
         });
-
-//        HashMap<String, Map<String, Object>> data = FirestoreHelper.readFromCollection(db,collectionName,uid);
-//        System.out.println("User");
-//        System.out.println(data);
-//        if (data.containsKey(uid)) {
-//            Map<String, Object> userData = data.get(uid);
-//            String bname = userData.get("babyname").toString();
-//            txtvProfileName.setText(bname);
-//        }
 
         binding.btnLogOut.setOnClickListener((v -> {
             // Sign out from Google
@@ -138,7 +96,7 @@ public class MainLanding extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         // Add a fade-in animation
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, 0, 0, 0);
-        fragmentTransaction.replace(binding.frameLayoutML.getId(),fragment);
+        fragmentTransaction.replace(binding.frameLayoutML.getId(), fragment);
         fragmentTransaction.commit();
     }
 }

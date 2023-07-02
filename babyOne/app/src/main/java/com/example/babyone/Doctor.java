@@ -110,7 +110,9 @@ public class Doctor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the MainLandin activity
+                // Assuming you have a button or click event to navigate to MainLanding
                 Intent intent = new Intent(Doctor.this, MainLanding.class);
+                intent.putExtra("sourceFragment", "doctor");
                 startActivity(intent);
             }
         });
