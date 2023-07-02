@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BMI"
+            android:text="@string/strvalTxtBMI"
             android:textColor="#D5C0D8"
             android:textSize="35sp"
             android:textStyle="bold"
@@ -65,7 +65,7 @@
                     android:id="@+id/chart_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="BMI(KG/M^2)"
+                    android:text="@string/strvalGRPTitle1"
                     android:textSize="25sp"
                     android:textColor="#FF69B4"
                     android:textStyle="bold" />
@@ -114,7 +114,7 @@
                         android:id="@+id/text1"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:text="CURRENT BMI:"
+                        android:text="@string/strvalGRPtext1"
                         android:textColor="#044F59"
                         android:textSize="18dp"
                         android:gravity="start|center_vertical"
@@ -181,7 +181,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:text="DEVIATION:"
+                        android:text="@string/strvalTxtDEV"
                         android:textColor="#570565"
                         android:textSize="18dp"
                         android:gravity="start|center_vertical"
@@ -248,7 +248,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:text="STATUS:"
+                        android:text="@string/strvalTxtStatus"
                         android:textColor="#6C6103"
                         android:textSize="18dp"
                         android:gravity="start|center_vertical"
@@ -320,7 +320,7 @@
                             android:id="@+id/text4"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:text="PAST:"
+                            android:text="@string/strvalTxtPast"
                             android:textColor="#0B4777"
                             android:textSize="18dp"
                             android:gravity="start|center_vertical"

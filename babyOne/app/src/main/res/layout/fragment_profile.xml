@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Body Mass Index"
+                    android:text="@string/strvalFPTextView1"
                     android:textColor="@color/TruePurple"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Height"
+                    android:text="@string/strvalFPTextView2"
                     android:textColor="@color/TruePurple"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -103,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Weight"
+                    android:text="@string/strvalFPTextView3"
                     android:textColor="@color/TruePurple"
                     android:textSize="20sp"
                     android:textStyle="bold" />
