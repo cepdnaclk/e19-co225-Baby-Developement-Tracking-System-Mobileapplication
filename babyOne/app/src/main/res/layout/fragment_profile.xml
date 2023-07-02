@@ -16,7 +16,6 @@
         android:minHeight="730dp"
         tools:ignore="ExtraText">
 
-
         <!--A BLACK LINE BELOW THE SCREEN-->
 
         <com.google.android.material.card.MaterialCardView

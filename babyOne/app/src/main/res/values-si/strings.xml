@@ -74,4 +74,13 @@
     <string name="strvalFPTextView1">ශරීර ස්කන්ධ දර්ශකය</string>
     <string name="strvalFPTextView2">උස</string>
     <string name="strvalFPTextView3">බර</string>
+    <string name="strvalCardViewAgeTxt">වයස</string>
+    <string name="strvalCardViewAgeVal">2y 5m</string>
+    <string name="strvalCardViewHeightTxt">උස</string>
+    <string name="strvalCardViewHeightVal">92.1cm</string>
+    <string name="strvalCardViewWeightTxt">බර</string>
+    <string name="strvalCardViewWeightVal">5kg</string>
+    <string name="strvalCardViewBMITxt">BMI</string>
+    <string name="strvalCardViewBMIVal">69</string>
+    <string name="strvalTxtUpComing">ඉදිරි සිදුවීම්</string>
 </resources>
