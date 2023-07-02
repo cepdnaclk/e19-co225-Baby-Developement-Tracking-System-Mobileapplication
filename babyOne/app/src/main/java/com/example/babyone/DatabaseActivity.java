@@ -49,7 +49,7 @@ public class DatabaseActivity extends AppCompatActivity {
         String guardiansCollection = "guardians";
         String vaccinationsCollection = "standardvaccinations";
 
-        BabyVaccination.calculateAndStoreVaccineData(db, guardiansCollection, vaccinationsCollection);
+        BabyVaccination.calculateAndStoreVaccineData(db, guardiansCollection, vaccinationsCollection,"e19443@eng.pdn.ac.lk");
 
     }
 }

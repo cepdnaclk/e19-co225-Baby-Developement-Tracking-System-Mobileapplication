@@ -41,6 +41,10 @@ public class FirestoreHelper {
                     Toast.makeText(context, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     // Handle the failure
                 });
+        String guardiansCollection = "guardians";
+        String vaccinationsCollection = "standardvaccinations";
+
+        BabyVaccination.calculateAndStoreVaccineData(db, guardiansCollection, vaccinationsCollection,email);
     }
 
     public static void readFromCollection(FirebaseFirestore db, String collectionName, String email, FirestoreDataCallback callback) {
