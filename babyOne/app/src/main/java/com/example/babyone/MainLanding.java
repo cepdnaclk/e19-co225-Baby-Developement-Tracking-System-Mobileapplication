@@ -31,6 +31,7 @@ public class MainLanding extends AppCompatActivity {
     private ActivityMainLandingBinding binding;
     private TextView txtvProfileName;
     private TextView txtvProfileDesc;
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,26 +54,39 @@ public class MainLanding extends AppCompatActivity {
         Fragment profileView = new profileFragment();
         Fragment extrasView;
 
-        if (sourceFragment.equals("doctor")) {
-            extrasView = new MedicineFragment();
-        } else if (sourceFragment.equals("midwife")) {
-            extrasView = new VaccineFragment();
-        } else {
-            extrasView = new extrasFragment(); // Default fragment
-        }
         GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(binding.getRoot().getContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
+        if (sourceFragment.equals("doctor")) {
+            extrasView = new MedicineFragment();
+            email = extras.getString("email");
+        } else if (sourceFragment.equals("midwife")) {
+            extrasView = new VaccineFragment();
+            email = extras.getString("email");
+            System.out.println(email);
+        } else {
+            extrasView = new extrasFragment(); // Default fragment
 
-        //Fetch baby deatils
+            //Fetch baby deatils
+//            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+//
+//            email = firebaseUser.getEmail();
+        }
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null) {
+            email = firebaseUser.getEmail();
+            // Rest of your code that relies on firebaseUser object
+        } else {
+            // Handle the case when the user is not authenticated or firebaseUser is null
+            // You can display an error message or redirect the user to the login screen
+            email = "e19443@eng.pdn.ac.lk";
+        }
         txtvProfileName = binding.txtvProfileName;
         txtvProfileDesc = binding.txtvProfileDesc;
 //
 //
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String collectionName = "guardians/";
-        String email = firebaseUser.getEmail();
         FirestoreHelper.readFromCollection(db, collectionName, email, new FirestoreHelper.FirestoreDataCallback() {
             @Override
             public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {

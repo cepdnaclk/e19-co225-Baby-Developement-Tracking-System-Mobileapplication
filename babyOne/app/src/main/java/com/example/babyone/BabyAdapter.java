@@ -42,9 +42,10 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> {
             String email = guardian.getEmail();
 
             // Start the BabyDetailActivity and pass the data
-            Intent intent = new Intent(context, BabyDetailsActivity.class);
-            intent.putExtra("babyName", babyName);
-            intent.putExtra("parentName", parentName);
+            Intent intent = new Intent(context, MainLanding.class);
+//            intent.putExtra("babyName", babyName);
+//            intent.putExtra("parentName", parentName);
+            //System.out.println(email);
             intent.putExtra("email", email);
             context.startActivity(intent);
         });
