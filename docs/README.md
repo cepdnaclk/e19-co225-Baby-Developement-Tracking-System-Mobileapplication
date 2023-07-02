@@ -39,13 +39,15 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Introduction
 
-The goal of this project is to develop a system that can track and manage the development of babies from 0 to 5 years old. The system will be designed for use by parents, guardians, public health midwives, and doctors.
+The goal of this project is to develop a system that can track and manage the development of babies from 0 to 5 years old. The system will be designed for use by parents, guardians, public health midwives(PHM), and doctors.
 
-Users will be able to register babies in the application by providing the baby's name, birth date, gender, current weight, and current height. Additionally, users will be able to enter the vaccinations that their babies have already received, and over time, they can update the baby's vaccination, weight, and height details.
+Guardians including parents will be able to register babies in the application by providing the baby's name, birth date, gender, current weight, and current height. Additionally, Doctors and PHM will be able to enter the vaccinations that the babies have already received, and over time, they can update the baby's vaccination, weight, and height details.
 
 The system will include a standard vaccine schedule from both government and private sources, as well as standard weight and height ranges based on the baby's age. When users enter their baby's details, the application will compare the information with the standard information. Based on that comparison, users will receive notifications, such as alerts for when the next vaccination date is approaching or when the baby's weight or height falls outside the standard range.
 
 The application will also allow users to note any extra medicines, vitamins, or other recommendations given by public health midwives and doctors. Doctors and PHMs will be able to search for a particular baby by name or ID and review the baby's history.
+
+The system also features an AI chatbot called Nanny to answer questions, provide clarification, and offer advice on all aspects of caring for your baby.
 
 Overall, this project aims to develop a user-friendly and efficient system to help parents, guardians, and healthcare professionals ensure that babies receive the care and attention necessary for healthy development.
 
@@ -68,6 +70,9 @@ Overall, this project aims to develop a user-friendly and efficient system to he
 
 ### User Notifications
 > The system sends timely notifications to users, informing them about upcoming vaccinations, growth concerns, and any new recommendations provided by PHMs or doctors. This helps parents and guardians stay informed and take appropriate actions for their baby's well-being.
+
+### Nanny
+> Nanny is an AI chatbot, which serves as a valuable resource for users seeking guidance and support in navigating the various aspects of their baby's life. Nanny is designed to provide prompt and accurate answers to questions, clarify any uncertainties, and offer valuable advice to enhance the parenting experience.
 
 ## Links
 
