@@ -24,4 +24,13 @@
     <string name="Nanny_greeting">Your personal assistant for baby care to help you with any questions or concerns you have about your baby.\nPowered by OpenAI</string>
     <string name="srtvalLangTitle">භාෂාව</string>
     <string name="strvalLangIntro">කරුණාකර පහතින් ඔබ කැමති භාෂාව තෝරන්න.</string>
+    <string name="strvalLoginView">සාදරයෙන් පිළිගනිමු!</string>
+    <string name="strvalLoginTextView3">ඔබේ දරුවගේ සෑම වටිනා පියවරක්ම අගය කිරීමට අපි ඔබට උදව් කරන්නෙමු.අපගේ සහයෝගයෙන් උපරිම ප්‍රයෝජන ගැනීමට කරුණාකර පුරනය වන්න.</string>
+    <string name="strvalBTNSignIn">ගූගල් හරහා පුරනය වන්න</string>
+    <string name="strvaledtEBDOB">දිනයක් තේරීමට ක්ලික් කරන්න</string>
+    <string name="strvaledtEBHeight">දරුවාගේ උපන් උස</string>
+    <string name="strvaledtEBWeight">දරුවාගේ උපන් බර</string>
+    <string name="strvalTxtEBDOB">උපන් දිනය</string>
+    <string name="strvalTxtEBHeight">උපන් උස</string>
+    <string name="strvalTxtEBWeight">උපන් බර</string>
 </resources>

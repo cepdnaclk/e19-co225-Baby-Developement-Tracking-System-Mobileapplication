@@ -22,6 +22,15 @@
     <string name="strvalBTNNext">Next</string>
     <string name="strvalEBBTNSubmit">Submit</string>
     <string name="Nanny_greeting">Your personal assistant for baby care to help you with any questions or concerns you have about your baby.\nPowered by OpenAI</string>
+    <string name="strvalLoginView">Welcome!</string>
+    <string name="strvalLoginTextView3">Bringing up a baby is a journey filled with precious moments. Let us help you cherish every step of the way. Log in to continue,</string>
+    <string name="strvalBTNSignIn">Sign in with Google</string>
+    <string name="strvaledtEBDOB">Click here to select a date</string>
+    <string name="strvaledtEBHeight">Baby\'s birth height in</string>
+    <string name="strvaledtEBWeight">Baby\'s birth weight in</string>
+    <string name="strvalTxtEBDOB">Date of birth</string>
+    <string name="strvalTxtEBHeight">Birth height</string>
+    <string name="strvalTxtEBWeight">Birth weight</string>
     <string name="srtvalLangTitle">Language</string>
     <string name="strvalLangIntro">Please select your preferred language from below.</string>
 </resources>
