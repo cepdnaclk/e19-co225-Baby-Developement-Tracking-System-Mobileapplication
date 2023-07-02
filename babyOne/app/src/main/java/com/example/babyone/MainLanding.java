@@ -1,10 +1,6 @@
 package com.example.babyone;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,6 +8,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.babyone.databinding.ActivityMainLandingBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -23,6 +25,22 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainLanding extends AppCompatActivity {
 
     private ActivityMainLandingBinding binding;
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle(getString(R.string.strvalLogoutExit))
+                .setMessage(getString(R.string.strvalLogoutExitTxt))
+                .setPositiveButton(getString(R.string.strvalLogoutYes), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Exit the application
+                        finishAffinity();
+                    }
+                })
+                .setNegativeButton(getString(R.string.strvalLogoutNo), null)
+                .show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +65,9 @@ public class MainLanding extends AppCompatActivity {
         // Initialize firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
 
-        replaceFragment(homeView);
+        if (savedInstanceState == null)
+            replaceFragment(homeView);
+
 
         binding.bottomNavigationViewML.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -84,12 +104,12 @@ public class MainLanding extends AppCompatActivity {
         }));
     }
 
-    private void replaceFragment(Fragment fragment){
+    private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         // Add a fade-in animation
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, 0, 0, 0);
-        fragmentTransaction.replace(binding.frameLayoutML.getId(),fragment);
+        fragmentTransaction.replace(binding.frameLayoutML.getId(), fragment);
         fragmentTransaction.commit();
     }
 }

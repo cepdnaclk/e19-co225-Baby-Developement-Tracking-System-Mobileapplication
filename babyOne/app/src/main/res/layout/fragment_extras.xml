@@ -1,50 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/CadburyPurple"
     android:padding="20dp"
     tools:context=".extrasFragment">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="UselessParent">
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/btnGotoNanny"
-            android:clickable="true"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:cardElevation="20sp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/Heliotrope"
-            app:cardCornerRadius="100dp">
+            android:clickable="true"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="20sp">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="10dp">
+
                 <RelativeLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
                     tools:ignore="UselessParent">
+
                     <com.example.babyone.FontAwesome
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="\uf82f"
                         android:layout_centerHorizontal="true"
+                        android:text="\uf82f"
                         android:textSize="70sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/NannyName"
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
+                        android:text="@string/NannyName"
                         android:textSize="25sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnGotoLang"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/Heliotrope"
+            android:clickable="true"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="20sp"
+            android:layout_below="@id/btnGotoNanny">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    tools:ignore="UselessParent">
+
+                    <com.example.babyone.FontAwesome
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="\uf1ab"
+                        android:textSize="70sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/srtvalLangTitle"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </RelativeLayout>
             </RelativeLayout>
 

@@ -63,10 +63,17 @@ public class extrasFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_extras, container, false);
-        MaterialCardView btnGotoNanny = view.findViewById(R.id.btnGotoNanny);
+        MaterialCardView btnGotoNanny,btnGotoLang;
+        btnGotoNanny = view.findViewById(R.id.btnGotoNanny);
+        btnGotoLang= view.findViewById(R.id.btnGotoLang);
+
 
         btnGotoNanny.setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), NannyActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        });
+
+        btnGotoLang.setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), LangChangeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         });
 
         // Inflate the layout for this fragment

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".first_time_guardian_baby">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/txtvEBInfoBanner"
@@ -21,10 +25,10 @@
         <TextView
             android:id="@+id/txtvEBInfoDetails"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
             android:text="@string/strvalEBInfoDetails"
             android:textSize="16sp"
@@ -50,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:ems="10"
+            android:ems="15"
             android:hint="@string/strvalEBFullNameBox"
             android:inputType="text"
             android:minHeight="48dp"
@@ -71,40 +75,135 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtEBFullName" />
 
-    <RadioGroup
-        android:id="@+id/radgroupEBGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:checkedButton="@id/radbtnEBMale"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtvEBGender">
-
-        <RadioButton
-            android:id="@+id/radbtnEBMale"
+        <RadioGroup
+            android:id="@+id/radgroupEBGender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/strvalEBMale" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:checkedButton="@id/radbtnEBMale"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtvEBGender">
 
-        <RadioButton
-            android:id="@+id/radbtnEBFemale"
+            <RadioButton
+                android:id="@+id/radbtnEBMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/strvalEBMale" />
+
+            <RadioButton
+                android:id="@+id/radbtnEBFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/strvalEBFemale" />
+
+            <RadioButton
+                android:id="@+id/radbtnEBGn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+
+                android:text="@string/strvalEBGn" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/edtEBDOB"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/strvalEBFemale" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:paddingStart="5dp"
+            android:hint="@string/strvaledtEBDOB"
+            android:textStyle="italic"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtvEBDOB" />
 
-        <RadioButton
-            android:id="@+id/radbtnEBGn"
+        <EditText
+            android:id="@+id/editEBHeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:hint="@string/strvaledtEBHeight"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtvEBHeight" />
 
-            android:text="@string/strvalEBGn" />
+        <EditText
+            android:id="@+id/edtEBWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:hint="@string/strvaledtEBWeight"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtvEBWeight" />
 
-    </RadioGroup>
+        <TextView
+            android:id="@+id/txtvEBDOB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/strvaltxtEBDOB"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radgroupEBGender" />
 
+        <TextView
+            android:id="@+id/txtvEBHeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/strvaledtEBHeightTxt"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtEBDOB" />
 
+        <TextView
+            android:id="@+id/txtvEBWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/strvaltxtEBWeight"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editEBHeight" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:text="cm"
+            app:layout_constraintBottom_toBottomOf="@+id/editEBHeight"
+            app:layout_constraintStart_toEndOf="@+id/editEBHeight"
+            app:layout_constraintTop_toTopOf="@+id/editEBHeight" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:text="kg"
+            app:layout_constraintBottom_toBottomOf="@+id/edtEBWeight"
+            app:layout_constraintStart_toEndOf="@+id/edtEBWeight"
+            app:layout_constraintTop_toTopOf="@+id/edtEBWeight" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

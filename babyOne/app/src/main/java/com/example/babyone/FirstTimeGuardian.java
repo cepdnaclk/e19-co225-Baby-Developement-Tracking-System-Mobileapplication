@@ -1,6 +1,8 @@
 package com.example.babyone;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.os.LocaleListCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -30,6 +32,9 @@ public class FirstTimeGuardian extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_time_guardian);
+
+        GlobalFunctions locale = new GlobalFunctions(getApplicationContext(),this);
+        locale.getLocale();
 
         // Initialize the fragments
         fragPersonal = new first_time_guardian_personal();
