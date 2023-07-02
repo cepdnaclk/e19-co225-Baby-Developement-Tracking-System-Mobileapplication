@@ -136,7 +136,7 @@ public class MidWife extends AppCompatActivity {
                         }
 
                         // Set up the RecyclerView adapter
-                        BabyAdapter adapter = new BabyAdapter(guardians, this);
+                        BabyAdapterMidWife adapter = new BabyAdapterMidWife(guardians, this);
                         recyclerView.setAdapter(adapter);
                     } else {
                         // Handle error
