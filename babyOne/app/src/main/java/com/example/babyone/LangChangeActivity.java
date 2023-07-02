@@ -14,22 +14,23 @@ public class LangChangeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lang_change);
 
+
         btnEnglish = findViewById(R.id.btnSetLangEN);
         btnSinhalese = findViewById(R.id.btnSetLangSI);
-        btnWTF = findViewById(R.id.buttonWTF);
 
         GlobalFunctions locale = new GlobalFunctions(getApplicationContext(),this);
 
         btnEnglish.setOnClickListener(v -> {
             locale.setLocale("en-EN");
+            locale.getLocale();
+            finish();
         });
 
         btnSinhalese.setOnClickListener(v -> {
             locale.setLocale("si-LK");
+            locale.getLocale();
+            finish();
         });
 
-        btnWTF.setOnClickListener(v -> {
-            locale.getLang();
-        });
     }
 }

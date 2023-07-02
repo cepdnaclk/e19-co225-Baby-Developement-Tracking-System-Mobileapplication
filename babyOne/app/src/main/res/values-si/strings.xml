@@ -22,4 +22,6 @@
     <string name="strvalBTNNext">ඉදිරියට</string>
     <string name="strvalEBBTNSubmit">තහවුරු කරන්න</string>
     <string name="Nanny_greeting">Your personal assistant for baby care to help you with any questions or concerns you have about your baby.\nPowered by OpenAI</string>
+    <string name="srtvalLangTitle">භාෂාව</string>
+    <string name="strvalLangIntro">කරුණාකර පහතින් ඔබ කැමති භාෂාව තෝරන්න.</string>
 </resources>

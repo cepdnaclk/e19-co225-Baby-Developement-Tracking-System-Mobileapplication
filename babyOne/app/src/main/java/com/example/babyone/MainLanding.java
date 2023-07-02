@@ -47,7 +47,8 @@ public class MainLanding extends AppCompatActivity {
         // Initialize firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
 
-        replaceFragment(homeView);
+        if (savedInstanceState == null)
+            replaceFragment(homeView);
 
         binding.bottomNavigationViewML.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {

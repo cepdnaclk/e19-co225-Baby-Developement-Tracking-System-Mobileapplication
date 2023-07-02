@@ -22,4 +22,6 @@
     <string name="strvalBTNNext">Next</string>
     <string name="strvalEBBTNSubmit">Submit</string>
     <string name="Nanny_greeting">Your personal assistant for baby care to help you with any questions or concerns you have about your baby.\nPowered by OpenAI</string>
+    <string name="srtvalLangTitle">Language</string>
+    <string name="strvalLangIntro">Please select your preferred language from below.</string>
 </resources>
