@@ -1,27 +1,31 @@
 package com.example.babyone;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> {
 
     private List<Guardian> guardians;
+    private Context context;
 
-    public BabyAdapter(List<Guardian> guardians) {
+    public BabyAdapter(List<Guardian> guardians, Context context) {
         this.guardians = guardians;
+        this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_baby, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_baby, parent, false);
         return new ViewHolder(view);
     }
 
@@ -37,14 +41,15 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> {
             String parentName = guardian.getParentName();
             String email = guardian.getEmail();
 
-            // Start a new activity or fragment and pass the data
-            Intent intent = new Intent(v.getContext(), BabyDetailsActivity.class);
+            // Start the BabyDetailActivity and pass the data
+            Intent intent = new Intent(context, BabyDetailsActivity.class);
             intent.putExtra("babyName", babyName);
             intent.putExtra("parentName", parentName);
             intent.putExtra("email", email);
-            v.getContext().startActivity(intent);
+            context.startActivity(intent);
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -52,7 +57,7 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        Button btnBaby;
+        public Button btnBaby;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

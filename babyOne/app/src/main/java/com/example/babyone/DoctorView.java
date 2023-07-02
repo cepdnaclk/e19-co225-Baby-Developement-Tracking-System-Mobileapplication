@@ -58,7 +58,7 @@ public class DoctorView extends AppCompatActivity {
                         }
 
                         // Set up the RecyclerView adapter
-                        BabyAdapter adapter = new BabyAdapter(guardians);
+                        BabyAdapter adapter = new BabyAdapter(guardians, this);
                         recyclerView.setAdapter(adapter);
                     } else {
                         // Handle error
