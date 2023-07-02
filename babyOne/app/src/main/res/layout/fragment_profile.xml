@@ -16,7 +16,6 @@
         tools:ignore="ExtraText"
         android:minHeight="730dp">
 
-
         <!--A BLACK LINE BELOW THE SCREEN-->
 
         <com.google.android.material.card.MaterialCardView
@@ -38,8 +37,7 @@
                 android:gravity="center"
                 android:lines="2"
                 android:maxLines="2"
-                android:text="BMI\nGRAPH" />
-
+                android:text="@string/strvalGRPTextView1" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -62,7 +60,7 @@
                 android:gravity="center"
                 android:lines="2"
                 android:maxLines="2"
-                android:text="HEIGHT\nGRAPH" />
+                android:text="@string/strvalGRPTextView2"/>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -84,7 +82,7 @@
                 android:gravity="center"
                 android:lines="2"
                 android:maxLines="2"
-                android:text="WEIGHT\nGRAPH" />
+                android:text="@string/strvalGRPTextView3"/>
 
         </com.google.android.material.card.MaterialCardView>
 

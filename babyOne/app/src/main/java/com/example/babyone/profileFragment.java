@@ -23,7 +23,6 @@ public class profileFragment extends Fragment {
     private MaterialCardView cardView_2;
     private MaterialCardView cardView_3;
 
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,7 +31,6 @@ public class profileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
 
     public profileFragment() {
         // Required empty public constructor

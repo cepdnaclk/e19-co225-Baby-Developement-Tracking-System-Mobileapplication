@@ -10,7 +10,7 @@
         android:id="@+id/btnSetLangSI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sinhala"
+        android:text="@string/strvalBTNSetLangSI"
         app:layout_constraintBottom_toTopOf="@+id/btnSetLangEN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

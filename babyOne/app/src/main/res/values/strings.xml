@@ -28,4 +28,41 @@
     <string name="openai_system_call" translatable="false">Your name will be Nanny, and you will be taking on the role of a nanny to help parents take care of their babies. When a user starts a conversation with you, please ask for the baby\'s age and any specific concerns the parent may have. If the user asks anything that is not strictly related to baby care (such as jokes, weather, politics, maths, programming, codes), politely ignore it and respond with something like: \"I\'m sorry, I\'m here to help with baby-related concerns. Do you have any questions or concerns about your baby\'s health, feeding, or sleeping habits?\" This will help keep the conversation on track and provide the best possible assistance to the parents.</string>
     <string name="Nanny_greeting">Your personal assistant for baby care to help you with any questions or concerns you have about your baby.\nPowered by OpenAI</string>
     <string name="NannyName" translatable="false">Nanny</string>
+    <string name="strvalHedingChart">HEIGHT</string>
+    <string name="strvalChart_titleHeight">HEIGHT(CM)</string>
+    <string name="strvalCard1Inner">CURRENT HEIGHT:</string>
+    <string name="strvalCard2Inner">DEVIATION:</string>
+    <string name="strvalCard3Inner">STATUS:</string>
+    <string name="strvalCard4Inner">PAST:</string>
+    <string name="strvalBTNBackGraph">Back</string>
+    <string name="strvalBTNSetLangSI">Sinhala</string>
+    <string name="strvalLoginView">Welcome!</string>
+    <string name="strvalLoginTextView3">Bringing up a baby is a journey filled with precious moments. Let us help you cherish every step of the way. Log in to continue,</string>
+    <string name="strvalBTNSignIn">Sign in with Google</string>
+    <string name="strvalEditTxtName">Enter your name</string>
+    <string name="strvalEditTextBirthdate">Enter your birth date</string>
+    <string name="strvalBTNGetStarted">Get Started</string>
+    <string name="strvalBTNBackVaccine">BACK</string>
+    <string name="strvalEPRegText">New user registration screen</string>
+    <string name="strvalEPRegTextName">Enter your name</string>
+    <string name="strvalEPRegTextBD">Enter your birth date</string>
+    <string name="strvalBTNEPReg">Get Started</string>
+    <string name="strvaledtEBDOB">Baby\'s date of birth</string>
+    <string name="strvaledtEBHeight">Birth height of baby</string>
+    <string name="strvaledtEBWeight">Birth weight of baby</string>
+    <string name="strvaltxtEBDOB">Date of birth</string>
+    <string name="strvaltxtEBHeight">Birth height</string>
+    <string name="strvaltxtEBWeight">Birth weight</string>
+    <string name="strvalLBLA">Age</string>
+    <string name="strvalLBLAText">2y 5m</string>
+    <string name="strvalLBLH">Height</string>
+    <string name="strvalLBLHText">92.1cm</string>
+    <string name="strvalLBLW">Weight</string>
+    <string name="strvalLBLWText">5kg</string>
+    <string name="strvalLBLBMI">BMI</string>
+    <string name="strvalLBLBMIText">69</string>
+    <string name="strvalLBLUpEv">Upcoming Events</string>
+    <string name="strvalGRPTextView1">BMI\nGRAPH</string>
+    <string name="strvalGRPTextView2">HEIGHT\nGRAPH</string>
+    <string name="strvalGRPTextView3">WEIGHT\nGRAPH</string>
 </resources>
