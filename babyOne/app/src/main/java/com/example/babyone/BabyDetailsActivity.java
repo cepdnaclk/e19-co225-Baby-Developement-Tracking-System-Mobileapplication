@@ -53,6 +53,7 @@ public class BabyDetailsActivity extends AppCompatActivity {
             String babyName = extras.getString("babyName");
             String parentName = extras.getString("parentName");
             String email = extras.getString("email");
+            System.out.println(email);
 
             // Log the received data
             Log.d("BabyDetailsActivity", "babyName: " + babyName);

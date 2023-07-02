@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cd66ecb-3902-41b8-8ca1-6e975881c019" name="Changes" comment="Initial Commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babyOne/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/BabyAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/BabyAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/BabyDetailsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/BabyDetailsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/DoctorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/DoctorView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/Guardian.java" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/Guardian.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/MainLanding.java" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/MainLanding.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
