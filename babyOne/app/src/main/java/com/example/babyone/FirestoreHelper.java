@@ -84,8 +84,11 @@ public class FirestoreHelper {
         // Reference to the specified collection
         CollectionReference collectionRef = db.collection(collectionName);
 
-        // Read the documents in the collection
-        collectionRef.get()
+        // Query the collection to filter by the guardian's email
+        Query query = collectionRef.whereEqualTo("email", email);
+
+        // Read the documents in the filtered collection
+        query.get()
                 .addOnSuccessListener(querySnapshot -> {
                     // Iterate over the documents in the QuerySnapshot
                     for (DocumentSnapshot documentSnapshot : querySnapshot) {
@@ -118,4 +121,5 @@ public class FirestoreHelper {
                     Log.e("FirestoreHelper", "Error getting documents from collection: " + collectionName, e);
                 });
     }
+
 }

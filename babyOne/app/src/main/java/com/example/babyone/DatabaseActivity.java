@@ -18,7 +18,7 @@ public class DatabaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_database);
+        //setContentView(R.layout.activity_database);
 
         // Get the instance of FirebaseFirestore
         db = FirebaseFirestore.getInstance();
@@ -49,7 +49,7 @@ public class DatabaseActivity extends AppCompatActivity {
         String guardiansCollection = "guardians";
         String vaccinationsCollection = "standardvaccinations";
 
-        BabyVaccination.calculateAndStoreVaccineData(db, guardiansCollection, vaccinationsCollection,"e19443@eng.pdn.ac.lk");
+        BabyVaccination.calculateAndStoreVaccineData(db, guardiansCollection, vaccinationsCollection,"dasun.theekshana.git@gmail.com");
 
     }
 }

@@ -52,7 +52,7 @@ public class first_time_guardian_baby extends Fragment {
         //String phoneNumber = edtEPPhoneNumber.getText().toString().trim();
 
         if (!fullName.isEmpty()) {
-            editTextMap.put("babyname", fullName);
+            editTextMap.put("babyname", fullName.toUpperCase());
         }
 
         /*if (!phoneNumber.isEmpty()) {
