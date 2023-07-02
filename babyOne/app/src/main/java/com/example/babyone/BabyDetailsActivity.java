@@ -1,5 +1,6 @@
 package com.example.babyone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +20,13 @@ public class BabyDetailsActivity extends AppCompatActivity {
             // Finish the current activity to go back
             finish();
         });
+        // Set click listener for the vaccines button
+        Button btnVaccines = findViewById(R.id.btnVaccines);
+        btnVaccines.setOnClickListener(v -> {
+            // Start a new activity to display the vaccines
+            Intent intent = new Intent(BabyDetailsActivity.this, VaccinesNewActivity.class);
+            startActivity(intent);
+        });
 
         // Retrieve the data passed from the previous activity
         String babyName = getIntent().getStringExtra("babyName");
@@ -33,5 +41,6 @@ public class BabyDetailsActivity extends AppCompatActivity {
         tvBabyName.setText(babyName);
         tvParentName.setText(parentName);
         tvEmail.setText(email);
+
     }
 }
