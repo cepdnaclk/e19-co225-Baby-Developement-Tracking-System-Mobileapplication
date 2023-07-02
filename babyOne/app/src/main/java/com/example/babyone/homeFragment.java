@@ -141,7 +141,7 @@ public class homeFragment extends Fragment {
             // Get parent name
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             String collectionName = "guardians/";
-            String uid = firebaseUser.getUid();
+            String email = firebaseUser.getEmail();
             //HashMap<String,Object> userdata = FirestoreHelper.readFromCollection(db,"guardians");
             //System.out.println(userdata);
 //            DocumentReference parentDocRef = db.collection("guardians").document(firebaseUser.getUid());
@@ -170,7 +170,7 @@ public class homeFragment extends Fragment {
 //            System.out.println("User");
 //            System.out.println(data);
 
-            FirestoreHelper.readFromCollection(db, collectionName, uid, new FirestoreHelper.FirestoreDataCallback() {
+            FirestoreHelper.readFromCollection(db, collectionName, email, new FirestoreHelper.FirestoreDataCallback() {
                 @Override
                 public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
                     int weight = 0;

@@ -42,14 +42,14 @@ public class FirestoreHelper {
                 });
     }
 
-    public static void readFromCollection(FirebaseFirestore db, String collectionName, String uid, FirestoreDataCallback callback) {
+    public static void readFromCollection(FirebaseFirestore db, String collectionName, String email, FirestoreDataCallback callback) {
         HashMap<String, Map<String, Object>> dataMap = new HashMap<>();
 
         // Reference to the specified collection
         CollectionReference collectionRef = db.collection(collectionName);
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        String email = firebaseUser.getEmail();
+//        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+//        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+//        String email = firebaseUser.getEmail();
 
         Query query = collectionRef.whereEqualTo("email", email);
 

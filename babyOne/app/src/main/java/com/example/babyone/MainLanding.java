@@ -72,8 +72,8 @@ public class MainLanding extends AppCompatActivity {
 //
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String collectionName = "guardians/";
-        String uid = firebaseUser.getUid();
-        FirestoreHelper.readFromCollection(db, collectionName, uid, new FirestoreHelper.FirestoreDataCallback() {
+        String email = firebaseUser.getEmail();
+        FirestoreHelper.readFromCollection(db, collectionName, email, new FirestoreHelper.FirestoreDataCallback() {
             @Override
             public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
                 // Handle the retrieved data here
