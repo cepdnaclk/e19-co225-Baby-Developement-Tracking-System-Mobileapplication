@@ -29,16 +29,16 @@ public class MainLanding extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
-                .setTitle("Exit")
-                .setMessage("Do you want to exit from GrowingUp?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setTitle(getString(R.string.strvalLogoutExit))
+                .setMessage(getString(R.string.strvalLogoutExitTxt))
+                .setPositiveButton(getString(R.string.strvalLogoutYes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Exit the application
                         finishAffinity();
                     }
                 })
-                .setNegativeButton("No", null)
+                .setNegativeButton(getString(R.string.strvalLogoutNo), null)
                 .show();
     }
 
