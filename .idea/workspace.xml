@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cd66ecb-3902-41b8-8ca1-6e975881c019" name="Changes" comment="Initial Commit">
-      <change beforePath="$PROJECT_DIR$/babyOne/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/BabyVaccination.java" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/BabyVaccination.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/DoctorReg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DoctorLogin/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DoctorLogin/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DoctorLogin/app/src/main/java/com/example/doctorlogin/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/DoctorLogin/app/src/main/java/com/example/doctorlogin/DoctorReg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DoctorLogin/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DoctorLogin/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/res/layout/activity_doctor_reg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/res/layout/activity_doctor_reg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,16 +28,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/CO225 Project/e19-co225-Baby-Developement-Tracking-System-Mobileapplication/babyOne&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;experimental&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "D:/CO225 Project/e19-co225-Baby-Developement-Tracking-System-Mobileapplication/DoctorLogin",
+    "settings.editor.selected.configurable": "experimental"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

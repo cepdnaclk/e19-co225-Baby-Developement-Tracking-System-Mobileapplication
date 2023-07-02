@@ -87,6 +87,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DoctorReg"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".Midwife_Reg"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
 
         <service
             android:name=".NotificationService"

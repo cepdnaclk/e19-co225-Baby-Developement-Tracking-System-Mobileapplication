@@ -18,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class DoctorReg extends AppCompatActivity {
 
     TextView textView;
     EditText Docname;
@@ -54,14 +54,14 @@ public class MainActivity extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
-                                Toast.makeText(MainActivity.this,"succesful",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DoctorReg.this,"succesful",Toast.LENGTH_SHORT).show();
 
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
 
-                                Toast.makeText(MainActivity.this,"failed",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DoctorReg.this,"failed",Toast.LENGTH_SHORT).show();
 
                             }
                         });
