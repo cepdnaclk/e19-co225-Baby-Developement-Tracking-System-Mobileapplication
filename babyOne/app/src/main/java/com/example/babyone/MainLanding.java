@@ -23,6 +23,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +35,9 @@ public class MainLanding extends AppCompatActivity {
     private TextView txtvProfileName;
     private TextView txtvProfileDesc;
     private String email;
+    String babyTimestamp;
+    Period period;
+    String gender,age;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,9 +105,24 @@ public class MainLanding extends AppCompatActivity {
                             txtvProfileName.setText(fieldValue.toString());
                         }
                         if (fieldName.equals("baby_gender")){
-                            txtvProfileDesc.setText(fieldValue.toString()+ ", 2 year old");
+                            //txtvProfileDesc.setText(fieldValue.toString()+ ", 2 year old");
+                            gender = fieldValue.toString();
+                        }
+                        if (fieldName.equals("baby_bday")) {
+                            babyTimestamp = fieldValue.toString();
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            LocalDate babyBirthday = LocalDate.parse(babyTimestamp);
+                            LocalDate currentDate = LocalDate.now();
+                            period = Period.between(babyBirthday, currentDate);
+                            int years = period.getYears();
+                            int months = period.getMonths();
+                            age = years+" years " + months+" month old";
+                            //txtvProfileDesc.setText(years+"Y " + months+"M");
                         }
                     }
+                }
+                if (age != null && gender != null) {
+                    txtvProfileDesc.setText(gender + ", " + age);
                 }
             }
         });

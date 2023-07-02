@@ -92,8 +92,13 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -112,9 +117,12 @@ public class homeFragment extends Fragment {
     private TextView txtvWeight;
     private TextView txtvBMI;
     private TextView txtvUpcomingEvents;
+    private TextView txtvAge;
     private String email;
     ArrayList<Long> heightList;
     ArrayList<Long> weightList;
+    String babyTimestamp;
+    Period period;
 
 //    public homeFragment (String email) {
 ////        homeFragment fragment = new homeFragment();
@@ -158,6 +166,7 @@ public class homeFragment extends Fragment {
         txtvWeight = binding.txtvWeight;
         txtvBMI = binding.txtvBMI;
         txtvUpcomingEvents = binding.txtvUpcoming;
+        txtvAge = binding.txtvAge;
         System.out.println("Bundle Email before null" +email);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -187,6 +196,16 @@ public class homeFragment extends Fragment {
                             weightList = (ArrayList<Long>)fieldValue;
                             weight = weightList.get(weightList.size() - 1);
                             txtvWeight.setText(weight + "kg");
+                        }
+                        if (fieldName.equals("baby_bday")) {
+                            babyTimestamp = fieldValue.toString();
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            LocalDate babyBirthday = LocalDate.parse(babyTimestamp);
+                            LocalDate currentDate = LocalDate.now();
+                            period = Period.between(babyBirthday, currentDate);
+                            int years = period.getYears();
+                            int months = period.getMonths();
+                            txtvAge.setText(years+"Y " + months+"M");
                         }
                     }
                 }
