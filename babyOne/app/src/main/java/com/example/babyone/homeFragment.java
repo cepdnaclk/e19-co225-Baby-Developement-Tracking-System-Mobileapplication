@@ -88,11 +88,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class homeFragment extends Fragment {
@@ -103,10 +105,11 @@ public class homeFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private GoogleSignInClient googleSignInClient;
     private FragmentHomeBinding binding;
-
+    private FirebaseFirestore firestore;
     private TextView txtvHeight;
     private TextView txtvWeight;
     private TextView txtvBMI;
+    private TextView txtvUpcomingEvents;
     private String email;
     ArrayList<Long> heightList;
     ArrayList<Long> weightList;
@@ -152,6 +155,7 @@ public class homeFragment extends Fragment {
         txtvHeight = binding.txtvHeight;
         txtvWeight = binding.txtvWeight;
         txtvBMI = binding.txtvBMI;
+        txtvUpcomingEvents = binding.txtvUpcoming;
         System.out.println("Bundle Email before null" +email);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -193,8 +197,39 @@ public class homeFragment extends Fragment {
 
                 // Set BMI value to TextView
                 txtvBMI.setText(formattedBMI);
+                String collectionName = "guardians";
+
+                String subcollectionName = "vaccines";
+                FirestoreHelper.readFromSubcollection(db, collectionName, email, subcollectionName, new FirestoreHelper.FirestoreDataCallback() {
+                    @Override
+                    public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
+                        StringBuilder upcomingEvents = new StringBuilder();
+                        upcomingEvents.append("Upcoming Events\n\n");
+                        // Handle the retrieved data here
+                        for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
+                            String documentId = entry.getKey();
+                            Map<String, Object> data = entry.getValue();
+                            // Process the data as needed
+                            // Extract the "date" and "name" values
+                            String date = (String) data.get("date");
+                            String name = (String) data.get("name");
+
+                            // Print the "date" and "name" values
+                            //System.out.println("Subdocument ID: " + documentId);
+                            System.out.println("Date: " + date);
+                            System.out.println("Name: " + name);
+
+                            upcomingEvents.append(name).append(" - ").append(date).append("\n");
+                        }
+
+                        // Set the upcomingEvents string to the txtvUpcomingEvents TextView
+                        txtvUpcomingEvents.setText(upcomingEvents.toString());
+
+                    }
+                });
             }
         });
+
 
         // Initialize sign-in client
         //googleSignInClient = GoogleSignIn.getClient(requireContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
