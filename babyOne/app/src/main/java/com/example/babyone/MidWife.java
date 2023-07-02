@@ -44,9 +44,12 @@ public class MidWife extends AppCompatActivity {
         card2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start the MainLandin activity
+                // Start the MainLanding activity
+                // Assuming you have a button or click event to navigate to MainLanding
                 Intent intent = new Intent(MidWife.this, MainLanding.class);
+                intent.putExtra("sourceFragment", "midwife");
                 startActivity(intent);
+
             }
         });
     }

@@ -19,14 +19,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
-
 public class MainLanding extends AppCompatActivity {
 
     private ActivityMainLandingBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         // transparent status bar
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -38,14 +36,23 @@ public class MainLanding extends AppCompatActivity {
         binding = ActivityMainLandingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Bundle extras = getIntent().getExtras();
+        String sourceFragment = extras != null ? extras.getString("sourceFragment") : "";
+
+
         Fragment homeView = new homeFragment();
         Fragment profileView = new profileFragment();
-        Fragment settingsView = new extrasFragment();
-        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(binding.getRoot().getContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
-        FirebaseAuth firebaseAuth;
+        Fragment extrasView;
 
-        // Initialize firebase auth
-        firebaseAuth = FirebaseAuth.getInstance();
+        if (sourceFragment.equals("doctor")) {
+            extrasView = new MedicineFragment();
+        } else if (sourceFragment.equals("midwife")) {
+            extrasView = new VaccineFragment();
+        } else {
+            extrasView = new extrasFragment(); // Default fragment
+        }
+        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(binding.getRoot().getContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
         replaceFragment(homeView);
 
@@ -60,7 +67,7 @@ public class MainLanding extends AppCompatActivity {
                     break;
 
                 case R.id.extras:
-                    replaceFragment(settingsView);
+                    replaceFragment(extrasView);
                     break;
             }
 
@@ -89,7 +96,7 @@ public class MainLanding extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         // Add a fade-in animation
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, 0, 0, 0);
-        fragmentTransaction.replace(binding.frameLayoutML.getId(),fragment);
+        fragmentTransaction.replace(binding.frameLayoutML.getId(), fragment);
         fragmentTransaction.commit();
     }
 }
