@@ -92,7 +92,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -204,7 +206,7 @@ public class homeFragment extends Fragment {
                     @Override
                     public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
                         StringBuilder upcomingEvents = new StringBuilder();
-                        upcomingEvents.append("Upcoming Events\n\n");
+                        upcomingEvents.append("                   Upcoming Events\n--------------------------------------\n");
                         // Handle the retrieved data here
                         for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
                             String documentId = entry.getKey();
@@ -219,7 +221,13 @@ public class homeFragment extends Fragment {
                             System.out.println("Date: " + date);
                             System.out.println("Name: " + name);
 
-                            upcomingEvents.append(name).append(" - ").append(date).append("\n");
+                            // Process the data as needed
+
+                            String formattedText = String.format("%-22s - %s\n", name, date);
+
+
+                            upcomingEvents.append(formattedText);
+                            //upcomingEvents.append(name).append(" - ").append(date).append("\n");
                         }
 
                         // Set the upcomingEvents string to the txtvUpcomingEvents TextView
