@@ -26,7 +26,7 @@ public class FirstTimeGuardian extends AppCompatActivity {
     private Button btnNext;
 
     HashMap<String, String> personalInfo = new HashMap<>();
-    HashMap<String, String> babyInfo = new HashMap<>();
+    HashMap<String, Object> babyInfo = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +100,7 @@ public class FirstTimeGuardian extends AppCompatActivity {
         babyInfo = ((first_time_guardian_baby) fragBaby).getInfoHashMap();
 
         // Combine personalInfo and babyInfo into a single hashmap
-        HashMap<String, String> registrationInfo = new HashMap<>();
+        HashMap<String, Object> registrationInfo = new HashMap<>();
         registrationInfo.putAll(personalInfo);
         registrationInfo.putAll(babyInfo);
 

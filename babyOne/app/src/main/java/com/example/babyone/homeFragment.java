@@ -91,6 +91,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -107,6 +108,8 @@ public class homeFragment extends Fragment {
     private TextView txtvWeight;
     private TextView txtvBMI;
     private String email;
+    ArrayList<Long> heightList;
+    ArrayList<Long> weightList;
 
 //    public homeFragment (String email) {
 ////        homeFragment fragment = new homeFragment();
@@ -158,8 +161,8 @@ public class homeFragment extends Fragment {
         FirestoreHelper.readFromCollection(db, collectionName, email, new FirestoreHelper.FirestoreDataCallback() {
             @Override
             public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
-                int weight = 0;
-                int height = 0;
+                long weight = 0;
+                long height = 0;
 
                 // Handle the retrieved data here
                 for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
@@ -169,13 +172,15 @@ public class homeFragment extends Fragment {
                         Object fieldValue = fieldEntry.getValue();
                         //Retrive baby height
                         if (fieldName.equals("baby_height")) {
-                            txtvHeight.setText(fieldValue.toString() + "cm");
-                            height = Integer.parseInt(fieldValue.toString());
+                            heightList = (ArrayList<Long>) fieldValue;
+                            height = heightList.get(heightList.size() - 1);
+                            txtvHeight.setText(height + "kg");
                         }
                         //Retrive baby weight
                         if (fieldName.equals("baby_weight")) {
-                            txtvWeight.setText(fieldValue.toString() + "kg");
-                            weight = Integer.parseInt(fieldValue.toString());
+                            weightList = (ArrayList<Long>)fieldValue;
+                            weight = weightList.get(weightList.size() - 1);
+                            txtvWeight.setText(weight + "kg");
                         }
                     }
                 }

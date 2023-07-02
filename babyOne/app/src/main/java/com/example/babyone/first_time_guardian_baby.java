@@ -10,11 +10,12 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class first_time_guardian_baby extends Fragment {
-    private HashMap<String, String> editTextMap = new HashMap<>();
+    private HashMap<String, Object> editTextMap = new HashMap<>();
     private EditText edtEBFullName;
     private EditText edtEBDOB;
     private EditText edtEBHeight;
@@ -22,6 +23,9 @@ public class first_time_guardian_baby extends Fragment {
     //private EditText edtEPPhoneNumber;
 
     private RadioGroup radgroupEBGender;
+    private ArrayList<Integer> weightList = new ArrayList<>();
+    private ArrayList<Integer> heightList = new ArrayList<>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,7 +43,7 @@ public class first_time_guardian_baby extends Fragment {
         return view;
     }
 
-    public HashMap<String, String> getInfoHashMap() {
+    public HashMap<String, Object> getInfoHashMap() {
         // Return the hashmap
         String fullName = edtEBFullName.getText().toString().trim();
         String bday = edtEBDOB.getText().toString().trim();
@@ -73,8 +77,10 @@ public class first_time_guardian_baby extends Fragment {
             editTextMap.put("baby_gender", gender);
         }
         editTextMap.put("baby_bday", bday);
-        editTextMap.put("baby_height", height);
-        editTextMap.put("baby_weight", weight);
+        heightList.add(Integer.parseInt(height));
+        editTextMap.put("baby_height", heightList);
+        weightList.add(Integer.parseInt(weight));
+        editTextMap.put("baby_weight", weightList);
 
         return editTextMap;
     }

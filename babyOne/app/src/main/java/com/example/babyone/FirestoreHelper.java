@@ -19,7 +19,7 @@ public class FirestoreHelper {
         void onDataLoaded(HashMap<String, Map<String, Object>> dataMap);
     }
 
-    public static void addToFirestore(String collectionName, HashMap<String, String> data, Context context, Activity activity) {
+    public static void addToFirestore(String collectionName, HashMap<String, Object> data, Context context, Activity activity) {
         // Get the Firestore instance
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
