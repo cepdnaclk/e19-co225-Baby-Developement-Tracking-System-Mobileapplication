@@ -71,4 +71,13 @@
     <string name="strvalFPTextView1">Body Mass Index</string>
     <string name="strvalFPTextView2">Height</string>
     <string name="strvalFPTextView3">Weight</string>
+    <string name="strvalCardViewAgeTxt">Age</string>
+    <string name="strvalCardViewAgeVal">2y 5m</string>
+    <string name="strvalCardViewHeightTxt">Height</string>
+    <string name="strvalCardViewHeightVal">92.1cm</string>
+    <string name="strvalCardViewWeightTxt">Weight</string>
+    <string name="strvalCardViewWeightVal">5kg</string>
+    <string name="strvalCardViewBMITxt">BMI</string>
+    <string name="strvalCardViewBMIVal">69</string>
+    <string name="strvalTxtUpComing">Upcoming Events</string>
 </resources>

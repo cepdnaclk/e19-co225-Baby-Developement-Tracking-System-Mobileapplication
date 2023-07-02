@@ -61,7 +61,7 @@
                             android:layout_alignParentTop="true"
                             android:layout_centerVertical="true"
                             android:layout_marginBottom="20dp"
-                            android:text="Age"
+                            android:text="@string/strvalCardViewAgeTxt"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 
@@ -69,7 +69,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
-                            android:text="2y 5m"
+                            android:text="@string/strvalCardViewAgeVal"
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -116,7 +116,7 @@
                             android:layout_alignParentTop="true"
                             android:layout_centerVertical="true"
                             android:layout_marginBottom="20dp"
-                            android:text="Height"
+                            android:text="@string/strvalCardViewHeightTxt"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 
@@ -124,7 +124,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
-                            android:text="92.1cm"
+                            android:text="@string/strvalCardViewHeightVal"
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -181,7 +181,7 @@
                             android:layout_alignParentTop="true"
                             android:layout_centerVertical="true"
                             android:layout_marginBottom="20dp"
-                            android:text="Weight"
+                            android:text="@string/strvalCardViewWeightTxt"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 
@@ -189,7 +189,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
-                            android:text="5kg"
+                            android:text="@string/strvalCardViewWeightVal"
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -237,7 +237,7 @@
                             android:layout_alignParentTop="true"
                             android:layout_centerVertical="true"
                             android:layout_marginBottom="20dp"
-                            android:text="BMI"
+                            android:text="@string/strvalCardViewBMITxt"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 
@@ -245,7 +245,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
-                            android:text="69"
+                            android:text="@string/strvalCardViewBMIVal"
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -282,7 +282,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerVertical="true"
                     android:layout_marginTop="4dp"
-                    android:text="Upcoming Events"
+                    android:text="@string/strvalTxtUpComing"
                     android:textColor="#6237a0"
                     android:textSize="20sp"
                     android:textStyle="bold" />
