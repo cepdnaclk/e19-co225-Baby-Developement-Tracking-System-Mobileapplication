@@ -49,7 +49,7 @@ public class MainLanding extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String sourceFragment = extras != null ? extras.getString("sourceFragment") : "";
 
-
+        //Create Fragments
         homeFragment homeView ;
         Fragment profileView;
         Fragment extrasView;
@@ -68,27 +68,21 @@ public class MainLanding extends AppCompatActivity {
 
             //Fetch baby deatils
             FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-
-            email = firebaseUser.getEmail();
+            if (firebaseUser != null) {
+                email = firebaseUser.getEmail();
+            }
         }
-//        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-//        if (firebaseUser != null) {
-//            email = firebaseUser.getEmail();
-//            // Rest of your code that relies on firebaseUser object
-//        } else {
-//            // Handle the case when the user is not authenticated or firebaseUser is null
-//            // You can display an error message or redirect the user to the login screen
-//            email = "e19443@eng.pdn.ac.lk";
-//        }
+
+        //Binding elements
         txtvProfileName = binding.txtvProfileName;
         txtvProfileDesc = binding.txtvProfileDesc;
-//
-//
 
         profileView = new profileFragment();
 
+        // Create db instance to fetch data
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String collectionName = "guardians/";
+        //Overwrite onDataLoaded method
         FirestoreHelper.readFromCollection(db, collectionName, email, new FirestoreHelper.FirestoreDataCallback() {
             @Override
             public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
@@ -111,8 +105,8 @@ public class MainLanding extends AppCompatActivity {
 
         homeView = new homeFragment();
         homeView.setEmail(email);
-        homeView.setWeight(50);
-        homeView.setHeight(50);
+//        homeView.setWeight(50);
+//        homeView.setHeight(50);
         replaceFragment(homeView);
 
         binding.bottomNavigationViewML.setOnItemSelectedListener(item -> {

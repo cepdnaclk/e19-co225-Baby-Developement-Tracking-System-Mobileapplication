@@ -107,8 +107,6 @@ public class homeFragment extends Fragment {
     private TextView txtvWeight;
     private TextView txtvBMI;
     private String email;
-    private int weight;
-    private int height;
 
 //    public homeFragment (String email) {
 ////        homeFragment fragment = new homeFragment();
@@ -123,15 +121,11 @@ public class homeFragment extends Fragment {
         // Required empty public constructor
     }
 
+    //Implement method to set email from MainLanding
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-    public void setHeight(int height) {
-        this.height = height;
-    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -145,12 +139,6 @@ public class homeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Assign views from the layout
-        /*ivImage = view.findViewById(R.id.iv_image);
-        tvName = view.findViewById(R.id.tv_name);*/
-        /*btLogout = view.findViewById(R.id.bt_logout);*/
-        /*txtParentname = view.findViewById(R.id.txtParentname);*/
-
         // Initialize firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -162,92 +150,49 @@ public class homeFragment extends Fragment {
         txtvWeight = binding.txtvWeight;
         txtvBMI = binding.txtvBMI;
         System.out.println("Bundle Email before null" +email);
-//        if (firebaseUser != null) {
-            // Get parent name
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            String collectionName = "guardians/";
-            //String email = getArguments().getString("email");//firebaseUser.getEmail();
-            System.out.println("Bundle Email not null" +email);
-            //HashMap<String,Object> userdata = FirestoreHelper.readFromCollection(db,"guardians");
-            //System.out.println(userdata);
-//            DocumentReference parentDocRef = db.collection("guardians").document(firebaseUser.getUid());
-//
-//            // Retrieve the parent's name from the document
-//            parentDocRef.get().addOnSuccessListener(documentSnapshot -> {
-//                if (documentSnapshot.exists()) {
-//                    String parentName = documentSnapshot.getString("parentname");
-//                    if (parentName != null) {
-//                        // Parent's name is available
-//                        // You can use the retrieved parentName here
-//                        txtParentname.setText("Name: " + parentName);
-//                    } else {
-//                        // Parent's name is not available
-//                        txtParentname.setText("Name: Null");
-//                    }
-//                } else {
-//                    // Parent document does not exist
-//                    txtParentname.setText("Name: Not Found");
-//                }
-//            }).addOnFailureListener(e -> {
-//                // Error occurred while retrieving the document
-//                txtParentname.setText("Name: Error occurred");
-//            });
-//            HashMap<String, Map<String, Object>> data = FirestoreHelper.readFromCollection(db,collectionName,uid);
-//            System.out.println("User");
-//            System.out.println(data);
 
-            FirestoreHelper.readFromCollection(db, collectionName, email, new FirestoreHelper.FirestoreDataCallback() {
-                @Override
-                public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
-                    int weight = 0;
-                    int height = 0;
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String collectionName = "guardians/";
+        System.out.println("Bundle Email not null" +email);
 
+        FirestoreHelper.readFromCollection(db, collectionName, email, new FirestoreHelper.FirestoreDataCallback() {
+            @Override
+            public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
+                int weight = 0;
+                int height = 0;
 
-                    // Handle the retrieved data here
-                    for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
-                        Map<String, Object> data = entry.getValue();
-                        for (Map.Entry<String, Object> fieldEntry : data.entrySet()) {
-                            String fieldName = fieldEntry.getKey();
-                            Object fieldValue = fieldEntry.getValue();
-                            if (fieldName.equals("baby_height")) {
-                                txtvHeight.setText(fieldValue.toString() + "cm");
-                                height = Integer.parseInt(fieldValue.toString());
-                            }
-                            if (fieldName.equals("baby_weight")) {
-                                txtvWeight.setText(fieldValue.toString() + "kg");
-                                weight = Integer.parseInt(fieldValue.toString());
-                            }
+                // Handle the retrieved data here
+                for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
+                    Map<String, Object> data = entry.getValue();
+                    for (Map.Entry<String, Object> fieldEntry : data.entrySet()) {
+                        String fieldName = fieldEntry.getKey();
+                        Object fieldValue = fieldEntry.getValue();
+                        //Retrive baby height
+                        if (fieldName.equals("baby_height")) {
+                            txtvHeight.setText(fieldValue.toString() + "cm");
+                            height = Integer.parseInt(fieldValue.toString());
+                        }
+                        //Retrive baby weight
+                        if (fieldName.equals("baby_weight")) {
+                            txtvWeight.setText(fieldValue.toString() + "kg");
+                            weight = Integer.parseInt(fieldValue.toString());
                         }
                     }
-
-                    // Calculate BMI
-                    double heightInMeter = height / 100.0; // Convert height to meters
-                    double bmi = weight / Math.pow(heightInMeter, 2);
-                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
-                    String formattedBMI = decimalFormat.format(bmi);
-
-                    // Set BMI value to TextView
-                    txtvBMI.setText(formattedBMI);
                 }
-            });
 
+                // Calculate BMI
+                double heightInMeter = height / 100.0; // Convert height to meters
+                double bmi = weight / Math.pow(heightInMeter, 2);
+                DecimalFormat decimalFormat = new DecimalFormat("#.##");
+                String formattedBMI = decimalFormat.format(bmi);
 
+                // Set BMI value to TextView
+                txtvBMI.setText(formattedBMI);
+            }
+        });
 
-//        }else{
-//            System.out.println("Null ");
-//            txtvHeight.setText(this.height + "cm");
-//            txtvWeight.setText(this.weight + "kg");
-//            // Calculate BMI
-//            double heightInMeter = this.height / 100.0; // Convert height to meters
-//            double bmi = this.weight / Math.pow(heightInMeter, 2);
-//            DecimalFormat decimalFormat = new DecimalFormat("#.##");
-//            String formattedBMI = decimalFormat.format(bmi);
-//
-//            // Set BMI value to TextView
-//            txtvBMI.setText(formattedBMI);
-//        }
         // Initialize sign-in client
-        googleSignInClient = GoogleSignIn.getClient(requireContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
+        //googleSignInClient = GoogleSignIn.getClient(requireContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
 
         /*btLogout.setOnClickListener(v -> {
             // Sign out from Google

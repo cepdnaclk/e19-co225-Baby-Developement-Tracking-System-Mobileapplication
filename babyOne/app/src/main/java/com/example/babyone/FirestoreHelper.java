@@ -14,6 +14,7 @@ import java.util.*;
 
 public class FirestoreHelper {
 
+    //Implement onDataLoaded method to slove Firebase Asyncrones nature.
     public interface FirestoreDataCallback {
         void onDataLoaded(HashMap<String, Map<String, Object>> dataMap);
     }
@@ -47,9 +48,6 @@ public class FirestoreHelper {
 
         // Reference to the specified collection
         CollectionReference collectionRef = db.collection(collectionName);
-//        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-//        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-//        String email = firebaseUser.getEmail();
 
         Query query = collectionRef.whereEqualTo("email", email);
 
