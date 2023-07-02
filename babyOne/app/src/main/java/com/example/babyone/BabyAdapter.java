@@ -47,6 +47,7 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> {
 //            intent.putExtra("parentName", parentName);
             //System.out.println(email);
             intent.putExtra("email", email);
+            intent.putExtra("sourceFragment", "doctor");
             context.startActivity(intent);
         });
     }

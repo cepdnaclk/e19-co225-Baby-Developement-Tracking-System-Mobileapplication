@@ -106,7 +106,32 @@ public class homeFragment extends Fragment {
     private TextView txtvHeight;
     private TextView txtvWeight;
     private TextView txtvBMI;
+    private String email;
+    private int weight;
+    private int height;
 
+//    public homeFragment (String email) {
+////        homeFragment fragment = new homeFragment();
+////        Bundle args = new Bundle();
+////        args.putString("email", email);
+////        fragment.setArguments(args);
+////        return fragment;
+//            this.email = email;
+//            System.out.println(email);
+//    }
+    public homeFragment() {
+        // Required empty public constructor
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+    public void setHeight(int height) {
+        this.height = height;
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -136,12 +161,13 @@ public class homeFragment extends Fragment {
         txtvHeight = binding.txtvHeight;
         txtvWeight = binding.txtvWeight;
         txtvBMI = binding.txtvBMI;
-
+        System.out.println("Bundle Email before null" +email);
         if (firebaseUser != null) {
             // Get parent name
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             String collectionName = "guardians/";
-            String email = firebaseUser.getEmail();
+            //String email = getArguments().getString("email");//firebaseUser.getEmail();
+            System.out.println("Bundle Email not null" +email);
             //HashMap<String,Object> userdata = FirestoreHelper.readFromCollection(db,"guardians");
             //System.out.println(userdata);
 //            DocumentReference parentDocRef = db.collection("guardians").document(firebaseUser.getUid());
@@ -176,6 +202,7 @@ public class homeFragment extends Fragment {
                     int weight = 0;
                     int height = 0;
 
+
                     // Handle the retrieved data here
                     for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
                         Map<String, Object> data = entry.getValue();
@@ -206,6 +233,18 @@ public class homeFragment extends Fragment {
 
 
 
+        }else{
+            System.out.println("Null ");
+            txtvHeight.setText(this.height + "cm");
+            txtvWeight.setText(this.weight + "kg");
+            // Calculate BMI
+            double heightInMeter = this.height / 100.0; // Convert height to meters
+            double bmi = this.weight / Math.pow(heightInMeter, 2);
+            DecimalFormat decimalFormat = new DecimalFormat("#.##");
+            String formattedBMI = decimalFormat.format(bmi);
+
+            // Set BMI value to TextView
+            txtvBMI.setText(formattedBMI);
         }
         // Initialize sign-in client
         googleSignInClient = GoogleSignIn.getClient(requireContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);

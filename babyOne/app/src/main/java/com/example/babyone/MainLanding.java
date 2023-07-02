@@ -50,8 +50,8 @@ public class MainLanding extends AppCompatActivity {
         String sourceFragment = extras != null ? extras.getString("sourceFragment") : "";
 
 
-        Fragment homeView = new homeFragment();
-        Fragment profileView = new profileFragment();
+        homeFragment homeView ;
+        Fragment profileView;
         Fragment extrasView;
 
         GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(binding.getRoot().getContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
@@ -63,28 +63,30 @@ public class MainLanding extends AppCompatActivity {
         } else if (sourceFragment.equals("midwife")) {
             extrasView = new VaccineFragment();
             email = extras.getString("email");
-            System.out.println(email);
         } else {
             extrasView = new extrasFragment(); // Default fragment
 
             //Fetch baby deatils
-//            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-//
-//            email = firebaseUser.getEmail();
-        }
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        if (firebaseUser != null) {
+            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
             email = firebaseUser.getEmail();
-            // Rest of your code that relies on firebaseUser object
-        } else {
-            // Handle the case when the user is not authenticated or firebaseUser is null
-            // You can display an error message or redirect the user to the login screen
-            email = "e19443@eng.pdn.ac.lk";
         }
+//        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+//        if (firebaseUser != null) {
+//            email = firebaseUser.getEmail();
+//            // Rest of your code that relies on firebaseUser object
+//        } else {
+//            // Handle the case when the user is not authenticated or firebaseUser is null
+//            // You can display an error message or redirect the user to the login screen
+//            email = "e19443@eng.pdn.ac.lk";
+//        }
         txtvProfileName = binding.txtvProfileName;
         txtvProfileDesc = binding.txtvProfileDesc;
 //
 //
+
+        profileView = new profileFragment();
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String collectionName = "guardians/";
         FirestoreHelper.readFromCollection(db, collectionName, email, new FirestoreHelper.FirestoreDataCallback() {
@@ -107,6 +109,10 @@ public class MainLanding extends AppCompatActivity {
             }
         });
 
+        homeView = new homeFragment();
+        homeView.setEmail(email);
+        homeView.setWeight(50);
+        homeView.setHeight(50);
         replaceFragment(homeView);
 
         binding.bottomNavigationViewML.setOnItemSelectedListener(item -> {
