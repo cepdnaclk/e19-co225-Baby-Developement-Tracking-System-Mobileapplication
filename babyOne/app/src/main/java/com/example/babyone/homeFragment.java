@@ -162,7 +162,7 @@ public class homeFragment extends Fragment {
         txtvWeight = binding.txtvWeight;
         txtvBMI = binding.txtvBMI;
         System.out.println("Bundle Email before null" +email);
-        if (firebaseUser != null) {
+//        if (firebaseUser != null) {
             // Get parent name
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             String collectionName = "guardians/";
@@ -233,19 +233,19 @@ public class homeFragment extends Fragment {
 
 
 
-        }else{
-            System.out.println("Null ");
-            txtvHeight.setText(this.height + "cm");
-            txtvWeight.setText(this.weight + "kg");
-            // Calculate BMI
-            double heightInMeter = this.height / 100.0; // Convert height to meters
-            double bmi = this.weight / Math.pow(heightInMeter, 2);
-            DecimalFormat decimalFormat = new DecimalFormat("#.##");
-            String formattedBMI = decimalFormat.format(bmi);
-
-            // Set BMI value to TextView
-            txtvBMI.setText(formattedBMI);
-        }
+//        }else{
+//            System.out.println("Null ");
+//            txtvHeight.setText(this.height + "cm");
+//            txtvWeight.setText(this.weight + "kg");
+//            // Calculate BMI
+//            double heightInMeter = this.height / 100.0; // Convert height to meters
+//            double bmi = this.weight / Math.pow(heightInMeter, 2);
+//            DecimalFormat decimalFormat = new DecimalFormat("#.##");
+//            String formattedBMI = decimalFormat.format(bmi);
+//
+//            // Set BMI value to TextView
+//            txtvBMI.setText(formattedBMI);
+//        }
         // Initialize sign-in client
         googleSignInClient = GoogleSignIn.getClient(requireContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
 
