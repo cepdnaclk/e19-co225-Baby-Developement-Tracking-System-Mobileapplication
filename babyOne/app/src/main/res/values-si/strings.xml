@@ -55,9 +55,6 @@
     <string name="strvalGRPHText2">අපගමනය:</string>
     <string name="strvalGRPHText3">තත්ත්වය:</string>
     <string name="strvalGRPHText4">පෙර:</string>
-    <string name="strvalLoginView">සාදරයෙන් පිළිගනිමු!</string>
-    <string name="strvalLoginTextView3">ඔබේ දරුවගේ සෑම වටිනා පියවරක්ම අගය කිරීමට අපි ඔබට උදව් කරන්නෙමු.අපගේ සහයෝගයෙන් උපරිම ප්‍රයෝජන ගැනීමට කරුණාකර පුරනය වන්න.</string>
-    <string name="strvalBTNSignIn">ගූගල් හරහා පුරනය වන්න</string>
     <string name="strvalEditTxtName">ඔබගේ නම ඇතුලත් කරන්න</string>
     <string name="strvalEditTextBirthdate">ඔබගේ උපන් දිනය ඇතුලත් කරන්න</string>
     <string name="strvalBTNGetStarted">ආරම්භ කරන්න</string>
@@ -71,9 +68,6 @@
     <string name="strvalEPRegTextName">ඔබගේ නම ඇතුලත් කරන්න</string>
     <string name="strvalEPRegTextBD">ඔබගේ උපන් දිනය ඇතුලත් කරන්න</string>
     <string name="strvalBTNEPReg">ආරම්භ කරන්න</string>
-    <string name="strvaledtEBDOB">දිනයක් තේරීමට ක්ලික් කරන්න</string>
-    <string name="strvaledtEBHeight">දරුවාගේ උපන් උස</string>
-    <string name="strvaledtEBWeight">දරුවාගේ උපන් බර</string>
     <string name="strvaltxtEBDOB">උපන් දිනය</string>
     <string name="strvaledtEBHeightTxt">උපන් උස</string>
     <string name="strvaltxtEBWeight">උපන් බර</string>
