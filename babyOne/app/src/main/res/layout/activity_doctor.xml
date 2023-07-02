@@ -19,10 +19,19 @@
         app:queryHint="Search Babies..."
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/babyRecyclerView"
+        android:layout_width="411dp"
+        android:layout_height="612dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
 
 
 
+<!--
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card1"
         android:layout_width="match_parent"
@@ -40,6 +49,6 @@
             android:layout_height="wrap_content"
             android:text="Baby will display here"
             android:gravity="center"/>
-    </com.google.android.material.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
