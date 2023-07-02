@@ -28,7 +28,7 @@ public class BabyVaccination {
                     List<Task<Void>> tasks = new ArrayList<>();
 
                     for (DocumentSnapshot guardianDocumentSnapshot : task.getResult()) {
-                        String birthdate = guardianDocumentSnapshot.getString("birthdate");
+                        String birthdate = guardianDocumentSnapshot.getString("baby_bday");
                         CollectionReference vaccineSubcollectionRef = guardianDocumentSnapshot.getReference().collection("vaccines");
 
                         CollectionReference vaccinationsCollectionRef = db.collection(vaccinationsCollection);
