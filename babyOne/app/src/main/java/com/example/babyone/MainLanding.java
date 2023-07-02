@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class MainLanding extends AppCompatActivity {
 
@@ -127,7 +128,7 @@ public class MainLanding extends AppCompatActivity {
             return true;
         });
 
-        binding.btnLogOut.setOnClickListener((v -> {
+        Objects.requireNonNull(binding.btnLogOut).setOnClickListener((v -> {
             // Sign out from Google
             googleSignInClient.signOut().addOnCompleteListener(task -> {
                 // Check condition
