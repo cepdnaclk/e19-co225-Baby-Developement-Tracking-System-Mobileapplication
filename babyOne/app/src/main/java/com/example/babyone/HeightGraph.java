@@ -22,6 +22,8 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import java.util.ArrayList;
@@ -60,23 +62,40 @@ public class HeightGraph extends AppCompatActivity {
         ChartEntries barEntries = new ChartEntries();
         BarDataSet barDataSet1 = new BarDataSet(barEntries.getBarEntriesBabyHeight(), "Your baby");
         BarDataSet barDataSet2 = new BarDataSet(barEntries.getBarEntriesStandardHeight().subList(0, barEntries.getBarEntriesBabyHeight().size()), "Standard");
-        barDataSet1.setColor(Color.parseColor("#075B81"));
+        barDataSet1.setColor(Color.parseColor("#7851a9"));
         barDataSet2.setColor(Color.parseColor("#E70955"));
 
         BarData data = new BarData(barDataSet1, barDataSet2);
         barChart.setData(data);
 
-        String[] months = barEntries.getMonths();
+        ArrayList<String> months = new ArrayList<>();
+        months.add(new String("1"));
+        months.add(new String("2"));
+        months.add(new String("3"));
+        months.add(new String("4"));
+        months.add(new String("5"));
+        months.add(new String("6"));
+        months.add(new String("7"));
+        months.add(new String("8"));
+        months.add(new String("9"));
+        months.add(new String("10"));
+        months.add(new String("11"));
+        months.add(new String("12"));
+        months.add(new String("13"));
+        months.add(new String("14"));
+        months.add(new String("15"));
+
 
         XAxis xAxis = barChart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(months));
-        xAxis.setCenterAxisLabels(true);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setGranularity(1);
-        xAxis.setGranularityEnabled(true);
         xAxis.setDrawGridLines(false);
         xAxis.setLabelRotationAngle(80);
-        xAxis.setLabelCount(months.length);
+        xAxis.setLabelCount(barEntries.getBarEntriesBabyHeight().size());
+        xAxis.setGranularity(0.11f);
+        xAxis.setGranularityEnabled(true);
+        xAxis.setCenterAxisLabels(true);
+        xAxis.setDrawLabels(false);
 
         barChart.setDragEnabled(true);
         barChart.setVisibleXRangeMaximum(12);
@@ -177,10 +196,6 @@ public class HeightGraph extends AppCompatActivity {
         pieChart.animate();
         pieChart.animateY(2000, Easing.EaseInOutCubic);
 
-
     }
-
-
-
 
 }

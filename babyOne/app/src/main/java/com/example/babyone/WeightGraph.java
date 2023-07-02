@@ -58,8 +58,8 @@ public class WeightGraph extends AppCompatActivity {
         ChartEntries barEntries = new ChartEntries();
         BarDataSet barDataSet1 = new BarDataSet(barEntries.getBarEntriesBabyWeight(), "Your baby");
         BarDataSet barDataSet2 = new BarDataSet(barEntries.getBarEntriesStandardWeight().subList(0, barEntries.getBarEntriesBabyWeight().size()), "Standard");
-        barDataSet1.setColor(Color.parseColor("#D6044B"));
-        barDataSet2.setColor(Color.parseColor("#05A394"));
+        barDataSet1.setColor(Color.parseColor("#7851a9"));
+        barDataSet2.setColor(Color.parseColor("#E70955"));
 
         BarData data = new BarData(barDataSet1, barDataSet2);
         barChart.setData(data);
@@ -70,11 +70,12 @@ public class WeightGraph extends AppCompatActivity {
         xAxis.setValueFormatter(new IndexAxisValueFormatter(months));
         xAxis.setCenterAxisLabels(true);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setGranularity(1);
+        xAxis.setGranularity(0.11f);
         xAxis.setGranularityEnabled(true);
         xAxis.setDrawGridLines(false);
         xAxis.setLabelRotationAngle(80);
         xAxis.setLabelCount(months.length);
+        xAxis.setDrawLabels(false);
 
         barChart.setDragEnabled(true);
         barChart.setVisibleXRangeMaximum(12);
