@@ -60,9 +60,11 @@ public class MainLanding extends AppCompatActivity {
         if (sourceFragment.equals("doctor")) {
             extrasView = new MedicineFragment();
             email = extras.getString("email");
+            NotificationService.sendNotification(this,"Wellcome Again Doctor, Lets track tour patients","Login");
         } else if (sourceFragment.equals("midwife")) {
             extrasView = new VaccineFragment();
             email = extras.getString("email");
+            NotificationService.sendNotification(this,"Wellcome Again Midwife, Lets track tour patients","Login");
         } else {
             extrasView = new extrasFragment(); // Default fragment
 
@@ -71,6 +73,7 @@ public class MainLanding extends AppCompatActivity {
             if (firebaseUser != null) {
                 email = firebaseUser.getEmail();
             }
+            NotificationService.sendNotification(this,"Wellcome Again, Lets Track Your baby","Login");
         }
 
         //Binding elements
