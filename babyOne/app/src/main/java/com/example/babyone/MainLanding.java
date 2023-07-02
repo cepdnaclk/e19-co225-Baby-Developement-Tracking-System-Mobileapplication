@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -119,6 +120,8 @@ public class MainLanding extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     // When task is successful, sign out from Firebase
                     firebaseAuth.signOut();
+                    // Clear cache
+                    clearCache();
                     // Display Toast
                     Toast.makeText(binding.getRoot().getContext(), "Logout successful", Toast.LENGTH_SHORT).show();
                     // Finish activity
@@ -136,5 +139,35 @@ public class MainLanding extends AppCompatActivity {
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, 0, 0, 0);
         fragmentTransaction.replace(binding.frameLayoutML.getId(), fragment);
         fragmentTransaction.commit();
+    }
+
+    // Clear cache
+    private void clearCache() {
+        try {
+            File cacheDir = getCacheDir();
+            if (cacheDir != null && cacheDir.isDirectory()) {
+                deleteDir(cacheDir);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Delete directory recursively
+    private boolean deleteDir(File dir) {
+        if (dir != null && dir.isDirectory()) {
+            String[] children = dir.list();
+            for (String child : children) {
+                boolean success = deleteDir(new File(dir, child));
+                if (!success) {
+                    return false;
+                }
+            }
+            return dir.delete();
+        } else if (dir != null && dir.isFile()) {
+            return dir.delete();
+        } else {
+            return false;
+        }
     }
 }
