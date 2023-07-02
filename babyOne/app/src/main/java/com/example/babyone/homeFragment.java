@@ -130,6 +130,7 @@ public class homeFragment extends Fragment {
     //Implement method to set email from MainLanding
     public void setEmail(String email) {
         this.email = email;
+        FragmentHelper.setEmail(email);
     }
 
     @Nullable
@@ -161,6 +162,8 @@ public class homeFragment extends Fragment {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String collectionName = "guardians/";
         System.out.println("Bundle Email not null" +email);
+
+
 
         FirestoreHelper.readFromCollection(db, collectionName, email, new FirestoreHelper.FirestoreDataCallback() {
             @Override
