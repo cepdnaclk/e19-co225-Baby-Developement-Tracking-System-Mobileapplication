@@ -16,6 +16,9 @@ import java.util.HashMap;
 public class first_time_guardian_baby extends Fragment {
     private HashMap<String, String> editTextMap = new HashMap<>();
     private EditText edtEBFullName;
+    private EditText edtEBDOB;
+    private EditText edtEBHeight;
+    private EditText edtEBWeight;
     //private EditText edtEPPhoneNumber;
 
     private RadioGroup radgroupEBGender;
@@ -28,6 +31,9 @@ public class first_time_guardian_baby extends Fragment {
 
         // Find the EditText and RadioGroup views in the layout
         edtEBFullName = view.findViewById(R.id.edtEBFullName);
+        edtEBDOB = view.findViewById(R.id.edtEBDOB);
+        edtEBWeight = view.findViewById(R.id.edtEBWeight);
+        edtEBHeight = view.findViewById(R.id.edtEBHeight);
         radgroupEBGender = view.findViewById(R.id.radgroupEBGender);
 
         return view;
@@ -36,6 +42,9 @@ public class first_time_guardian_baby extends Fragment {
     public HashMap<String, String> getInfoHashMap() {
         // Return the hashmap
         String fullName = edtEBFullName.getText().toString().trim();
+        String bday = edtEBDOB.getText().toString().trim();
+        String weight = edtEBWeight.getText().toString().trim();
+        String height = edtEBHeight.getText().toString().trim();
         //String phoneNumber = edtEPPhoneNumber.getText().toString().trim();
 
         if (!fullName.isEmpty()) {
@@ -63,6 +72,10 @@ public class first_time_guardian_baby extends Fragment {
         if (!gender.isEmpty()) {
             editTextMap.put("baby_gender", gender);
         }
+        editTextMap.put("baby_bday", bday);
+        editTextMap.put("baby_height", height);
+        editTextMap.put("baby_weight", weight);
+
         return editTextMap;
     }
 }

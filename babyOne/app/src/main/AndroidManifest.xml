@@ -51,7 +51,8 @@
         <activity
             android:name=".FirstTimeGuardian"
             android:exported="true"
-            android:screenOrientation="sensorPortrait" />
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".WelcomeActivity"
             android:exported="false"
@@ -72,6 +73,16 @@
             android:name=".DetailsActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".DoctorView"
+            android:screenOrientation="sensorPortrait"
+            android:exported="true" />
+        <activity
+            android:name=".BabyDetailsActivity"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
+
+
         <activity
             android:name=".LoginActivity"
             android:exported="true"
