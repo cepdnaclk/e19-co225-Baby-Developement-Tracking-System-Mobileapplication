@@ -72,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void updateText(View view){
 
+        System.out.println("Button clicked");
 
+    }
 }
