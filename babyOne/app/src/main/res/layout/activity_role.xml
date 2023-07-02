@@ -19,10 +19,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/txtvRTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select your role!"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="@color/RoyalPurple"
+            android:layout_margin="20dp"
+            android:layout_alignParentStart="true"/>
+
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnRSG"
+            android:layout_below="@+id/txtvRTitle"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="@color/teal_200"
             app:cardCornerRadius="40dp"
             app:cardElevation="30dp">
@@ -34,7 +49,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="10dp">
+                    android:padding="15dp">
 
                     <TextView
                         android:id="@+id/txtvRG"
@@ -46,8 +61,9 @@
 
                     <TextView
                         android:layout_below="@id/txtvRG"
-                        android:layout_width="300dp"
+                        android:layout_width="270dp"
                         android:layout_height="wrap_content"
+                        android:textSize="13sp"
                         android:text="We will help you track your baby's growth milestones, receive reminders for vaccinations or recommendations from healthcare professionals. Let's work together to ensure your baby gets the best start in life!"/>
                 </RelativeLayout>
 
@@ -59,6 +75,102 @@
                     android:layout_marginEnd="20dp"
                     android:alpha="0.15"
                     android:src="@drawable/icon_family" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnRSD"
+            android:layout_below="@id/btnRSG"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#EDB84D"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="30dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:id="@+id/txtvRD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:text="Doctor" />
+
+                    <TextView
+                        android:layout_below="@id/txtvRD"
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:text="A doctor can access the system to view a specific baby's vaccination history, growth trends, and any notes added by the PHM. They can also update the vaccination, weight, and height details of the baby as needed."/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="20dp"
+                    android:alpha="0.15"
+                    android:src="@drawable/icon_doctor" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnRSMW"
+            android:layout_below="@id/btnRSD"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#8C9EFF"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="30dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:id="@+id/txtvRMW"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:text="Midwife" />
+
+                    <TextView
+                        android:layout_below="@id/txtvRMW"
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:text="A PHM can view the vaccination history, growth trends, and notes added by doctors for multiple babies within their care. They can also add new vaccinations, update growth measurements."/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="20dp"
+                    android:alpha="0.15"
+                    android:src="@drawable/icon_midwife" />
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
     </RelativeLayout>
