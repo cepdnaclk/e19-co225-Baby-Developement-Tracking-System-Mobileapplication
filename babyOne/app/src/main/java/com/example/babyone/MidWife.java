@@ -1,5 +1,6 @@
 package com.example.babyone;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
@@ -8,7 +9,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MidWife extends AppCompatActivity {
 
@@ -53,4 +59,47 @@ public class MidWife extends AppCompatActivity {
             }
         });
     }
+
+
+
+// ...
+
+    // Inside the onQueryTextSubmit() method:
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        String height = "80"; // Replace with the actual value of the height entered
+        String weight = "44"; // Replace with the actual value of the weight entered
+
+        // Create an array to store height and weight
+        String[] babyData = {height, weight};
+
+        // Get Firestore instance
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        // Get the reference to the "guardians" collection
+        CollectionReference guardiansRef = db.collection("guardians");
+
+        // Assuming you have the email as the document ID for the guardian's data
+        String guardianEmail = "dasun.theekshana.git@gmail.com"; // Replace with the actual email
+
+        // Update the array field in the document
+        guardiansRef.document(guardianEmail)
+                .update("babyData", FieldValue.arrayUnion(babyData))
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MidWife.this, "Data stored successfully", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MidWife.this, "Failed to store data", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        return false;
+    }
+
 }
+
