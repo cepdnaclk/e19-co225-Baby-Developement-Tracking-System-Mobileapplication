@@ -116,7 +116,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="yyyy/mm/dd"
+            android:hint="yyyy-MM-dd"
             android:inputType="date"
             android:minHeight="48dp"
             android:textSize="14sp"
