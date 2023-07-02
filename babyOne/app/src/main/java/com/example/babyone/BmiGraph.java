@@ -54,17 +54,19 @@ public class BmiGraph extends AppCompatActivity {
         // The BMI Chart
         mpLineChart = (LineChart) findViewById(R.id.chart);
 
+        mpLineChart.getDescription().setEnabled(false);
+
         ChartEntries entries = new ChartEntries();
 
         LineDataSet lineDataSet1 = new LineDataSet(entries.getEntriesBabyBMI(), "Your Baby");
-        lineDataSet1.setColor(Color.parseColor("#FF69B4"));
+        lineDataSet1.setColor(Color.parseColor("#9966cb"));
         lineDataSet1.setDrawCircles(false);
         lineDataSet1.setDrawFilled(true); // Enable filling the area under the line
         lineDataSet1.setFillAlpha(100); // Set the transparency level of the fill
-        lineDataSet1.setFillColor(Color.parseColor("#FF69B4")); // Set the solid color fill
+        lineDataSet1.setFillColor(Color.parseColor("#9966cb")); // Set the solid color fill
         GradientDrawable gradientDrawable1 = new GradientDrawable(
                 GradientDrawable.Orientation.TOP_BOTTOM,
-                new int[]{Color.parseColor("#FF69B4"), Color.TRANSPARENT} // Define the gradient colors
+                new int[]{Color.parseColor("#9966cb"), Color.TRANSPARENT} // Define the gradient colors
         );
         lineDataSet1.setFillDrawable(gradientDrawable1);
 
@@ -89,13 +91,19 @@ public class BmiGraph extends AppCompatActivity {
 
         XAxis xAxis = mpLineChart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(months));
-        xAxis.setCenterAxisLabels(true);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setGranularity(1);
         xAxis.setGranularityEnabled(true);
         xAxis.setDrawGridLines(false);
         xAxis.setLabelRotationAngle(80);
         xAxis.setLabelCount(months.length);
+        xAxis.setAxisMinimum(0.5f);
+        xAxis.setSpaceMin(2f);
+        xAxis.setSpaceMax(2f);
+
+        mpLineChart.setDragEnabled(true);
+        mpLineChart.setVisibleXRangeMaximum(12);
+        mpLineChart.moveViewToX(dataSets.get(0).getEntryCount() - 12);
 
         YAxis rightAxis = mpLineChart.getAxisRight();
         rightAxis.setDrawAxisLine(false);
