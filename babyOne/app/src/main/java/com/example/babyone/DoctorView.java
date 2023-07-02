@@ -39,6 +39,8 @@ public class DoctorView extends AppCompatActivity {
         // Specify the collection name
         String collectionName = "guardians";
 
+
+
         // Query the guardians collection to retrieve all documents
         db.collection(collectionName)
                 .get()
