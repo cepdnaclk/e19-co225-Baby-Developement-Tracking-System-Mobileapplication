@@ -174,7 +174,7 @@ public class homeFragment extends Fragment {
                         if (fieldName.equals("baby_height")) {
                             heightList = (ArrayList<Long>) fieldValue;
                             height = heightList.get(heightList.size() - 1);
-                            txtvHeight.setText(height + "kg");
+                            txtvHeight.setText(height + "cm");
                         }
                         //Retrive baby weight
                         if (fieldName.equals("baby_weight")) {
