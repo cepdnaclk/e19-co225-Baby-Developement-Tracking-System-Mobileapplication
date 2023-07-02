@@ -22,7 +22,7 @@ public class ChartEntries {
         barEntriesStandardWeight = new ArrayList<>();
         entriesBabyBMI = new ArrayList<>();
         entriesStandardBMI = new ArrayList<>();
-        months = new String[] {"jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec","jan","feb","mar"};
+        months = new String[] {"0","jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec","jan","feb","mar"};
 
         // Initialize barEntriesBabyHeight
         barEntriesBabyHeight.add(new BarEntry(1f, 40.0f));

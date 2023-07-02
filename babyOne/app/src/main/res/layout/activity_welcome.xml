@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New user registration screen"
+        android:text="@string/strvalEPRegText"
         android:textSize="24sp"
         android:textStyle="bold"
         android:paddingTop="16dp" />
@@ -17,20 +17,20 @@
         android:id="@+id/edit_text_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your name"
+        android:hint="@string/strvalEPRegTextName"
         android:padding="16dp" />
 
     <EditText
         android:id="@+id/edit_text_birth_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your birth date"
+        android:hint="@string/strvalEPRegTextBD"
         android:padding="16dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Started"
+        android:text="@string/strvalBTNEPReg"
         android:id="@+id/btn_get_started"
         android:paddingTop="16dp" />
 
