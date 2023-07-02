@@ -42,8 +42,7 @@
                 android:id="@+id/chart"
                 android:layout_width="match_parent"
                 android:layout_height="420dp"
-                android:layout_gravity="center"
-                android:background="@drawable/height_graph_gradiant">
+                android:layout_gravity="center">
             </com.github.mikephil.charting.charts.BarChart>
             <LinearLayout
                 android:id="@+id/chart_title_layout"
