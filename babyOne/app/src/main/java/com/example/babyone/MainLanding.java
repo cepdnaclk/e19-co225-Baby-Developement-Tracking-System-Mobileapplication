@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.babyone.databinding.ActivityMainLandingBinding;
@@ -18,11 +19,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainLanding extends AppCompatActivity {
 
     private ActivityMainLandingBinding binding;
+    private TextView txtvProfileName;
+    private TextView txtvProfileDesc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,38 @@ public class MainLanding extends AppCompatActivity {
 
         // Initialize firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
+        // Initialize firebase user
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        txtvProfileName = binding.txtvProfileName;
+        txtvProfileDesc = binding.txtvProfileDesc;
+//
+//
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String collectionName = "guardians/";
+        String uid = firebaseUser.getUid();
+
+//        txtvProfileName.setText(bname);
+//        txtvProfileDesc.setText(gender + ", 2 year old");
+        FirestoreHelper.readFromCollection(db, collectionName, uid, new FirestoreHelper.FirestoreDataCallback() {
+            @Override
+            public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
+                // Handle the retrieved data here
+                for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
+                    Map<String, Object> data = entry.getValue();
+                    for (Map.Entry<String, Object> fieldEntry : data.entrySet()) {
+                        String fieldName = fieldEntry.getKey();
+                        Object fieldValue = fieldEntry.getValue();
+                        if (fieldName.equals("babyname")){
+                            txtvProfileName.setText(fieldValue.toString());
+                        }
+                        if (fieldName.equals("baby_gender")){
+                            txtvProfileDesc.setText(fieldValue.toString()+ ", 2 year old");
+                        }
+                    }
+                }
+            }
+        });
+
 
         replaceFragment(homeView);
 
@@ -66,6 +106,15 @@ public class MainLanding extends AppCompatActivity {
 
             return true;
         });
+
+//        HashMap<String, Map<String, Object>> data = FirestoreHelper.readFromCollection(db,collectionName,uid);
+//        System.out.println("User");
+//        System.out.println(data);
+//        if (data.containsKey(uid)) {
+//            Map<String, Object> userData = data.get(uid);
+//            String bname = userData.get("babyname").toString();
+//            txtvProfileName.setText(bname);
+//        }
 
         binding.btnLogOut.setOnClickListener((v -> {
             // Sign out from Google

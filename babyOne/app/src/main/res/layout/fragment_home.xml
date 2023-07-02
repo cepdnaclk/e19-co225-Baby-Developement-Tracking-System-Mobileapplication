@@ -129,6 +129,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/txtvHeight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
@@ -185,6 +186,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/txtvWeight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
@@ -241,6 +243,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/txtvBMI"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
