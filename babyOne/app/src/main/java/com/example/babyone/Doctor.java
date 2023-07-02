@@ -72,7 +72,36 @@ public class Doctor extends AppCompatActivity {
 
 
             @Override
-            public boolean onQueryTextChange(String newText) {
+            public boolean onQueryTextChange(String query) {
+                card1.setVisibility(View.VISIBLE);
+                Toast.makeText(Doctor.this, "searching " + query, Toast.LENGTH_SHORT).show();
+
+                //retrieve data from the database and display relevent data in the card view
+                db.collection("guardians")
+                        .whereGreaterThanOrEqualTo("babyname",query)
+                        .whereLessThan("babyname",query+"z")
+                        .get()
+                        .addOnCompleteListener(task ->{
+                            if (task.isSuccessful()){
+                                // Baby name, parentname,email and all details are store in hear
+                                List<Guardian> guardians = new ArrayList<>();
+                                System.out.println("Babyies");
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    // Extract the guardian data from the document
+                                    String babyName = document.getString("babyname");
+                                    String parentName = document.getString("parentname");
+                                    String email = document.getString("email");
+
+                                    // Print the baby names
+                                    System.out.println(babyName);
+
+                                    // Create a Guardian object
+                                    Guardian guardian = new Guardian(babyName, parentName, email);
+                                    guardians.add(guardian);
+                                }
+
+                            }
+                        });
                 return false;
             }
         });
