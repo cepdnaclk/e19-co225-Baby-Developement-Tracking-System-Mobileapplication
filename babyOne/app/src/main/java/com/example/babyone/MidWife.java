@@ -13,6 +13,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.Map;
 
@@ -20,6 +21,8 @@ public class MidWife extends AppCompatActivity {
 
     private SearchView searchView;
     private MaterialCardView card2;
+
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class MidWife extends AppCompatActivity {
         card2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                updateBabyHeightAndWeight();
                 // Start the MainLanding activity
                 // Assuming you have a button or click event to navigate to MainLanding
                 Intent intent = new Intent(MidWife.this, MainLanding.class);
@@ -58,42 +62,33 @@ public class MidWife extends AppCompatActivity {
 
             }
         });
-                Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String guardianEmail = extras.getString("email");
-        }
+
     }
 
-    private void updateBabyData(String height, String weight) {
-        // Get Firestore instance
+    private void updateBabyHeightAndWeight() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String collectionName = "guardians";
 
-        // Get the reference to the "guardians" collection
-        CollectionReference guardiansRef = db.collection("guardians");
+        db.collection(collectionName)
+                .whereEqualTo("kgdasuntheekshana@gmail.com", email)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                        DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+                        String babyId = documentSnapshot.getId();
 
-        // Update the baby data in the guardian's document
-        String guardianEmail = "harithabeysinghe@gmail.com";
-        DocumentReference guardianDocRef = guardiansRef.document(guardianEmail);
-        guardianDocRef.get().addOnSuccessListener(documentSnapshot -> {
-            if (documentSnapshot.exists()) {
-                // Retrieve the existing baby data from the document
-                Map<String, Object> data = documentSnapshot.getData();
-                if (data != null) {
-                    // Update the height and weight fields
-                    data.put("66", height);
-                    data.put("88", weight);
-
-                    // Update the document with the new baby data
-                    guardianDocRef.set(data, SetOptions.merge())
-                            .addOnSuccessListener(aVoid -> {
-                                Toast.makeText(MidWife.this, "Baby data updated successfully", Toast.LENGTH_SHORT).show();
-                            })
-                            .addOnFailureListener(e -> {
-                                Toast.makeText(MidWife.this, "Failed to update baby data", Toast.LENGTH_SHORT).show();
-                            });
-                }
-            }
-        });
+                        // Assuming "babies" is the collection name where the baby documents are stored
+                        db.collection("babies")
+                                .document(babyId)
+                                .update("baby_height", 99, "baby_weight", 90)
+                                .addOnSuccessListener(aVoid -> {
+                                    Toast.makeText(MidWife.this, "Height and weight updated successfully", Toast.LENGTH_SHORT).show();
+                                })
+                                .addOnFailureListener(e -> {
+                                    Toast.makeText(MidWife.this, "Failed to update height and weight", Toast.LENGTH_SHORT).show();
+                                });
+                    }
+                });
     }
 }
 
