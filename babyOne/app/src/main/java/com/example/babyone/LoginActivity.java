@@ -107,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
         // Check condition
         if (firebaseUser != null) {
             // When user already sign in redirect to profile activity
-            displayToast("On create");
+            //displayToast("On create");
             startActivity(new Intent(LoginActivity.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
         }
@@ -170,7 +170,7 @@ public class LoginActivity extends AppCompatActivity {
                                     if (isNewUser) {
                                         // User signed in for the first time
                                         // Perform any necessary operations
-                                        displayToast("New on Activity");
+                                        //displayToast("New on Activity");
                                         startActivity(new Intent(LoginActivity.this, SelectRole.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                         /*startActivity(new Intent(LoginActivity.this, FirstTimeGuardian.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));*/
                                     } else {
