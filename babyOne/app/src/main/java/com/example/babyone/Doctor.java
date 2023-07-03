@@ -8,14 +8,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.identity.SignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import androidx.annotation.NonNull;
+import com.google.android.gms.tasks.Task;
+
+
+
 
 public class Doctor extends AppCompatActivity {
 
@@ -27,6 +39,10 @@ public class Doctor extends AppCompatActivity {
 
     private BabyAdapter adapter;
 
+    private Button btnLogout;
+    private GoogleSignInClient googleSignInClient;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +53,10 @@ public class Doctor extends AppCompatActivity {
         /*card1 = findViewById(R.id.card1);*/
         recyclerView = findViewById(R.id.babyRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        btnLogout = findViewById(R.id.btnLogOut);
+        googleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN);
+
 
 
         db = FirebaseFirestore.getInstance();
@@ -143,6 +163,24 @@ public class Doctor extends AppCompatActivity {
                         // Handle error
                     }
                 });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Sign out from Google
+                googleSignInClient.signOut()
+                        .addOnCompleteListener(Doctor.this, new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                // Redirect to the login screen or perform any other desired action
+                                Intent intent = new Intent(Doctor.this, LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+            }
+        });
+
 
 
     }
