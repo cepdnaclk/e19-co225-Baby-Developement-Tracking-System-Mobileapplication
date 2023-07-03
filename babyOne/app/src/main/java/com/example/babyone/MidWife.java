@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,6 +22,13 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import androidx.annotation.NonNull;
+import com.google.android.gms.tasks.Task;
+
+
 
 public class MidWife extends AppCompatActivity {
 
@@ -30,6 +40,9 @@ public class MidWife extends AppCompatActivity {
 
     private BabyAdapterMidWife adapter;
     private TextView welcomeMidwife;
+
+    private Button btnLogout;
+    private GoogleSignInClient googleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +57,9 @@ public class MidWife extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         welcomeMidwife = findViewById(R.id.welcomeMidwife);
+
+        btnLogout = findViewById(R.id.btnLogOut);
+        googleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN);
 
         // Get the current user from Firebase Authentication
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -171,6 +187,23 @@ public class MidWife extends AppCompatActivity {
                         // Handle error
                     }
                 });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Sign out from Google
+                googleSignInClient.signOut()
+                        .addOnCompleteListener(MidWife.this, new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                // Redirect to the login screen or perform any other desired action
+                                Intent intent = new Intent(MidWife.this, LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+            }
+        });
 
 
     }
