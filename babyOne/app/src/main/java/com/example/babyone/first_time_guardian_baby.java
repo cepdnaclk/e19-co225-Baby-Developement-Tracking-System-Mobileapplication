@@ -66,6 +66,7 @@ public class first_time_guardian_baby extends Fragment implements DatePickerDial
         String fullName = edtEBFullName.getText().toString().trim();
         String weight = edtEBWeight.getText().toString().trim();
         String height = edtEBHeight.getText().toString().trim();
+        String bday = edtEBDOB.getText().toString().trim();
         //String phoneNumber = edtEPPhoneNumber.getText().toString().trim();
 
         if (!fullName.isEmpty()) {
@@ -98,6 +99,8 @@ public class first_time_guardian_baby extends Fragment implements DatePickerDial
         editTextMap.put("baby_height", heightList);
         weightList.add(Integer.parseInt(weight));
         editTextMap.put("baby_weight", weightList);
+
+        editTextMap.put("baby_bday", bday);
         return editTextMap;
     }
 
@@ -107,7 +110,6 @@ public class first_time_guardian_baby extends Fragment implements DatePickerDial
         date.set(year,month,dayOfMonth);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         edtEBDOB.setText(dateFormat.format(date.getTime()));
-        String formattedDate = dateFormat.format(date.getTime());
-        editTextMap.put("baby_bday", formattedDate);
+
     }
 }
