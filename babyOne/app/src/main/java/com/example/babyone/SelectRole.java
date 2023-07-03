@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.card.MaterialCardView;
+
 public class SelectRole extends AppCompatActivity {
 
-    Button btnGuardian;
-    Button btnDoctor;
-    Button btnMidWife;
+    MaterialCardView btnGuardian,btnDoctor,btnMidWife;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
