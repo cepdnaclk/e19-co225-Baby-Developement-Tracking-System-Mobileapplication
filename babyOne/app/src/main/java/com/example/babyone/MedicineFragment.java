@@ -49,9 +49,9 @@ public class MedicineFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_medicine, container, false);
         System.out.println("ONCREATE");
         // Initialize views
-        editTextVaccineName = view.findViewById(R.id.editTextVaccineName);
-        editTextGivenDate = view.findViewById(R.id.editTextGivenDate);
-        editTextPlaceOfAdministration = view.findViewById(R.id.editTextPlaceOfAdministration);
+        editTextVaccineName = view.findViewById(R.id.edtvName);
+        editTextGivenDate = view.findViewById(R.id.edtvdate);
+        editTextPlaceOfAdministration = view.findViewById(R.id.edtvPlace);
         btnSubmit = view.findViewById(R.id.btnSubmit);
 
         // Get the Firebase Firestore instance

@@ -261,7 +261,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardViewEvents"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:elevation="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
@@ -288,7 +288,8 @@
                         android:text="Upcoming Events"
                         android:textStyle="bold"
                         android:textColor="#6237a0"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                         />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
@@ -301,6 +302,44 @@
 
 
         </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewEvents"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="20dp"
+            android:backgroundTint="#deacf5"
+            android:elevation="30dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+            <TextView
+                android:id="@+id/txtvGiven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="4dp"
+                android:text="Given Medicine and Vaccines"
+                android:textStyle="bold"
+                android:textColor="#6237a0"
+                android:textSize="20sp"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="10dp" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

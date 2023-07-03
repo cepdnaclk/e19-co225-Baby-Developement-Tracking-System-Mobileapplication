@@ -9,6 +9,7 @@ public class FragmentHelper {
     }
 
     public static void setEmail(String email) {
+
         FragmentHelper.email = email;
     }
 }

@@ -203,6 +203,7 @@ public class Doctor extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 // Redirect to the login screen or perform any other desired action
                                 Intent intent = new Intent(Doctor.this, LoginActivity.class);
+                                intent.putExtra("sourceActivity", "Doctor");
                                 startActivity(intent);
                                 finish();
                             }
