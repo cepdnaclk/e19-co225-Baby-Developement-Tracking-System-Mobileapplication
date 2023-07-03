@@ -24,9 +24,6 @@
             android:exported="false" />
 
         <activity
-            android:name=".RoleActivity"
-            android:exported="true" />
-        <activity
             android:name=".MidWife"
             android:exported="true" />
         <activity
