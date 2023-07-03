@@ -65,15 +65,16 @@
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:text="@string/strvalCardViewAgeVal"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/txtvAge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:text="2 yrs"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
 
                 </RelativeLayout>
 
@@ -121,7 +122,8 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/txtvHeight"
+                        android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:text="@string/strvalCardViewHeightVal"
@@ -186,7 +188,8 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/txtvWeight"
+                        android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:text="@string/strvalCardViewWeightVal"
@@ -242,7 +245,8 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/txtvBMI"
+                        android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:text="@string/strvalCardViewBMIVal"
