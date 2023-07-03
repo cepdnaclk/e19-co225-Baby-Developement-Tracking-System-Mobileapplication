@@ -41,7 +41,7 @@ public class first_time_guardian_baby extends Fragment implements DatePickerDial
         // Find the EditText and RadioGroup views in the layout
         edtEBFullName = view.findViewById(R.id.edtEBFullName);
         edtEBWeight = view.findViewById(R.id.edtEBWeight);
-        edtEBHeight = view.findViewById(R.id.edtEBHeight);
+        edtEBHeight = view.findViewById(R.id.editEBHeight);
         radgroupEBGender = view.findViewById(R.id.radgroupEBGender);
         edtEBDOB = view.findViewById(R.id.edtEBDOB);
 
