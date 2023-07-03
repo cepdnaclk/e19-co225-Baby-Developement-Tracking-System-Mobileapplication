@@ -9,12 +9,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -41,6 +44,7 @@ public class Doctor extends AppCompatActivity {
 
     private Button btnLogout;
     private GoogleSignInClient googleSignInClient;
+    private TextView welcomeDoctor;
 
 
 
@@ -60,6 +64,31 @@ public class Doctor extends AppCompatActivity {
 
 
         db = FirebaseFirestore.getInstance();
+        welcomeDoctor = findViewById(R.id.welcomeDoctor);
+
+        // Get the current user from Firebase Authentication
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            String email = currentUser.getEmail();
+            System.out.println(email);
+
+            // Query the doctors collection to retrieve the doctor document by email
+            db.collection("DoctorLog")
+                    .whereEqualTo("email", email)
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String doctorName = document.getString("name");
+                                welcomeDoctor.setText("Welcome Back!\n Dr. " + doctorName);
+                            }
+                        } else {
+                            // Handle error
+                        }
+                    });
+        } else {
+            // Handle the case when the current user is not available
+        }
 
         // Specify the collection name
         String collectionName = "guardians";
