@@ -117,7 +117,7 @@ public class homeFragment extends Fragment {
     private TextView txtvHeight;
     private TextView txtvWeight;
     private TextView txtvBMI;
-    private TextView txtvUpcomingEvents;
+    private TextView txtvUpcomingEvents, txtvGiven;
     private TextView txtvAge;
     private String email;
     ArrayList<Long> heightList;
@@ -125,15 +125,6 @@ public class homeFragment extends Fragment {
     String babyTimestamp;
     Period period;
 
-//    public homeFragment (String email) {
-////        homeFragment fragment = new homeFragment();
-////        Bundle args = new Bundle();
-////        args.putString("email", email);
-////        fragment.setArguments(args);
-////        return fragment;
-//            this.email = email;
-//            System.out.println(email);
-//    }
     public homeFragment() {
         // Required empty public constructor
     }
@@ -169,6 +160,7 @@ public class homeFragment extends Fragment {
         txtvBMI = binding.txtvBMI;
         txtvUpcomingEvents = binding.txtvUpcoming;
         txtvAge = binding.txtvAge;
+        txtvGiven = binding.txtvGiven;
         System.out.println("Bundle Email before null" +email);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -235,23 +227,19 @@ public class homeFragment extends Fragment {
                         for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
                             String documentId = entry.getKey();
                             Map<String, Object> data = entry.getValue();
+
                             // Process the data as needed
                             // Extract the "date" and "name" values
                             String date = (String) data.get("date");
                             String name = (String) data.get("name");
-
-                            // Print the "date" and "name" values
-                            //System.out.println("Subdocument ID: " + documentId);
                             System.out.println("Date: " + date);
                             System.out.println("Name: " + name);
 
                             // Process the data as needed
 
-                            String formattedText = String.format("%-22s - %s\n", name, date);
-
-
+                            String formattedText = String.format("%-30s - %s\n", name, date);
                             upcomingEvents.append(formattedText);
-                            //upcomingEvents.append(name).append(" - ").append(date).append("\n");
+
                         }
 
                         // Set the upcomingEvents string to the txtvUpcomingEvents TextView
@@ -259,31 +247,34 @@ public class homeFragment extends Fragment {
 
                     }
                 });
+                subcollectionName = "medicines";
+                FirestoreHelper.readFromSubcollection(db, collectionName, email, subcollectionName, new FirestoreHelper.FirestoreDataCallback() {
+                    @Override
+                    public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
+                        StringBuilder givenMedicines = new StringBuilder();
+                        givenMedicines.append("           Given Medicine and Vaccines\n-----------------------------------------\n");
+
+                        // Handle the retrieved data here
+                        for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
+                            String documentId = entry.getKey();
+                            Map<String, Object> data = entry.getValue();
+
+                            // Process the data as needed
+                            String vaccineName = (String) data.get("vaccineName");
+                            String givenDate = (String) data.get("givenDate");
+
+                            // Add the vaccineName and givenDate to the StringBuilder
+                            String formattedText = String.format("%-30s - %s\n", vaccineName, givenDate);
+                            givenMedicines.append(formattedText);
+                        }
+
+                        // Set the givenMedicines string to the txtvGiven TextView
+                        txtvGiven.setText(givenMedicines.toString());
+                    }
+                });
             }
         });
 
-
-        // Initialize sign-in client
-        //googleSignInClient = GoogleSignIn.getClient(requireContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
-
-        /*btLogout.setOnClickListener(v -> {
-            // Sign out from Google
-            googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    // Check condition
-                    if (task.isSuccessful()) {
-                        // When task is successful, sign out from Firebase
-                        firebaseAuth.signOut();
-                        // Display Toast
-                        Toast.makeText(requireContext(), "Logout successful", Toast.LENGTH_SHORT).show();
-                        // Finish activity
-                        requireActivity().finish();
-                        startActivity(new Intent(getActivity(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                    }
-                }
-            });
-        });*/
     }
 
     @Override
