@@ -3,11 +3,11 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/profileFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/CadburyPurple"
-    tools:context=".homeFragment">
+    tools:context=".homeFragment"
+    android:id="@+id/profileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -28,26 +28,17 @@
             app:cardCornerRadius="10dp"
             app:layout_constraintTop_toTopOf="parent">
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/textView1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:lines="2"
+                android:maxLines="2"
+                android:text="BMI\nGRAPH" />
 
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="@string/strvalFPTextView1"
-                    android:textColor="@color/TruePurple"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/chartBMI"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/textView1" />
-            </RelativeLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -59,28 +50,18 @@
             android:elevation="30dp"
             app:cardBackgroundColor="@color/Lavendar"
             app:cardCornerRadius="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardViewp1">
+            app:layout_constraintTop_toBottomOf="@+id/materialCardViewp1" >
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/textView2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="@string/strvalFPTextView2"
-                    android:textColor="@color/TruePurple"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/chartHeight"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/textView2"/>
-            </RelativeLayout>
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:lines="2"
+                android:maxLines="2"
+                android:text="HEIGHT\nGRAPH" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -93,26 +74,17 @@
             app:cardCornerRadius="10dp"
             app:layout_constraintTop_toBottomOf="@+id/materialCardViewp2">
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/textView3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:lines="2"
+                android:maxLines="2"
+                android:text="WEIGHT\nGRAPH" />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="@string/strvalFPTextView3"
-                    android:textColor="@color/TruePurple"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/chartWeight"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/textView3" />
-            </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
 
 
