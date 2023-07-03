@@ -46,15 +46,13 @@ public class MainLanding extends AppCompatActivity {
     String babyTimestamp;
     Period period;
     String gender,age;
+    String sourceFragment;
 
-    Intent intent = getIntent();
-    String sourceActivity = intent.getStringExtra("sourceActivity");
     @Override
     public void onBackPressed() {
-        if (sourceActivity.equals("Doctor") || sourceActivity.equals("Midwife")){
-            super.onBackPressed();
-        }
-        else {
+        if (sourceFragment.equals("doctor") || sourceFragment.equals("midwife")) {
+            finish();
+        } else {
             new AlertDialog.Builder(this)
                     .setTitle(getString(R.string.strvalLogoutExit))
                     .setMessage(getString(R.string.strvalLogoutExitTxt))
@@ -68,8 +66,8 @@ public class MainLanding extends AppCompatActivity {
                     .setNegativeButton(getString(R.string.strvalLogoutNo), null)
                     .show();
         }
-
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +84,7 @@ public class MainLanding extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Bundle extras = getIntent().getExtras();
-        String sourceFragment = extras != null ? extras.getString("sourceFragment") : "";
+        sourceFragment = extras != null ? extras.getString("sourceFragment") : "";
 
         //Create Fragments
         homeFragment homeView ;
