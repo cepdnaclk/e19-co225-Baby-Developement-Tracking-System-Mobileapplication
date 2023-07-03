@@ -91,6 +91,4 @@
     <string name="strvalCardViewBMITxt">BMI</string>
     <string name="strvalCardViewBMIVal">69</string>
     <string name="strvalTxtUpComing">Upcoming Events</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
