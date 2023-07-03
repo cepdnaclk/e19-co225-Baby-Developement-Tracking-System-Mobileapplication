@@ -49,7 +49,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:text="@string/NannyName"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
             </RelativeLayout>

@@ -37,14 +37,14 @@
 
         <Button
             android:id="@+id/btnSetLangSI"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnSetLangEN"
             android:text="@string/strvalSILK" />
 
         <Button
             android:id="@+id/btnSetLangEN"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/introLang"
             android:text="@string/strvalENEN" />
