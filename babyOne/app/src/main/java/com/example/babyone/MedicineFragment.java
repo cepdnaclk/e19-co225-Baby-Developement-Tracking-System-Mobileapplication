@@ -73,8 +73,8 @@ public class MedicineFragment extends Fragment {
                 // Create a data object
                 Map<String, Object> data = new HashMap<>();
                 data.put("vaccineName", vaccineName);
-                data.put("givenDate", givenDate);
-                data.put("placeOfAdministration", placeOfAdministration);
+                data.put("dose", givenDate);
+                data.put("givenDate", placeOfAdministration);
 
                 // Check if the email is not null
                 if (email != null) {
