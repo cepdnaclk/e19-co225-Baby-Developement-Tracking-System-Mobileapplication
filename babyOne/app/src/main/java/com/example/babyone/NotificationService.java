@@ -81,31 +81,4 @@ public class NotificationService extends FirebaseMessagingService {
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
 
-    public static void sendNotification(Context context, String message, String messageTitle) {
-        String channelId = "your_channel_id";
-        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        // Create the notification Message
-        NotificationCompat.Builder notificationBuilder =
-                new NotificationCompat.Builder(context, channelId)
-                        .setSmallIcon(R.drawable.ic_stat_notification)
-                        .setContentTitle(messageTitle)
-                        .setContentText(message)
-                        .setPriority(NotificationCompat.PRIORITY_HIGH)
-                        .setAutoCancel(true)
-                        .setSound(defaultSoundUri);
-
-        NotificationManager notificationManager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        // Since android Oreo notification channel is needed.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(channelId,
-                    "Channel human readable title",
-                    NotificationManager.IMPORTANCE_DEFAULT);
-            notificationManager.createNotificationChannel(channel);
-        }
-        //Push Notification
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
-    }
-
 }

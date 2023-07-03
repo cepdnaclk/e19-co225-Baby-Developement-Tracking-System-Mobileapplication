@@ -88,21 +88,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class homeFragment extends Fragment {
     // Initialize variables
@@ -112,36 +100,8 @@ public class homeFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private GoogleSignInClient googleSignInClient;
     private FragmentHomeBinding binding;
-    private FirebaseFirestore firestore;
-    private TextView txtvHeight;
-    private TextView txtvWeight;
-    private TextView txtvBMI;
-    private TextView txtvUpcomingEvents;
-    private TextView txtvAge;
-    private String email;
-    ArrayList<Long> heightList;
-    ArrayList<Long> weightList;
-    String babyTimestamp;
-    Period period;
 
-//    public homeFragment (String email) {
-////        homeFragment fragment = new homeFragment();
-////        Bundle args = new Bundle();
-////        args.putString("email", email);
-////        fragment.setArguments(args);
-////        return fragment;
-//            this.email = email;
-//            System.out.println(email);
-//    }
-    public homeFragment() {
-        // Required empty public constructor
-    }
-
-    //Implement method to set email from MainLanding
-    public void setEmail(String email) {
-        this.email = email;
-        FragmentHelper.setEmail(email);
-    }
+    private TextView txtParentname;
 
     @Nullable
     @Override
@@ -156,113 +116,49 @@ public class homeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Assign views from the layout
+        /*ivImage = view.findViewById(R.id.iv_image);
+        tvName = view.findViewById(R.id.tv_name);*/
+        /*btLogout = view.findViewById(R.id.bt_logout);*/
+        /*txtParentname = view.findViewById(R.id.txtParentname);*/
+
         // Initialize firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
 
         // Initialize firebase user
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        //Binding Elements
-        txtvHeight = binding.txtvHeight;
-        txtvWeight = binding.txtvWeight;
-        txtvBMI = binding.txtvBMI;
-        txtvUpcomingEvents = binding.txtvUpcoming;
-        txtvAge = binding.txtvAge;
-        System.out.println("Bundle Email before null" +email);
+        if (firebaseUser != null) {
+            // Get parent name
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            HashMap<String,Object> userdata = FirestoreHelper.readFromCollection(db,"guardians");
+            System.out.println(userdata);
+//            DocumentReference parentDocRef = db.collection("guardians").document(firebaseUser.getUid());
+//
+//            // Retrieve the parent's name from the document
+//            parentDocRef.get().addOnSuccessListener(documentSnapshot -> {
+//                if (documentSnapshot.exists()) {
+//                    String parentName = documentSnapshot.getString("parentname");
+//                    if (parentName != null) {
+//                        // Parent's name is available
+//                        // You can use the retrieved parentName here
+//                        txtParentname.setText("Name: " + parentName);
+//                    } else {
+//                        // Parent's name is not available
+//                        txtParentname.setText("Name: Null");
+//                    }
+//                } else {
+//                    // Parent document does not exist
+//                    txtParentname.setText("Name: Not Found");
+//                }
+//            }).addOnFailureListener(e -> {
+//                // Error occurred while retrieving the document
+//                txtParentname.setText("Name: Error occurred");
+//            });
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String collectionName = "guardians/";
-        System.out.println("Bundle Email not null" +email);
-
-
-
-        FirestoreHelper.readFromCollection(db, collectionName, email, new FirestoreHelper.FirestoreDataCallback() {
-            @Override
-            public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
-                long weight = 0;
-                long height = 0;
-
-                // Handle the retrieved data here
-                for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
-                    Map<String, Object> data = entry.getValue();
-                    for (Map.Entry<String, Object> fieldEntry : data.entrySet()) {
-                        String fieldName = fieldEntry.getKey();
-                        Object fieldValue = fieldEntry.getValue();
-                        //Retrive baby height
-                        if (fieldName.equals("baby_height")) {
-                            heightList = (ArrayList<Long>) fieldValue;
-                            height = heightList.get(heightList.size() - 1);
-                            txtvHeight.setText(height + "cm");
-                        }
-                        //Retrive baby weight
-                        if (fieldName.equals("baby_weight")) {
-                            weightList = (ArrayList<Long>)fieldValue;
-                            weight = weightList.get(weightList.size() - 1);
-                            txtvWeight.setText(weight + "kg");
-                        }
-                        if (fieldName.equals("baby_bday")) {
-                            babyTimestamp = fieldValue.toString();
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                            LocalDate babyBirthday = LocalDate.parse(babyTimestamp);
-                            LocalDate currentDate = LocalDate.now();
-                            period = Period.between(babyBirthday, currentDate);
-                            int years = period.getYears();
-                            int months = period.getMonths();
-                            txtvAge.setText(years+"Y " + months+"M");
-                        }
-                    }
-                }
-
-                // Calculate BMI
-                double heightInMeter = height / 100.0; // Convert height to meters
-                double bmi = weight / Math.pow(heightInMeter, 2);
-                DecimalFormat decimalFormat = new DecimalFormat("#.##");
-                String formattedBMI = decimalFormat.format(bmi);
-
-                // Set BMI value to TextView
-                txtvBMI.setText(formattedBMI);
-                String collectionName = "guardians";
-
-                String subcollectionName = "vaccines";
-                FirestoreHelper.readFromSubcollection(db, collectionName, email, subcollectionName, new FirestoreHelper.FirestoreDataCallback() {
-                    @Override
-                    public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
-                        StringBuilder upcomingEvents = new StringBuilder();
-                        upcomingEvents.append("                   Upcoming Events\n--------------------------------------\n");
-                        // Handle the retrieved data here
-                        for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
-                            String documentId = entry.getKey();
-                            Map<String, Object> data = entry.getValue();
-                            // Process the data as needed
-                            // Extract the "date" and "name" values
-                            String date = (String) data.get("date");
-                            String name = (String) data.get("name");
-
-                            // Print the "date" and "name" values
-                            //System.out.println("Subdocument ID: " + documentId);
-                            System.out.println("Date: " + date);
-                            System.out.println("Name: " + name);
-
-                            // Process the data as needed
-
-                            String formattedText = String.format("%-22s - %s\n", name, date);
-
-
-                            upcomingEvents.append(formattedText);
-                            //upcomingEvents.append(name).append(" - ").append(date).append("\n");
-                        }
-
-                        // Set the upcomingEvents string to the txtvUpcomingEvents TextView
-                        txtvUpcomingEvents.setText(upcomingEvents.toString());
-
-                    }
-                });
-            }
-        });
-
-
+        }
         // Initialize sign-in client
-        //googleSignInClient = GoogleSignIn.getClient(requireContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
+        googleSignInClient = GoogleSignIn.getClient(requireContext(), GoogleSignInOptions.DEFAULT_SIGN_IN);
 
         /*btLogout.setOnClickListener(v -> {
             // Sign out from Google

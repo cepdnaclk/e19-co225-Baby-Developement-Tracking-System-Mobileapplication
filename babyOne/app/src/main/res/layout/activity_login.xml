@@ -29,13 +29,12 @@
             android:background="@drawable/rounded_bottom_box"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Welcome!"
+            android:text="@string/strvalLoginView"
             android:textColor="@color/white"
             android:textSize="40sp"
             android:textStyle="bold"
@@ -49,7 +48,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="24dp"
-            android:text="Bringing up a baby is a journey filled with precious moments. Let us help you cherish every step of the way. Log in to continue,"
+            android:text="@string/strvalLoginTextView3"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/bt_sign_in"
@@ -91,7 +90,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="16dp"
                     android:gravity="center"
-                    android:text="Sign in with Google"
+                    android:text="@string/strvalBTNSignIn"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -114,7 +113,5 @@
         app:layout_constraintTop_toTopOf="@+id/imageViewLAB">
 
     </com.google.android.gms.common.SignInButton>-->
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

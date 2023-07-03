@@ -1,14 +1,19 @@
 package com.example.babyone;
 
 import android.os.Bundle;
+import android.util.Log;
 
-
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 
 public class DatabaseActivity extends AppCompatActivity {
 
@@ -18,11 +23,11 @@ public class DatabaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_database);
+        setContentView(R.layout.activity_database);
 
         // Get the instance of FirebaseFirestore
         db = FirebaseFirestore.getInstance();
-    /*
+
         // Create a new vaccination with name and weeks from birth
         Map<String, Object> vaccination = new HashMap<>();
         vaccination.put("name", "Vaccination C");
@@ -43,13 +48,5 @@ public class DatabaseActivity extends AppCompatActivity {
                         Log.w(TAG, "Error adding vaccination details", e);
                     }
                 });
-
-     */
-
-        String guardiansCollection = "guardians";
-        String vaccinationsCollection = "standardvaccinations";
-
-        BabyVaccination.calculateAndStoreVaccineData(db, guardiansCollection, vaccinationsCollection,"dasun.theekshana.git@gmail.com");
-
     }
 }

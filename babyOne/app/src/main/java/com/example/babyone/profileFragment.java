@@ -1,16 +1,30 @@
 package com.example.babyone;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.androidplot.xy.XYPlot;
+import androidx.fragment.app.Fragment;
+
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.card.MaterialCardView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,20 +33,10 @@ import com.google.android.material.card.MaterialCardView;
  */
 public class profileFragment extends Fragment {
 
-    private MaterialCardView cardView_1;
-    private MaterialCardView cardView_2;
-    private MaterialCardView cardView_3;
-
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
 
     public profileFragment() {
         // Required empty public constructor
@@ -60,89 +64,152 @@ public class profileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            // TODO: Rename and change types of parameters
+            String mParam1 = getArguments().getString(ARG_PARAM1);
+            String mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
-    XYPlot plot;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        cardView_1 = view.findViewById(R.id.materialCardViewp1);
-        cardView_2 = view.findViewById(R.id.materialCardViewp2);
-        cardView_3 = view.findViewById(R.id.materialCardViewp3);
+        MaterialCardView cardView_1 = view.findViewById(R.id.materialCardViewp1);
+        MaterialCardView cardView_2 = view.findViewById(R.id.materialCardViewp2);
+        MaterialCardView cardView_3 = view.findViewById(R.id.materialCardViewp3);
 
-        cardView_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /*Toast.makeText(requireContext(), "Medicine and Vitamins clicked", Toast.LENGTH_SHORT).show();*/
-                startActivity(new Intent(getActivity(), BmiGraph.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-            }
+        LineChart chartBMI,chartWeight,chartHeight;
+
+        chartBMI = view.findViewById(R.id.chartBMI);
+        chartWeight = view.findViewById(R.id.chartWeight);
+        chartHeight = view.findViewById(R.id.chartHeight);
+
+        //TODO: Test values replace with real ones
+        HashMap<Float, Float> data1 = new HashMap<>();
+        data1.put(0f, 2f);
+        data1.put(1f, 4f);
+        data1.put(2f, 1f);
+        data1.put(3f, 6f);
+        data1.put(4f, 3f);
+        data1.put(5f, 5f);
+        HashMap<Float, Float> data2 = new HashMap<>();
+        data2.put(0f, 1f);
+        data2.put(1f, 2f);
+        data2.put(2f, 3f);
+        data2.put(3f, 2f);
+        data2.put(4f, 5f);
+        data2.put(5f, 7f);
+        HashMap<Float, Float> data3 = new HashMap<>();
+        data3.put(0f, 6f);
+        data3.put(1f, 5f);
+        data3.put(2f, 3f);
+        data3.put(3f, 3f);
+        data3.put(4f, 2f);
+        data3.put(5f, 5f);
+
+        drawGraph(getContext(),chartBMI,data1);
+        drawGraph(getContext(),chartHeight,data2);
+        drawGraph(getContext(),chartWeight,data3);
+
+        cardView_1.setOnClickListener(view1 -> {
+            /*Toast.makeText(requireContext(), "Medicine and Vitamins clicked", Toast.LENGTH_SHORT).show();*/
+            startActivity(new Intent(getActivity(), BmiGraph.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         });
 
-        /*plot = view.findViewById(R.id.plot);
-
-        plot.setDomainTitle(null);
-        plot.setRangeTitle(null);
-
-        plot.getGraph().getBackgroundPaint().setColor(Color.parseColor("#9DCBE1"));
-
-        String[] domainLabels = {"0","mon","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec",};
-        Number[] series1Numbers = {0,2,3,4,2,3,5,4,6,3,4,2,1};
-
-        XYSeries series1 = new SimpleXYSeries(Arrays.asList(series1Numbers),
-                SimpleXYSeries.ArrayFormat.Y_VALS_ONLY,null);
-
-        LineAndPointFormatter series1Format = new LineAndPointFormatter(Color.rgb(255, 165, 0),null,null,null);
-
-        series1Format.setFillPaint(new Paint(Paint.ANTI_ALIAS_FLAG));
-        series1Format.getFillPaint().setStyle(Paint.Style.FILL);
-        series1Format.getFillPaint().setColor(Color.rgb(255, 165, 0)); // Set fill color to orange
-
-        plot.addSeries(series1,series1Format);
-
-        plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).setFormat(new Format() {
-            @Override
-            public StringBuffer format(Object obj, StringBuffer toAppendTo, FieldPosition pos) {
-                int i = Math.round( ((Number)obj).floatValue() );
-                return toAppendTo.append(domainLabels[i]);
-            }
-
-            @Override
-            public Object parseObject(String source, ParsePosition pos) {
-                return null;
-            }
+        cardView_2.setOnClickListener(view12 -> {
+            /*Toast.makeText(requireContext(), "BMI Clicked", Toast.LENGTH_SHORT).show();*/
+            startActivity(new Intent(getActivity(), HeightGraph.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         });
 
-        plot.getGraph().getGridBackgroundPaint().setColor(Color.TRANSPARENT);
-        plot.getGraph().getDomainGridLinePaint().setColor(Color.TRANSPARENT);
-        plot.getGraph().getRangeGridLinePaint().setColor(Color.TRANSPARENT);
-        plot.getGraph().getDomainOriginLinePaint().setColor(Color.TRANSPARENT);
-        plot.getGraph().getRangeOriginLinePaint().setColor(Color.TRANSPARENT);
-*/
-
-        cardView_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /*Toast.makeText(requireContext(), "BMI Clicked", Toast.LENGTH_SHORT).show();*/
-                startActivity(new Intent(getActivity(), HeightGraph.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-            }
-        });
-
-        cardView_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /*Toast.makeText(requireContext(), "Went to Vaccine updated", Toast.LENGTH_SHORT).show();*/
-                startActivity(new Intent(getActivity(), WeightGraph.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-            }
+        cardView_3.setOnClickListener(view13 -> {
+            /*Toast.makeText(requireContext(), "Went to Vaccine updated", Toast.LENGTH_SHORT).show();*/
+            startActivity(new Intent(getActivity(), WeightGraph.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         });
 
         // Inflate the layout for this fragment
         return view;
 
 
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    public void drawGraph(Context context, LineChart lineChart, HashMap<Float, Float> data) {
+        lineChart.setTouchEnabled(false);
+        lineChart.setDragEnabled(false);
+        lineChart.setScaleEnabled(true);
+        lineChart.setDrawGridBackground(false);
+        lineChart.setPinchZoom(false);
+        lineChart.getDescription().setEnabled(false);
+
+        // Add X-axis
+        XAxis xAxis = lineChart.getXAxis();
+        //xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        //xAxis.setDrawGridLines(false);
+        //xAxis.setGranularity(1f);
+        xAxis.setEnabled(false);
+
+        // Add Y-axis
+        YAxis leftAxis = lineChart.getAxisLeft();
+        //leftAxis.setDrawGridLines(true);
+        //leftAxis.setAxisMinimum(0f);
+        leftAxis.setEnabled(false);
+
+        YAxis rightAxis = lineChart.getAxisRight();
+        rightAxis.setEnabled(false);
+
+        // Add legend
+        Legend legend = lineChart.getLegend();
+        //legend.setForm(Legend.LegendForm.LINE);
+        legend.setEnabled(false);
+
+        // Add data
+        //List<Entry> entries1 = new ArrayList<>();
+        List<Entry> entries2 = new ArrayList<>();
+        for (float x : data.keySet()) {
+            float y = data.get(x);
+            entries2.add(new Entry(x, y));
+        }
+
+        //LineDataSet dataSet1 = new LineDataSet(entries1, "Dataset 1");
+        //dataSet1.setColor(Color.BLUE);
+        //dataSet1.setCircleColor(Color.BLUE);
+        //dataSet1.setDrawValues(false);
+        //dataSet1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+
+
+        //Gradient Settings
+        GradientDrawable gradient = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{context.getColor(R.color.Amethyst), Color.TRANSPARENT});
+        gradient.setShape(GradientDrawable.RECTANGLE);
+        gradient.setSize(0, lineChart.getHeight());
+
+        LineDataSet dataSet2 = new LineDataSet(entries2, "Dataset 2");
+        dataSet2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        dataSet2.setCubicIntensity(0.2f);
+        dataSet2.setDrawFilled(true);
+        dataSet2.setDrawCircles(true);
+        dataSet2.setDrawValues(false);
+        dataSet2.setLineWidth(2f);
+        dataSet2.setCircleRadius(4f);
+        dataSet2.setCircleColor(context.getColor(R.color.TruePurple));
+        //dataSet2.setHighLightColor(Color.rgb(244, 117, 117));
+        dataSet2.setColor(context.getColor(R.color.TruePurple));
+        //dataSet2.setFillColor(Color.WHITE);
+        dataSet2.setFillDrawable(gradient); // Apply the gradient here
+        dataSet2.setFillAlpha(100);
+        dataSet2.setDrawHorizontalHighlightIndicator(false);
+        dataSet2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+
+        List<ILineDataSet> dataSets = new ArrayList<>();
+        //dataSets.add(dataSet1);
+        dataSets.add(dataSet2);
+
+        LineData lineData = new LineData(dataSets);
+        lineChart.setData(lineData);
+        //lineChart.invalidate();
+        lineChart.animate();
+        //lineChart.animateY(2000, Easing.EaseInOutCubic);
+        lineChart.animateY(2000, Easing.EaseInOutCubic);
+        lineChart.invalidate();
     }
 }

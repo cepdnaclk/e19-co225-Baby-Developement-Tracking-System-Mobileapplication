@@ -1,5 +1,6 @@
 package com.example.babyone;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,25 +8,23 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 
-public class first_time_guardian_baby extends Fragment {
-    private HashMap<String, Object> editTextMap = new HashMap<>();
-    private EditText edtEBFullName;
-    private EditText edtEBDOB;
-    private EditText edtEBHeight;
-    private EditText edtEBWeight;
-    //private EditText edtEPPhoneNumber;
-
-    private RadioGroup radgroupEBGender;
-    private ArrayList<Integer> weightList = new ArrayList<>();
-    private ArrayList<Integer> heightList = new ArrayList<>();
-
+public class first_time_guardian_baby extends Fragment implements DatePickerDialog.OnDateSetListener {
+    HashMap<String, String> editTextMap = new HashMap<>();
+    EditText edtEBFullName;
+    TextView edtEBDOB;
+    RadioGroup radgroupEBGender;
+    int year, month, day;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,24 +34,35 @@ public class first_time_guardian_baby extends Fragment {
 
         // Find the EditText and RadioGroup views in the layout
         edtEBFullName = view.findViewById(R.id.edtEBFullName);
-        edtEBDOB = view.findViewById(R.id.edtEBDOB);
-        edtEBWeight = view.findViewById(R.id.edtEBWeight);
-        edtEBHeight = view.findViewById(R.id.edtEBHeight);
         radgroupEBGender = view.findViewById(R.id.radgroupEBGender);
+        edtEBDOB = view.findViewById(R.id.edtEBDOB);
+
+        edtEBDOB.setOnClickListener(v -> {
+            showDatePicker();
+        });
 
         return view;
     }
 
-    public HashMap<String, Object> getInfoHashMap() {
+    private void showDatePicker() {
+        // Get the current date
+        final Calendar c = Calendar.getInstance();
+        year = c.get(Calendar.YEAR);
+        month = c.get(Calendar.MONTH);
+        day = c.get(Calendar.DAY_OF_MONTH);
+
+        // Create a new instance of DatePickerDialog and show it
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), this, year, month, day);
+        datePickerDialog.show();
+    }
+
+    public HashMap<String, String> getInfoHashMap() {
         // Return the hashmap
         String fullName = edtEBFullName.getText().toString().trim();
-        String bday = edtEBDOB.getText().toString().trim();
-        String weight = edtEBWeight.getText().toString().trim();
-        String height = edtEBHeight.getText().toString().trim();
         //String phoneNumber = edtEPPhoneNumber.getText().toString().trim();
 
         if (!fullName.isEmpty()) {
-            editTextMap.put("babyname", fullName.toUpperCase());
+            editTextMap.put("babyname", fullName);
         }
 
         /*if (!phoneNumber.isEmpty()) {
@@ -76,12 +86,14 @@ public class first_time_guardian_baby extends Fragment {
         if (!gender.isEmpty()) {
             editTextMap.put("baby_gender", gender);
         }
-        editTextMap.put("baby_bday", bday);
-        heightList.add(Integer.parseInt(height));
-        editTextMap.put("baby_height", heightList);
-        weightList.add(Integer.parseInt(weight));
-        editTextMap.put("baby_weight", weightList);
-
         return editTextMap;
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar date = Calendar.getInstance();
+        date.set(year,month,dayOfMonth);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        edtEBDOB.setText(dateFormat.format(date.getTime()));
     }
 }
