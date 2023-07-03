@@ -6,19 +6,29 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.*;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.*;
 
 import java.util.*;
 
 public class FirestoreHelper {
 
-    public static void addToFirestore(String collectionName, HashMap<String, String> data, Context context, Activity activity) {
+    //Implement onDataLoaded method to slove Firebase Asyncrones nature.
+    public interface FirestoreDataCallback {
+        void onDataLoaded(HashMap<String, Map<String, Object>> dataMap);
+    }
+
+    public static void addToFirestore(String collectionName, HashMap<String, Object> data, Context context, Activity activity) {
         // Get the Firestore instance
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        String email = firebaseUser.getEmail();
 
         // Specify the collection name in Firestore where you want to store the data
         CollectionReference collection = db.collection(collectionName);
-
+        data.put("email", email);
         // Add the data HashMap as a document to the collection
         collection.add(data)
                 .addOnSuccessListener(documentReference -> {
@@ -31,80 +41,85 @@ public class FirestoreHelper {
                     Toast.makeText(context, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     // Handle the failure
                 });
+        String guardiansCollection = "guardians";
+        String vaccinationsCollection = "standardvaccinations";
+
+        BabyVaccination.calculateAndStoreVaccineData(db, guardiansCollection, vaccinationsCollection,email);
     }
 
-    public static void readFromCollection(FirebaseFirestore db, String collectionName, ViewGroup viewGroup) {
+    public static void readFromCollection(FirebaseFirestore db, String collectionName, String email, FirestoreDataCallback callback) {
+        HashMap<String, Map<String, Object>> dataMap = new HashMap<>();
+
         // Reference to the specified collection
         CollectionReference collectionRef = db.collection(collectionName);
 
-        // Read the documents in the collection
-        collectionRef.get()
+        Query query = collectionRef.whereEqualTo("email", email);
+
+        // Read the documents matching the query
+        query.get()
                 .addOnSuccessListener(querySnapshot -> {
                     // Iterate over the documents in the QuerySnapshot
                     for (DocumentSnapshot documentSnapshot : querySnapshot) {
                         // Retrieve the data as a map of field names and values
                         Map<String, Object> data = documentSnapshot.getData();
                         if (data != null) {
-                            // Create a StringBuilder to store the user data
-                            StringBuilder userData = new StringBuilder();
-
-                            // Iterate over the fields and values
-                            for (Map.Entry<String, Object> entry : data.entrySet()) {
-                                String fieldName = entry.getKey();
-                                Object fieldValue = entry.getValue();
-
-                                // Append the field name and value to the StringBuilder
-                                userData.append(fieldName).append(": ").append(fieldValue).append("\n");
-                            }
-
-                            // Create a TextView to display user data
-                            TextView textViewUser = new TextView(viewGroup.getContext());
-                            textViewUser.setText(userData.toString());
-
-                            // Add the TextView to the ViewGroup
-                            viewGroup.addView(textViewUser);
+                            // Get the document ID as the key in the HashMap
+                            String documentId = documentSnapshot.getId();
+                            // Add the data map to the HashMap with the document ID as the key
+                            dataMap.put(documentId, data);
                         }
                     }
+
+                    // Invoke the callback with the retrieved data
+                    callback.onDataLoaded(dataMap);
                 })
                 .addOnFailureListener(e -> {
                     Log.w("FirestoreHelper", "Error getting documents from collection: " + collectionName, e);
                 });
     }
 
-    public static HashMap<String, Object> readFromCollection(FirebaseFirestore db, String collectionName) {
+    public static void readFromSubcollection(FirebaseFirestore db, String collectionName, String email, String subcollectionName, FirestoreDataCallback callback) {
+        HashMap<String, Map<String, Object>> dataMap = new HashMap<>();
+
         // Reference to the specified collection
         CollectionReference collectionRef = db.collection(collectionName);
-        HashMap<String,Object> returndata = new HashMap<>();
 
-        // Read the documents in the collection
-        collectionRef.get()
+        // Query the collection to filter by the guardian's email
+        Query query = collectionRef.whereEqualTo("email", email);
+
+        // Read the documents in the filtered collection
+        query.get()
                 .addOnSuccessListener(querySnapshot -> {
                     // Iterate over the documents in the QuerySnapshot
                     for (DocumentSnapshot documentSnapshot : querySnapshot) {
-                        // Retrieve the data as a map of field names and values
-                        Map<String, Object> data = documentSnapshot.getData();
-                        if (data != null) {
+                        // Retrieve the subcollection reference using the subcollection name
+                        CollectionReference subcollectionRef = documentSnapshot.getReference().collection(subcollectionName);
 
-                            // Iterate over the fields and values
-                            for (Map.Entry<String, Object> entry : data.entrySet()) {
-                                String fieldName = entry.getKey();
-                                Object fieldValue = entry.getValue();
-
-                                returndata.put(fieldName,fieldValue);
-                            }
-                        }
+                        // Read the documents in the subcollection
+                        subcollectionRef.get()
+                                .addOnSuccessListener(subcollectionSnapshot -> {
+                                    // Iterate over the documents in the subcollection Snapshot
+                                    for (DocumentSnapshot subdocumentSnapshot : subcollectionSnapshot) {
+                                        // Retrieve the data as a map of field names and values
+                                        Map<String, Object> data = subdocumentSnapshot.getData();
+                                        if (data != null) {
+                                            // Get the subdocument ID as the key in the HashMap
+                                            String subdocumentId = subdocumentSnapshot.getId();
+                                            // Add the data map to the HashMap with the subdocument ID as the key
+                                            dataMap.put(subdocumentId, data);
+                                        }
+                                    }
+                                    // Invoke the callback with the retrieved data
+                                    callback.onDataLoaded(dataMap);
+                                })
+                                .addOnFailureListener(e -> {
+                                    Log.e("FirestoreHelper", "Error getting documents from subcollection: " + subcollectionName, e);
+                                });
                     }
                 })
                 .addOnFailureListener(e -> {
-                    Log.w("FirestoreHelper", "Error getting documents from collection: " + collectionName, e);
+                    Log.e("FirestoreHelper", "Error getting documents from collection: " + collectionName, e);
                 });
-        Set<String> keys = returndata.keySet();
-        System.out.println("Data");
-        // Iterate over the keys
-        for (String key : keys) {
-            System.out.println("Key: " + key);
-        }
-        return returndata;
     }
 
 }
