@@ -95,5 +95,7 @@ public class first_time_guardian_baby extends Fragment implements DatePickerDial
         date.set(year,month,dayOfMonth);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         edtEBDOB.setText(dateFormat.format(date.getTime()));
+        String formattedDate = dateFormat.format(date.getTime());
+        editTextMap.put("baby_bday", formattedDate);
     }
 }
