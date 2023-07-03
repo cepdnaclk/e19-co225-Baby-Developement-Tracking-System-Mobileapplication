@@ -178,7 +178,7 @@ public class profileFragment extends Fragment {
         //dataSet1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
 
 
-        //Gradient Settings
+        //Gradient Settings.
         GradientDrawable gradient = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{context.getColor(R.color.Amethyst), Color.TRANSPARENT});
         gradient.setShape(GradientDrawable.RECTANGLE);
         gradient.setSize(0, lineChart.getHeight());
