@@ -14,8 +14,24 @@
         android:theme="@style/Theme.BabyOne"
         tools:targetApi="31">
         <activity
-            android:name=".RoleActivity"
+            android:name=".MidWifeRegistration"
             android:exported="false" />
+        <activity
+            android:name=".DoctorRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".SelectRole"
+            android:exported="false" />
+
+        <activity
+            android:name=".RoleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MidWife"
+            android:exported="true" />
+        <activity
+            android:name=".Doctor"
+            android:exported="true" />
         <activity
             android:name=".LangChangeActivity"
             android:exported="true" />
@@ -68,6 +84,14 @@
             android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".DetailsActivity"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".DoctorView"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".BabyDetailsActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait" />
         <activity
