@@ -33,6 +33,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -133,8 +134,8 @@ public class MainLanding extends AppCompatActivity {
                         }
                         if (fieldName.equals("baby_bday")) {
                             babyTimestamp = fieldValue.toString();
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                            LocalDate babyBirthday = LocalDate.parse(babyTimestamp);
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                            LocalDate babyBirthday = LocalDate.parse(babyTimestamp, formatter);
                             LocalDate currentDate = LocalDate.now();
                             period = Period.between(babyBirthday, currentDate);
                             int years = period.getYears();
