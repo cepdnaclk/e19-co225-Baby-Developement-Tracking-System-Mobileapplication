@@ -26,7 +26,7 @@ public class FirstTimeGuardian extends AppCompatActivity {
     private Button btnNext;
 
     HashMap<String, String> personalInfo = new HashMap<>();
-    HashMap<String, String> babyInfo = new HashMap<>();
+    HashMap<String, Object> babyInfo = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

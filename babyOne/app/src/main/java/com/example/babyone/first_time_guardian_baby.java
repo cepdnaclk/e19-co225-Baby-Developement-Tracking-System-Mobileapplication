@@ -14,17 +14,22 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
 
 public class first_time_guardian_baby extends Fragment implements DatePickerDialog.OnDateSetListener {
-    HashMap<String, String> editTextMap = new HashMap<>();
+    HashMap<String, Object> editTextMap = new HashMap<>();
     EditText edtEBFullName;
+    EditText edtEBHeight;
+    EditText edtEBWeight;
     TextView edtEBDOB;
     RadioGroup radgroupEBGender;
     int year, month, day;
+    ArrayList<Integer> weightList = new ArrayList<>();
+    ArrayList<Integer> heightList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,9 +61,11 @@ public class first_time_guardian_baby extends Fragment implements DatePickerDial
         datePickerDialog.show();
     }
 
-    public HashMap<String, String> getInfoHashMap() {
+    public HashMap<String, Object> getInfoHashMap() {
         // Return the hashmap
         String fullName = edtEBFullName.getText().toString().trim();
+        String weight = edtEBWeight.getText().toString().trim();
+        String height = edtEBHeight.getText().toString().trim();
         //String phoneNumber = edtEPPhoneNumber.getText().toString().trim();
 
         if (!fullName.isEmpty()) {
@@ -86,6 +93,11 @@ public class first_time_guardian_baby extends Fragment implements DatePickerDial
         if (!gender.isEmpty()) {
             editTextMap.put("baby_gender", gender);
         }
+//        editTextMap.put("baby_bday", bday);
+        heightList.add(Integer.parseInt(height));
+        editTextMap.put("baby_height", heightList);
+        weightList.add(Integer.parseInt(weight));
+        editTextMap.put("baby_weight", weightList);
         return editTextMap;
     }
 
