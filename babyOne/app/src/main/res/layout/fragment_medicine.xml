@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextVaccineName"
+        android:id="@+id/edtvName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.114" />
 
     <EditText
-        android:id="@+id/editTextGivenDate"
+        android:id="@+id/edtvdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
@@ -39,11 +39,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextVaccineName"
+        app:layout_constraintTop_toBottomOf="@+id/edtvName"
         app:layout_constraintVertical_bias="0.116" />
 
     <EditText
-        android:id="@+id/editTextPlaceOfAdministration"
+        android:id="@+id/edtvPlace"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextGivenDate"
+        app:layout_constraintTop_toBottomOf="@+id/edtvdate"
         app:layout_constraintVertical_bias="0.181" />
 
     <Button
@@ -65,7 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPlaceOfAdministration"
+        app:layout_constraintTop_toBottomOf="@+id/edtvPlace"
         app:layout_constraintVertical_bias="0.216" />
 
 
