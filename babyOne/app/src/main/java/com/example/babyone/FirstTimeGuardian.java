@@ -26,7 +26,7 @@ public class FirstTimeGuardian extends AppCompatActivity {
     private Button btnNext;
 
     HashMap<String, String> personalInfo = new HashMap<>();
-    HashMap<String, Object> babyInfo = new HashMap<>();
+    HashMap<String, String> babyInfo = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +106,6 @@ public class FirstTimeGuardian extends AppCompatActivity {
 
         String collectionName = "guardians";
         FirestoreHelper.addToFirestore(collectionName, registrationInfo, this, FirstTimeGuardian.this);
-        NotificationService.sendNotification(this,"Hello new user, Wellcome to our platform","New User");
         startActivity(new Intent(FirstTimeGuardian.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
     }
