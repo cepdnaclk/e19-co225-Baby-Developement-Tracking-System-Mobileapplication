@@ -98,9 +98,9 @@ public class VaccineFragment extends Fragment {
                 }
 
                 if (vname != null & vdate != null & vplace != null){
-                    data.put("vaccineName", vname);
-                    data.put("givenDate", vdate);
-                    data.put("place", vplace);
+                    datav.put("vaccineName", vname);
+                    datav.put("givenDate", vdate);
+                    datav.put("place", vplace);
                     query.get()
                             .addOnSuccessListener(querySnapshot -> {
                                 if (!querySnapshot.isEmpty()) {
