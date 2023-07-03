@@ -124,7 +124,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtvEBDOB" />
 
         <EditText
-            android:id="@+id/edtEBHeight"
+            android:id="@+id/editEBHeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
