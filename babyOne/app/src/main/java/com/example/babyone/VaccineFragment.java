@@ -50,9 +50,11 @@ public class VaccineFragment extends Fragment {
         btnSubmit = view.findViewById(R.id.btnSubmit);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String email = FragmentHelper.getEmail();
+        System.out.println("In Vaccine fragment "+ email);
         CollectionReference collectionRef = db.collection("guardians");
 
-        Query query = collectionRef.whereEqualTo("email", "kgdasuntheekshana@gmail.com");
+        Query query = collectionRef.whereEqualTo("email", email);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
