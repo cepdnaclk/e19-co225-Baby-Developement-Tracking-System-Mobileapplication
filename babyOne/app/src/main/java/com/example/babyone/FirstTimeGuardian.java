@@ -102,10 +102,10 @@ public class FirstTimeGuardian extends AppCompatActivity {
         // Combine personalInfo and babyInfo into a single hashmap
         HashMap<String, Object> registrationInfo = new HashMap<>();
         registrationInfo.putAll(personalInfo);
-        //registrationInfo.putAll(babyInfo);
+        registrationInfo.putAll(babyInfo);
 
         String collectionName = "guardians";
-        //FirestoreHelper.addToFirestore(collectionName, registrationInfo, this, FirstTimeGuardian.this);
+        FirestoreHelper.addToFirestore(collectionName, registrationInfo, this, FirstTimeGuardian.this);
         startActivity(new Intent(FirstTimeGuardian.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
     }

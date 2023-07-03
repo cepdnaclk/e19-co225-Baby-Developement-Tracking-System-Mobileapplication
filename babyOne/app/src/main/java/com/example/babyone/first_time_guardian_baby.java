@@ -41,6 +41,8 @@ public class first_time_guardian_baby extends Fragment implements DatePickerDial
         edtEBFullName = view.findViewById(R.id.edtEBFullName);
         radgroupEBGender = view.findViewById(R.id.radgroupEBGender);
         edtEBDOB = view.findViewById(R.id.edtEBDOB);
+        edtEBHeight = view.findViewById(R.id.editEBHeight);
+        edtEBWeight = view.findViewById(R.id.edtEBWeight);
 
         edtEBDOB.setOnClickListener(v -> {
             showDatePicker();
