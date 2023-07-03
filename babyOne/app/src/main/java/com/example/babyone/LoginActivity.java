@@ -30,7 +30,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
@@ -41,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     int currentImageIndex =0 ,oldImageIndex = 0;
     GoogleSignInClient googleSignInClient;
     FirebaseAuth firebaseAuth;
+    String role;
 
     int[] imgArr = new int[]{
             R.drawable.login_bg1,
@@ -100,6 +107,7 @@ public class LoginActivity extends AppCompatActivity {
         // Check condition
         if (firebaseUser != null) {
             // When user already sign in redirect to profile activity
+            displayToast("On create");
             startActivity(new Intent(LoginActivity.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
         }
@@ -162,13 +170,45 @@ public class LoginActivity extends AppCompatActivity {
                                     if (isNewUser) {
                                         // User signed in for the first time
                                         // Perform any necessary operations
+                                        displayToast("New on Activity");
                                         startActivity(new Intent(LoginActivity.this, SelectRole.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                         /*startActivity(new Intent(LoginActivity.this, FirstTimeGuardian.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));*/
                                     } else {
                                         // User has previously signed in
                                         // Perform any necessary operations
-                                        // Redirect to profile activity and display Toast
-                                        startActivity(new Intent(LoginActivity.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                        // Redirect to coresponding profile activity by selection role and display Toast
+                                        String email = user.getEmail();
+                                        String collectionName = "users";
+                                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                        FirestoreHelper.readFromCollection(db, collectionName, email, new FirestoreHelper.FirestoreDataCallback() {
+                                            @Override
+                                            public void onDataLoaded(HashMap<String, Map<String, Object>> dataMap) {
+                                                // Handle the retrieved data here
+                                                for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
+                                                    System.out.println("Loop1");
+                                                    Map<String, Object> data = entry.getValue();
+                                                    for (Map.Entry<String, Object> fieldEntry : data.entrySet()) {
+                                                        System.out.println("Loop2");
+                                                        String fieldName = fieldEntry.getKey();
+                                                        Object fieldValue = fieldEntry.getValue();
+                                                        if (fieldName.equals("role")){
+                                                            role = fieldValue.toString();
+                                                        }
+                                                    }
+                                                }
+                                                if (role != null) {
+                                                    if (role.equals("D")) {
+                                                        startActivity(new Intent(LoginActivity.this, Doctor.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                                    } else if (role.equals("M")) {
+                                                        startActivity(new Intent(LoginActivity.this, MidWife.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                                    }else{
+                                                        startActivity(new Intent(LoginActivity.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                                    }
+                                                }else{
+                                                    startActivity(new Intent(LoginActivity.this, MainLanding.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                                }
+                                            }
+                                        });
                                         displayToast("Firebase authentication successful");
                                     }
 
