@@ -209,7 +209,8 @@ public class homeFragment extends Fragment {
                             period = Period.between(babyBirthday, currentDate);
                             int years = period.getYears();
                             int months = period.getMonths();
-                            txtvAge.setText(years+"Y " + months+"M");
+                            int days = period.getDays();
+                            txtvAge.setText(years+"Y " + months+"M " + days+"D");
                         }
                     }
                 }
