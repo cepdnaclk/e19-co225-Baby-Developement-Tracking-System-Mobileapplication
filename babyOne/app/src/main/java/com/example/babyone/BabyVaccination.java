@@ -109,7 +109,7 @@ public static void calculateAndStoreVaccineData(FirebaseFirestore db, String gua
 
                             Date vaccinationDate = calculateVaccinationDate(birthdate, vaccinationTime);
 
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                             String formattedDate = dateFormat.format(vaccinationDate);
 
                             Map<String, Object> vaccineInfo = new HashMap<>();
@@ -155,7 +155,7 @@ public static void calculateAndStoreVaccineData(FirebaseFirestore db, String gua
 
 
     private static Date calculateVaccinationDate(String birthdate, int time) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date birthDate;
         try {
             System.out.println(birthdate);
