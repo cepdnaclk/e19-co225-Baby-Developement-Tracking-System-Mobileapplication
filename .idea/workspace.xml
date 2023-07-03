@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0cd66ecb-3902-41b8-8ca1-6e975881c019" name="Changes" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/first_time_guardian_baby.java" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/first_time_guardian_baby.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/FragmentHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/FragmentHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/homeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/java/com/example/babyone/homeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babyOne/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/babyOne/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

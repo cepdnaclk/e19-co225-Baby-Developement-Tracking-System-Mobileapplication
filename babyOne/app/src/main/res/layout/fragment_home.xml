@@ -324,7 +324,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="4dp"
-                android:text="Upcoming Events"
+                android:text="Given Medicine and Vaccines"
                 android:textStyle="bold"
                 android:textColor="#6237a0"
                 android:textSize="20sp" />
