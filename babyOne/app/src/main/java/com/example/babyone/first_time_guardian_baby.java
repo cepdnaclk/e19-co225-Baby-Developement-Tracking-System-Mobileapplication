@@ -19,7 +19,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 
-public class first_time_guardian_baby extends Fragment {
+public class first_time_guardian_baby extends Fragment implements DatePickerDialog.OnDateSetListener {
     private HashMap<String, Object> editTextMap = new HashMap<>();
     private EditText edtEBFullName;
     private EditText edtEBDOB;
@@ -52,18 +52,31 @@ public class first_time_guardian_baby extends Fragment {
         return view;
     }
 
-    private void showDatePicker() {
-        // Get the current date
-        int year,month,day;
-        final Calendar c = Calendar.getInstance();
-        year = c.get(Calendar.YEAR);
-        month = c.get(Calendar.MONTH);
-        day = c.get(Calendar.DAY_OF_MONTH);
+//    private void showDatePicker() {
+//        // Get the current date
+//        int year,month,day;
+//        final Calendar c = Calendar.getInstance();
+//        year = c.get(Calendar.YEAR);
+//        month = c.get(Calendar.MONTH);
+//        day = c.get(Calendar.DAY_OF_MONTH);
+//
+//        // Create a new instance of DatePickerDialog and show it
+//        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), this, year, month, day);
+//        datePickerDialog.show();
+//    }
+        private void showDatePicker() {
+            // Get the current date
+            int year, month, day;
+            final Calendar c = Calendar.getInstance();
+            year = c.get(Calendar.YEAR);
+            month = c.get(Calendar.MONTH);
+            day = c.get(Calendar.DAY_OF_MONTH);
 
-        // Create a new instance of DatePickerDialog and show it
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), this, year, month, day);
-        datePickerDialog.show();
-    }
+            // Create a new instance of DatePickerDialog and show it
+            DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), this, year, month, day);
+            datePickerDialog.show();
+        }
+
 
     public HashMap<String, Object> getInfoHashMap() {
         // Return the hashmap
@@ -107,11 +120,19 @@ public class first_time_guardian_baby extends Fragment {
         return editTextMap;
     }
 
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        Calendar date = Calendar.getInstance();
-        date.set(year,month,dayOfMonth);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        edtEBDOB.setText(dateFormat.format(date.getTime()));
-    }
+//    @Override
+//    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//        Calendar date = Calendar.getInstance();
+//        date.set(year,month,dayOfMonth);
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//        edtEBDOB.setText(dateFormat.format(date.getTime()));
+//    }
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            Calendar date = Calendar.getInstance();
+            date.set(year, month, dayOfMonth);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            edtEBDOB.setText(dateFormat.format(date.getTime()));
+        }
+
 }
