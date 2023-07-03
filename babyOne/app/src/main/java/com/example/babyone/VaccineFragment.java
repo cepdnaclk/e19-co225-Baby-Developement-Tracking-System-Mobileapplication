@@ -62,11 +62,11 @@ public class VaccineFragment extends Fragment {
                 String height = edtHeight.getText().toString();
                 String weight = edtWeight.getText().toString();
                 String date = edtDate.getText().toString();
-                String vname= edtvName.getText().toString();
+                String vname = edtvName.getText().toString();
                 String vdate = edtvdate.getText().toString();
                 String vplace = edtvPlace.getText().toString();
 
-                if (height != null && weight != null && date != null) {
+                if (!height.isEmpty() && !weight.isEmpty() && !date.isEmpty()) {
                     long h = Long.parseLong(height);
                     long w = Long.parseLong(weight);
 
@@ -99,7 +99,7 @@ public class VaccineFragment extends Fragment {
                             });
                 }
 
-                if (vname != null & vdate != null & vplace != null){
+                if (!vname.isEmpty() && !vdate.isEmpty() && !vplace.isEmpty()) {
                     datav.put("vaccineName", vname);
                     datav.put("givenDate", vdate);
                     datav.put("place", vplace);
