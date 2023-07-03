@@ -1,5 +1,7 @@
 package com.example.babyone;
 
+import static com.example.babyone.FirestoreHelper.readFromCollection;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.LinearLayout;
@@ -11,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -29,6 +33,7 @@ public class DetailsActivity extends AppCompatActivity {
     private static final String TAG = "DetailsActivity";
     private FirebaseFirestore db;
     private LinearLayout linearLayoutData;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +42,8 @@ public class DetailsActivity extends AppCompatActivity {
 
         // Get the instance of FirebaseFirestore
         db = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         linearLayoutData = findViewById(R.id.linear_layout_data);
 
@@ -46,9 +53,28 @@ public class DetailsActivity extends AppCompatActivity {
         // Read data from "vaccinations" collection
         readVaccinationsCollection();
 
-        String collectionName = "users";
+        String collectionName = "guardians";
+        String uid = firebaseUser.getUid();
         //method for reading is used
-        FirestoreHelper.readFromCollection(db, collectionName,linearLayoutData);
+        // Call the modified method to retrieve the data and obtain the HashMap
+//        HashMap<String, Map<String, Object>> dataMap = readFromCollection(db, collectionName,uid);
+//        System.out.println("Name: ");
+//        for (Map.Entry<String, Map<String, Object>> entry : dataMap.entrySet()) {
+//            String documentId = entry.getKey();
+//            Map<String, Object> data = entry.getValue();
+//
+//            // Print the document ID
+//            System.out.println("Document ID: " + documentId);
+//
+//            // Print the values of the data map
+//            for (Map.Entry<String, Object> fieldEntry : data.entrySet()) {
+//                String fieldName = fieldEntry.getKey();
+//                Object fieldValue = fieldEntry.getValue();
+//                System.out.println(fieldName + ": " + fieldValue);
+//            }
+//
+//            System.out.println();
+//        }
     }
     /*
     private void readUsersCollection() {
