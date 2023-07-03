@@ -79,6 +79,9 @@ public class VaccineFragment extends Fragment {
                                     collectionRef.document(docId).update(data)
                                             .addOnSuccessListener(documentReference -> {
                                                 // Data added successfully
+                                                edtWeight.setText("");
+                                                edtHeight.setText("");
+                                                edtDate.setText("");
                                                 Toast.makeText(getActivity(), "Weight and Height added successfully", Toast.LENGTH_SHORT).show();
                                                 // Clear the input fields
                                             })
@@ -113,6 +116,9 @@ public class VaccineFragment extends Fragment {
                                                 .add(datav)
                                                 .addOnSuccessListener(documentReference -> {
                                                     // Data added successfully
+                                                    edtvdate.setText("");
+                                                    edtvPlace.setText("");
+                                                    edtvName.setText("");
                                                     Toast.makeText(getActivity(), "Vaccinationadded successfully", Toast.LENGTH_SHORT).show();
                                                     // Clear the input fields
                                                 })
